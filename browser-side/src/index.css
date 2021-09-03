@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.authBtn {
+  @apply px-12 py-3 font-semibold text-base rounded-full text-white
+    bg-gradient-to-r from-yellow-400 via-red-500 to-indigo-700 hover:shadow-button;
+}
