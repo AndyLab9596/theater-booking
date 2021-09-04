@@ -1,29 +1,49 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Carousel } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { getArrBanner } from '../../store/actions/ManageMovieAction';
+
+import './carousel.scss'
 
 const contentStyle = {
-    height: '160px',
+    height: '100vh',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
-    background: '#364d79',
+    backgroundPosition: 'center',
+    backgroundSize: '100%',
+    backgroundRepeat: 'no-repeat',
 };
 
+
 const HomeCarousel = () => {
+
+    const dispatch = useDispatch();
+    const fetchArrBanner = useCallback(() => {
+        dispatch(getArrBanner())
+    }, [dispatch]);
+
+    const arrBanner = useSelector(state => state.MovieReducer.arrBanner);
+    console.log(arrBanner)
+
+    const renderBanner = () => {
+        return arrBanner.map((banner, index) => {
+            return <div key={index} className="overlay">
+                <div style={{ ...contentStyle, backgroundImage: `url(${banner.hinhAnh})` }} ></div>
+
+            </div>
+        })
+    }
+
+    useEffect(() => {
+        fetchArrBanner()
+
+    }, [fetchArrBanner])
+
+
     return (
-        <Carousel autoplay>
-            <div>
-                <h3 style={contentStyle}>1</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>2</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>3</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>4</h3>
-            </div>
+        <Carousel autoplay={true} style={{ width: '100%', padding: 0, margin: 0 }} >
+            {renderBanner()}
         </Carousel>
     );
 };

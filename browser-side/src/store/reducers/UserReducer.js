@@ -1,14 +1,17 @@
+import { actionTypes } from "../actions/Types"
 
 const initialValue = {
     currentUser: null
 }
 
-const UserReducer = (state = initialValue, action) => {
+export const UserReducer = (state = initialValue, action) => {
     switch (action.type) {
+        case actionTypes.LOGIN_USER: {
+            state.currentUser = action.payload;
+            return { ...state }
+        }
 
         default:
             return { ...state }
     }
 }
-
-export default UserReducer;

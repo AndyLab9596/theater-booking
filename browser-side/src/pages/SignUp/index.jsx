@@ -1,7 +1,8 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import InputField from '../../components/InputField';
 import * as yup from 'yup';
+import { NavLink } from 'react-router-dom';
 
 const schema = yup.object().shape({
     taiKhoan: yup.string()
@@ -17,7 +18,8 @@ const schema = yup.object().shape({
 })
 
 const SignUpPage = () => {
-    window.scroll(0, 0)
+
+
     return (
         <Formik
             initialValues={{
@@ -57,6 +59,14 @@ const SignUpPage = () => {
                             </button>
                         </div>
                     </Form>
+                    <p className="text-base text-white mt-6">
+                        Already have an account?
+                        <span className="pl-1.5">
+                            <NavLink to="/signin">
+                                Sign in now
+                            </NavLink>
+                        </span>
+                    </p>
                 </div>
             )}
         </Formik >

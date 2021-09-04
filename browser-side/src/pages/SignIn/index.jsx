@@ -2,6 +2,10 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import InputField from '../../components/InputField';
 import * as yup from 'yup';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../store/actions/ManageUserAction';
+import { notification } from 'antd';
 
 
 const schema = yup.object().shape({
@@ -14,7 +18,18 @@ const schema = yup.object().shape({
 })
 
 const SignInPage = () => {
-
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const openNotification = (desc) => {
+        notification.open({
+            message: 'Something went wrong !!!',
+            description: desc,
+            style: {
+                backgroundColor: "#F87171",
+                color: "#fff"
+            }
+        });
+    };
     return (
         <Formik
             initialValues={{
@@ -23,9 +38,11 @@ const SignInPage = () => {
             }}
             validationSchema={schema}
             onSubmit={(values) => {
-                console.log(values)
+                dispatch(loginUser(values,
+                    () => { history.push('/') },
+                    (desc) => { openNotification(desc) }
+                ))
             }}
-
         >
             {Formik => (
                 <div div className="flex flex-col w-full py-12 px-14  rounded-md sm:p-10 shadow-2xl ">
@@ -33,13 +50,12 @@ const SignInPage = () => {
                         <p className="text-2xl text-green-500 font-semibold uppercase mb-3">Hello</p>
                         <h1 className="text-white text-4xl uppercase">Welcome back</h1>
                     </div>
-                    {console.log(Formik.values)}
                     <Form className="space-y-12 ng-untouched ng-pristine ng-valid" autocomplete="off">
                         <div className="space-y-4">
                             <InputField type="text" name="taiKhoan" label="USERNAME" />
                             <InputField type="password" name="matKhau" label="PASSWORD" />
                         </div>
-                        <div className="space-y-2 space-x-1">
+                        <div className="space-y-2 space-x-4">
                             <button type="submit" className="authBtn">
                                 SIGN IN
                             </button>
@@ -48,6 +64,14 @@ const SignInPage = () => {
                             </button>
                         </div>
                     </Form>
+                    <p className="text-base text-white mt-6">
+                        Don't have an account?
+                        <span className="pl-1.5">
+                            <NavLink to="/signup">
+                                Sign up here
+                            </NavLink>
+                        </span>
+                    </p>
                 </div>
             )}
         </Formik >

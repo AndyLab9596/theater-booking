@@ -1,0 +1,27 @@
+.slick-dots-bottom {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ant-carousel .slick-dots li button {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+}
+.ant-carousel .slick-dots li.slick-active button {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.overlay {
+    ::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 18, 50, 0.1);
+        z-index: 2;
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router';
 import { TOKEN } from '../../utils/config';
 import './style.scss'
@@ -7,7 +7,9 @@ const AuthTemplate = (props) => {
 
     const { Component, redirectPath, ...restProps } = props
 
+
     return (
+
         <Route {...restProps} render={(propsRoute) => {
             if (!localStorage.getItem(TOKEN)) {
                 return (

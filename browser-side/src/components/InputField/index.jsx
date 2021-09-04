@@ -3,7 +3,6 @@ import { ErrorMessage, useField } from 'formik';
 
 const InputField = ({ edit, label, ...restProps }) => {
     const [field, meta] = useField(restProps);
-    console.log(field, meta)
     return (
         <div className={`${edit}`}>
             <label htmlFor={field.name} className="block mb-3 text-base uppercase leading-7 text-white text-left">
