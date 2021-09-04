@@ -38,8 +38,8 @@ const SignUpPage = () => {
             {Formik => (
                 <div div className="flex flex-col w-full py-12 px-14  rounded-md sm:p-10 shadow-2xl ">
                     <div className="mb-2 text-center">
-                        <p className="text-2xl text-green-500 font-semibold uppercase mb-3">Hello</p>
-                        <h1 className="text-white text-4xl uppercase">Welcome back</h1>
+                        <p className="text-2xl text-green-500 font-semibold uppercase mb-3">Welcome to</p>
+                        <h1 className="text-white text-4xl uppercase">My Theater App</h1>
                     </div>
                     {console.log(Formik.values)}
                     <Form className="space-y-12 ng-untouched ng-pristine ng-valid" autocomplete="off">

@@ -11,7 +11,7 @@ const Header = () => {
         <header className="py-5 w-full fixed bg-transparent z-10">
             <div className="container flex justify-between align-middle h-16 mx-auto">
                 <NavLink to="/" className="flex items-center">
-                    <img src="http://pixner.net/boleto/demo/assets/images/logo/logo.png" alt="logo" className="h-7 object-cover" />
+                    <img src="http://pixner.net/boleto/demo/assets/images/logo/logo.png" alt="logo" className="h-10 object-cover" />
                 </NavLink>
                 <ul className="items-stretch hidden space-x-3 lg:flex align-middle x">
                     <li className="flex py-1.5 px-3 text-xl font-bold">
@@ -62,7 +62,6 @@ const Header = () => {
                         </div>
                     )
                 }
-
 
                 <button className="p-4 lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-coolGray-800">
