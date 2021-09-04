@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 })
 
 const SignUpPage = () => {
-
+    window.scroll(0, 0)
     return (
         <Formik
             initialValues={{
