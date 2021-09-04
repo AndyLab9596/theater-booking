@@ -26,6 +26,8 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      bgColorMain: '#001232',
+      bgColorDetail: '#032055',
     },
     spacing: {
       px: '1px',
@@ -544,6 +546,7 @@ module.exports = {
     },
     minWidth: {
       0: '0px',
+      52: '210px',
       full: '100%',
       min: 'min-content',
       max: 'max-content',
@@ -969,4 +972,7 @@ module.exports = {
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
   plugins: [],
+  experimental: {
+    applyComplexClasses: true
+  }
 }

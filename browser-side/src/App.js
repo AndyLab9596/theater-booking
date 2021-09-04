@@ -13,6 +13,7 @@ import HomePage from './pages/Home';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from './store/actions/ManageUserAction';
+import Testing from './pages/Testing';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          <Route path="/testing" exact component={Testing} />
           <HomeTemplate path="/" exact Component={HomePage} />
           <AuthTemplate path="/signin" exact Component={SignInPage} redirectPath="/" />
           <AuthTemplate path="/signup" exact Component={SignUpPage} redirectPath="/" />

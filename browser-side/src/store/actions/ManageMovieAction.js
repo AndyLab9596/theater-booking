@@ -13,3 +13,15 @@ export const getArrBanner = () => {
         }
     }
 }
+
+export const getArrMoviesPagination = (page) => {
+    return async (dispatch) => {
+        try {
+            const res = await manageMovieService.getArrMoviesPagination(page);
+            dispatch(createAction(actionTypes.FETCH_MOVIES_PAGINATION, res.data.content))
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+}
