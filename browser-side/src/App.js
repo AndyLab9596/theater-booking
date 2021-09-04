@@ -10,7 +10,18 @@ import AuthTemplate from './templates/AuthTemplate';
 import HomeTemplate from './templates/HomeTemplate';
 import HomePage from './pages/Home';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from './store/actions/ManageUserAction';
+
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [dispatch])
+
   return (
     <div className="App">
       <BrowserRouter>

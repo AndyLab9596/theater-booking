@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const Header = () => {
     const history = useHistory();
     const currentUser = useSelector(state => state.UserReducer.currentUser);
-    console.log(currentUser)
+    console.log('currentUser', currentUser)
     return (
         <header className="py-5 w-full fixed bg-transparent z-10">
             <div className="container flex justify-between align-middle h-16 mx-auto">

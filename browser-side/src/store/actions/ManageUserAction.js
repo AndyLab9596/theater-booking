@@ -18,3 +18,16 @@ export const loginUser = (values, history, openNotification) => {
         }
     }
 }
+
+export const fetchUser = () => {
+    return async (dispatch) => {
+        try {
+            const res = await manageUserService.fetchUser();
+            dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
+            console.log(res)
+        }
+        catch (error) {
+            console.log(error.response.data.content)
+        }
+    }
+}

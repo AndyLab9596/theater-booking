@@ -5,8 +5,13 @@ export class ManageUserService extends baseService {
     constructor(props) {
         super()
     }
+
     loginUser = (values) => {
         return this.post(`/api/QuanLyNguoiDung/DangNhap`, values)
+    }
+
+    fetchUser = () => {
+        return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
     }
 
 }
