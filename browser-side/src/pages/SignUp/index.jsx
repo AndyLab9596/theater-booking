@@ -2,7 +2,12 @@ import { Form, Formik } from 'formik';
 import React, { useEffect } from 'react';
 import InputField from '../../components/InputField';
 import * as yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import createAction from '../../store/actions/createAction';
+import { actionTypes } from '../../store/actions/Types';
+import { registerUser } from '../../store/actions/ManageUserAction';
+import { notification } from 'antd';
 
 const schema = yup.object().shape({
     taiKhoan: yup.string()
@@ -18,7 +23,18 @@ const schema = yup.object().shape({
 })
 
 const SignUpPage = () => {
-
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const openNotification = (desc) => {
+        notification.open({
+            message: 'Something went wrong !!!',
+            description: desc,
+            style: {
+                backgroundColor: "#F87171",
+                color: "#fff"
+            }
+        });
+    };
 
     return (
         <Formik
@@ -32,7 +48,10 @@ const SignUpPage = () => {
             }}
             validationSchema={schema}
             onSubmit={(values) => {
-                console.log(values)
+                dispatch(registerUser(values,
+                    () => { history.push('/signin') },
+                    (desc) => { openNotification(desc) }
+                ))
             }}
         >
             {Formik => (
@@ -41,18 +60,19 @@ const SignUpPage = () => {
                         <p className="text-2xl text-green-500 font-semibold uppercase mb-3">Welcome to</p>
                         <h1 className="text-white text-4xl uppercase">My Theater App</h1>
                     </div>
-                    {console.log(Formik.values)}
+                    {/* {console.log(Formik.values)} */}
                     <Form className="space-y-12 ng-untouched ng-pristine ng-valid" autocomplete="off">
                         <div className="grid grid-cols-2 gap-4">
                             <InputField type="text" name="taiKhoan" label="USERNAME" />
                             <InputField type="password" name="matKhau" label="PASSWORD" />
-                            <InputField type="text" name="email" label="EMAIL" edit="col-span-2" />
+                            <InputField type="text" name="email" label="EMAIL" />
+                            <InputField type="text" name="soDt" label="PHONE" />
                             <InputField type="text" name="maNhom" label="GROUP ID" />
                             <InputField type="text" name="hoTen" label="FULL NAME" />
                         </div>
                         <div className="space-y-2 space-x-4">
                             <button type="submit" className="authBtn">
-                                SIGN IN
+                                SIGN UP
                             </button>
                             <button type="reset" className="authBtn" >
                                 RESET
