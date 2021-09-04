@@ -2,11 +2,20 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { TOKEN } from '../../../utils/config'
 import { UserOutlined, LoginOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import createAction from '../../../store/actions/createAction';
+import { actionTypes } from '../../../store/actions/Types';
+
 const Header = () => {
     const history = useHistory();
+    const dispatch = useDispatch()
     const currentUser = useSelector(state => state.UserReducer.currentUser);
-    console.log('currentUser', currentUser)
+    const handleLogOut = () => {
+        dispatch(createAction(actionTypes.LOGOUT_USER));
+        history.push('/');
+        window.location.reload();
+    }
+
     return (
         <header className="py-5 w-full fixed bg-transparent z-10">
             <div className="container flex justify-between align-middle h-16 mx-auto">
@@ -56,7 +65,7 @@ const Header = () => {
 
                                 <LoginOutlined style={{ fontSize: "20px", color: "white", fontWeight: 500 }}
                                     className="ml-5 py-1.5 "
-                                    onClick={() => console.log('Log out')}
+                                    onClick={handleLogOut}
                                 />
                             </div>
                         </div>
