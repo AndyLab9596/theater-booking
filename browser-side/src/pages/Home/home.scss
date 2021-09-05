@@ -1,0 +1,28 @@
+.ant-pagination-item-active.ant-pagination-item {
+    width: 42px !important;
+    height: 42px !important;
+    text-align: center;
+    line-height: 42px !important;
+    background: linear-gradient(169deg, #5560ff 0%, #ff4343 100%) !important;
+    border-radius: 50% !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.ant-pagination-item-active a {
+    color: #ffffff !important;
+}
+
+.ant-pagination-item {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    outline: none !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+.ant-pagination-item a {
+    color: #5560ff !important;
+}
