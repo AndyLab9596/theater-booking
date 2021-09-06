@@ -36,7 +36,6 @@ const HomePage = () => {
         return originalElement;
     }
 
-
     const fetchArrMoviesPagination = useCallback((page) => {
         dispatch(getArrMoviesPagination(page))
     }, [dispatch])
@@ -52,10 +51,10 @@ const HomePage = () => {
 
             <section className="py-28 bg-bgColorMain">
                 <div className="container mx-auto w-full px-1">
-                    <div>
+                    <div className="px-10">
                         <div className="flex justify-between align-middle">
                             <div className="list__header text-left">
-                                <h2 className="text-5xl text-white leading-10 uppercase mb-5  ">movies</h2>
+                                <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies</h2>
                                 <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
                             </div>
                             <div className="space-x-5">
@@ -80,6 +79,7 @@ const HomePage = () => {
                                     </span>
                                 )
                             }}
+                            className="homepage__pagination"
                         />
                     </div>
                 </div>

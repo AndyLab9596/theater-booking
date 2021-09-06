@@ -3,10 +3,17 @@
         transform: scale(1.1);
         transition: all 0.3s linear, all 0.3s linear;
     }
+    .cards__title {
+        color: #31d7a9;
+        transition: all 0.3s linear, all 0.3s linear;
+    }
 }
 
 .cards {
     .thumbnail-img {
+        transition: all 0.3s linear, all 0.3s linear;
+    }
+    .cards__title {
         transition: all 0.3s linear, all 0.3s linear;
     }
 }
