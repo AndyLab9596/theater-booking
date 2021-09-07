@@ -8,6 +8,9 @@ import MovieSlider from '../../components/MovieSlider';
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import './home.scss';
 import { Tabs } from 'antd';
+import HomeMovieTab from '../../components/HomeMovieTab';
+import HomeMenuTabs from '../../components/HomeMenuTabs';
+import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
 
 const { TabPane } = Tabs;
 
@@ -15,11 +18,12 @@ const HomePage = () => {
 
     const dispatch = useDispatch();
 
-    // Pagination
     const arrMoviesPagination = useSelector(state => state.MovieReducer.arrMoviesPagination);
     const arrMovies = useSelector(state => state.MovieReducer.arrMovies)
     const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
+
+    const arrTheater = useSelector(state => state.TheaterReducer.arrTheater)
 
     const { items, totalCount } = arrMoviesPagination || {}
 
@@ -38,9 +42,9 @@ const HomePage = () => {
     //     setMovieMode(arrMoviesUpComing)
     //     setButtonMode(state => !state)
     // }
-    function callback(key) {
-        console.log(key);
-    }
+    // function callback(key) {
+    //     console.log(key);
+    // }
 
 
     const [page, setPage] = useState(1);
@@ -74,17 +78,22 @@ const HomePage = () => {
         dispatch(getArrMovies())
     }, [dispatch])
 
+    const fetchScheduleTheater = useCallback(() => {
+        dispatch(getShowScheduleTheaterLocation())
+    }, [dispatch])
+
     useEffect(() => {
         fetchArrMoviesPagination(page)
         fetchArrMovies()
+        fetchScheduleTheater()
 
-    }, [fetchArrMoviesPagination, page, fetchArrMovies])
+    }, [fetchArrMoviesPagination, page, fetchArrMovies, fetchScheduleTheater])
 
     return (
         <div>
             <HomeCarousel />
 
-            <section className="py-28 bg-bgColorMain">
+            {/* <section className="py-28 bg-bgColorMain">
                 <div className="container mx-auto w-full px-1">
                     <div className="px-10">
                         <div className="flex justify-between align-middle">
@@ -114,50 +123,14 @@ const HomePage = () => {
                         />
                     </div>
                 </div>
-            </section>
+            </section> */}
 
-            <section className="py-28 bg-bgColorMain">
-                <div className="container mx-auto w-full px-1">
-                    {/* <div className="px-10">
-                        <div className="flex justify-between align-middle">
-                            <div className="list__header text-left">
-                                <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies</h2>
-                                <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
-                            </div>
-                            <div className="space-x-5">
+            <HomeMovieTab
+                arrMovies={arrMovies}
+                arrMoviesOnShowing={arrMoviesOnShowing}
+                arrMoviesUpComing={arrMoviesUpComing} />
 
-                            </div>
-                        </div>
-                    </div> */}
-                    <div className="px-10">
-                        <Tabs defaultActiveKey="1" onChange={callback}  >
-                            <TabPane tab={
-                                <h2 className="text-2xl text-white leading-10 uppercase mb-5">
-                                    All
-                                </h2>
-                            } key="1">
-                                <MovieSlider movieArr={arrMovies} />
-                            </TabPane>
-                            <TabPane tab={
-                                <h2 className="text-2xl text-white leading-10 uppercase mb-5">
-                                    On Showing
-                                </h2>
-                            } key="2">
-                                <MovieSlider movieArr={arrMoviesOnShowing} />
-                            </TabPane>
-                            <TabPane tab={
-                                <h2 className="text-2xl text-white leading-10 uppercase mb-5">
-                                    Up Coming
-                                </h2>
-                            } key="3">
-                                <MovieSlider movieArr={arrMoviesUpComing} />
-                            </TabPane>
-                        </Tabs>
-                    </div>
-                </div>
-            </section>
-
-
+            <HomeMenuTabs arrTheater={arrTheater} />
         </div>
     );
 };
