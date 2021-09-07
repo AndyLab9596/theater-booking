@@ -1,24 +1,35 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import HomeCarousel from '../../components/HomeCarousel';
 import { useDispatch, useSelector } from 'react-redux';
-import { getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
+import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import MovieList from '../../components/MovieList';
 import { Pagination } from 'antd';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import './home.scss'
+import Slider from '@ant-design/react-slick';
+import Testing from '../Testing';
 
 const HomePage = () => {
 
     const dispatch = useDispatch();
+
+    // Pagination
     const arrMoviesPagination = useSelector(state => state.MovieReducer.arrMoviesPagination);
-    console.log(arrMoviesPagination)
+    const arrMovies = useSelector(state => state.MovieReducer.arrMovies);
+    console.log(arrMovies)
+
     const { items, totalCount } = arrMoviesPagination || {}
+
+    // const onShowing = items.filter(item => item.dangChieu === true);
+    // const upComing = items.filter(item => item.sapChieu === true);
+    // console.log('onShowing', onShowing)
+    // console.log('upComing', onShowing)
 
     const [page, setPage] = useState(1);
     const onChange = (page) => {
         setPage(page)
-        console.log(page)
     }
+
     function itemRender(current, type, originalElement) {
         if (type === 'prev') {
             return <a>
@@ -36,14 +47,20 @@ const HomePage = () => {
         return originalElement;
     }
 
+
     const fetchArrMoviesPagination = useCallback((page) => {
         dispatch(getArrMoviesPagination(page))
     }, [dispatch])
 
+    const fetchArrMovies = useCallback(() => {
+        dispatch(getArrMovies())
+    }, [dispatch])
+
     useEffect(() => {
         fetchArrMoviesPagination(page)
+        fetchArrMovies()
 
-    }, [fetchArrMoviesPagination, page])
+    }, [fetchArrMoviesPagination, page, fetchArrMovies])
 
     return (
         <div>
@@ -54,12 +71,8 @@ const HomePage = () => {
                     <div className="px-10">
                         <div className="flex justify-between align-middle">
                             <div className="list__header text-left">
-                                <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies</h2>
+                                <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies list</h2>
                                 <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
-                            </div>
-                            <div className="space-x-5">
-                                <button className="button--action">NOW SHOWING</button>
-                                <button className="button--transparent">UP COMING</button>
                             </div>
                         </div>
                     </div>
@@ -84,6 +97,30 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
+
+            <section className="py-28 bg-bgColorMain">
+                <div className="container mx-auto w-full px-1">
+                    <div className="px-10">
+                        <div className="flex justify-between align-middle">
+                            <div className="list__header text-left">
+                                <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies</h2>
+                                <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
+                            </div>
+                            <div className="space-x-5">
+                                <button className="button--action"
+                                >NOW SHOWING</button>
+                                <button className="button--transparent"
+                                >UP COMING</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Testing />
+                    </div>
+                </div>
+            </section>
+
+
         </div>
     );
 };

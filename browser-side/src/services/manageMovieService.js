@@ -10,6 +10,10 @@ export class ManageMovieService extends baseService {
         return this.get(`/api/QuanLyPhim/LayDanhSachBanner`)
     }
 
+    getArrMovies = () => {
+        return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`)
+    }
+
     getArrMoviesPagination = (page) => {
         return this.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${GROUPID}&soTrang=${page}&soPhanTuTrenTrang=8`)
     }

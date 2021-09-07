@@ -25,3 +25,15 @@ export const getArrMoviesPagination = (page) => {
         }
     }
 }
+
+export const getArrMovies = () => {
+    return async (dispatch) => {
+        try {
+            const res = await manageMovieService.getArrMovies();
+            dispatch(createAction(actionTypes.FETCH_MOVIES, res.data.content))
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+}

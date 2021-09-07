@@ -24,7 +24,6 @@ const HomeCarousel = () => {
     }, [dispatch]);
 
     const arrBanner = useSelector(state => state.MovieReducer.arrBanner);
-    console.log(arrBanner)
 
     const renderBanner = () => {
         return arrBanner.map((banner, index) => {
