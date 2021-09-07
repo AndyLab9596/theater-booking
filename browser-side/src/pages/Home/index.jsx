@@ -1,13 +1,15 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
-import HomeCarousel from '../../components/HomeCarousel';
-import { useDispatch, useSelector } from 'react-redux';
-import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
-import MovieList from '../../components/MovieList';
-import { Pagination } from 'antd';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import './home.scss'
-import Slider from '@ant-design/react-slick';
-import Testing from '../Testing';
+import { Pagination } from 'antd';
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import HomeCarousel from '../../components/HomeCarousel';
+import MovieList from '../../components/MovieList';
+import MovieSlider from '../../components/MovieSlider';
+import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
+import './home.scss';
+import { Tabs } from 'antd';
+
+const { TabPane } = Tabs;
 
 const HomePage = () => {
 
@@ -15,15 +17,31 @@ const HomePage = () => {
 
     // Pagination
     const arrMoviesPagination = useSelector(state => state.MovieReducer.arrMoviesPagination);
-    const arrMovies = useSelector(state => state.MovieReducer.arrMovies);
-    console.log(arrMovies)
+    const arrMovies = useSelector(state => state.MovieReducer.arrMovies)
+    const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
+    const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
 
     const { items, totalCount } = arrMoviesPagination || {}
 
-    // const onShowing = items.filter(item => item.dangChieu === true);
-    // const upComing = items.filter(item => item.sapChieu === true);
-    // console.log('onShowing', onShowing)
-    // console.log('upComing', onShowing)
+
+    // const [movieMode, setMovieMode] = useState(arrMoviesOnShowing)
+    // const [buttonMode, setButtonMode] = useState(true)
+
+
+    // console.log(movieMode, arrMoviesOnShowing, arrMoviesUpComing)
+
+    // const handleOnShowing = () => {
+    //     setMovieMode(arrMoviesOnShowing)
+    //     setButtonMode(state => !state)
+    // }
+    // const handleUpComing = () => {
+    //     setMovieMode(arrMoviesUpComing)
+    //     setButtonMode(state => !state)
+    // }
+    function callback(key) {
+        console.log(key);
+    }
+
 
     const [page, setPage] = useState(1);
     const onChange = (page) => {
@@ -100,22 +118,41 @@ const HomePage = () => {
 
             <section className="py-28 bg-bgColorMain">
                 <div className="container mx-auto w-full px-1">
-                    <div className="px-10">
+                    {/* <div className="px-10">
                         <div className="flex justify-between align-middle">
                             <div className="list__header text-left">
                                 <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies</h2>
                                 <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
                             </div>
                             <div className="space-x-5">
-                                <button className="button--action"
-                                >NOW SHOWING</button>
-                                <button className="button--transparent"
-                                >UP COMING</button>
+
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <Testing />
+                    </div> */}
+                    <div className="px-10">
+                        <Tabs defaultActiveKey="1" onChange={callback}  >
+                            <TabPane tab={
+                                <h2 className="text-2xl text-white leading-10 uppercase mb-5">
+                                    All
+                                </h2>
+                            } key="1">
+                                <MovieSlider movieArr={arrMovies} />
+                            </TabPane>
+                            <TabPane tab={
+                                <h2 className="text-2xl text-white leading-10 uppercase mb-5">
+                                    On Showing
+                                </h2>
+                            } key="2">
+                                <MovieSlider movieArr={arrMoviesOnShowing} />
+                            </TabPane>
+                            <TabPane tab={
+                                <h2 className="text-2xl text-white leading-10 uppercase mb-5">
+                                    Up Coming
+                                </h2>
+                            } key="3">
+                                <MovieSlider movieArr={arrMoviesUpComing} />
+                            </TabPane>
+                        </Tabs>
                     </div>
                 </div>
             </section>
