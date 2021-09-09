@@ -3,7 +3,7 @@ import createAction from './createAction/index';
 import { actionTypes } from './Types/index';
 
 
-export const getShowScheduleTheaterLocation = () => {
+export const getShowScheduleTheaterLocation = (setTheaters) => {
     return async (dispatch) => {
         try {
             const res = await manageTheaterService.getShowScheduleTheaterLocation();

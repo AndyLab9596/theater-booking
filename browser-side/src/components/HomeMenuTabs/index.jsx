@@ -1,102 +1,121 @@
-import { Tabs } from 'antd';
 import moment from 'moment';
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { NavLink } from 'react-router-dom';
 
-const { TabPane } = Tabs;
 const HomeMenuTabs = ({ arrTheater }) => {
 
-    console.log('arrTheater', arrTheater)
+    console.log(arrTheater)
+    const [valueLstCumRap, setValueLstCumRap] = useState(0);
+    const [valueDsPhim, setValueDsPhim] = useState(0);
+
+
+    const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
+    const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
+    console.log('lstCumRap', lstCumRap)
+
+    // const daysShow = danhSachPhim?.map((movie) => {
+    //     return movie.lstLichChieuTheoPhim.map((days) => {
+    //         return days.ngayChieuGioChieu
+    //     })
+    // })
+    // console.log(daysShow?.[0].slice(0, 5))
+    // const displayDayshow = daysShow[0].slice(0, 5)
+    // const testing1 = daysShow.map((day) => (
+    //     moment(day).format('dddd')
+    // ))
+    // console.log(testing1)
+
 
     return (
-        <section className="py-14 bg-bgColorMain">
+        <section className=" bg-bgColorMain" >
+
             <div className="container mx-auto w-full px-1">
                 <div className="px-10">
-                    <div className="flex justify-between align-middle">
+                    <div className="flex justify-center align-middle">
                         <div className="list__header text-left">
-                            <h2 className="text-5xl text-white leading-10 uppercase mb-5">theater list</h2>
-                            <p className="text-base text-white leading-7">Choose your destination</p>
+                            <h2 className="text-4xl text-white leading-10 uppercase mb-5">SCHEDULE LIST</h2>
+                            <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
                         </div>
                     </div>
                 </div>
-                <div className="px-10">
-                    <Tabs tabPosition={'left'}  >
-                        {arrTheater.map((theater, index) => {
-                            return (
-                                <TabPane tab={<img src={theater.logo} alt={index} className="object-cover w-12 h-12" />} key={index}
 
-                                >
-                                    <Tabs tabPosition={'left'} key={index} className="overflow-auto" style={{ height: "500px" }} >
-                                        {theater.lstCumRap?.map((station, index) => {
-                                            return (
+                <div className="grid grid-cols-12 ">
 
-                                                <TabPane key={index}
+                    <div className="col-start-2 py-5 ">
+                        {arrTheater?.map((theater, index) => (
+                            <div className={`flex justify-center flex-wrap p-2 transition duration-150 ease-in-out 
+                            ${index === valueLstCumRap && `border-r-2 border-green-500`}`}>
+                                <img src={theater?.logo} alt="logo"
+                                    className="object-cover w-12s h-12 rounded-full"
+                                    onClick={() => setValueLstCumRap(index)}
+                                />
+                            </div>
 
-                                                    tab={
-                                                        <div className="w-80 flex" >
-                                                            <img src={theater.logo} alt={index} width="50px" className="rounded-full object-cover" />
-                                                            <div className="text-right px-3">
-                                                                {station.tenCumRap}
-                                                                <p className="text-sm text-red-300 text-left">Chi tiết</p>
-                                                            </div>
-                                                        </div>
-                                                    }>
-                                                    <div className="overflow-auto" style={{ height: "550px" }}>
-                                                        {station.danhSachPhim.slice(0, 5).map((movie, index) => {
-                                                            return (
-                                                                <Fragment key={index} >
-                                                                    <div className="my-2">
-                                                                        <div className="flex">
-                                                                            <img style={{ width: "95px", minHeight: "100px", maxHeight: "100%" }}
-                                                                                src={movie.hinhAnh} alt="hinh-movie"
-                                                                                onError={e => (e.target.src = "https://picsum.photos/75/75")}
-                                                                                className="object-cover object-center "
-                                                                            />
-                                                                            <div className="ml-2">
-                                                                                <h1 className="text-indigo-500 text-lg">{movie.tenPhim}</h1>
-                                                                                <p className="text-pink-400">{station.diaChi}</p>
-                                                                                <div className="grid grid-cols-6 gap-6">
-                                                                                    {movie.lstLichChieuTheoPhim?.slice(0, 12).map((schedule, index) => {
-                                                                                        return <NavLink to="/" className="text-md text-yellow-500">
-                                                                                            {moment(schedule.ngayChieuGioChieu).format('hh:mm A')}
-                                                                                        </NavLink>
-                                                                                    })}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </Fragment>
-                                                            )
-                                                        })}
+                        ))}
+                    </div>
 
-                                                    </div>
+                    <div className="col-start-3 col-span-4 ml-5 overflow-y-auto h-96">
+                        <Scrollbars>
+                            {lstCumRap?.map((station, index) => {
+                                return (
 
-                                                </TabPane>
-                                            )
-                                        })}
-                                    </Tabs>
-                                </TabPane>
-                            )
-                        })}
-                    </Tabs>
+                                    <div className={`flex flex-nowrap p-1 opacity-50 ${index === valueDsPhim && 'opacity-100'}`} key={index}
+                                        onClick={() => setValueDsPhim(index)}
+                                    >
+                                        <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" />
 
-                    {/* <Tabs tabPosition={'left'}>
-                        <TabPane tab="Tab 1" key="1">
-                            Content of Tab 1
-                        </TabPane>
-                        <TabPane tab="Tab 2" key="2">
-                            Content of Tab 2
-                        </TabPane>
-                        <TabPane tab="Tab 3" key="3">
-                            Content of Tab 3
-                        </TabPane>
-                    </Tabs> */}
+                                        <div className="text-left">
+                                            <h6 className="text-md text-white font-semibold 
+                                            hover:text-green-500 transition duration-150 ease-in-out ">
+                                                {station.tenCumRap}
+                                            </h6>
+                                            <p className=" text-sm text-yellow-300">
+                                                {station.diaChi.substr(0, 40)}...
+                                            </p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </Scrollbars>
+                    </div>
 
-
+                    <div className="col-span-4 ml-5 overflow-y-auto h-96" >
+                        <Scrollbars>
+                            {danhSachPhim?.map((movie, index) => {
+                                return (
+                                    <div key={index} className="grid grid-cols-4" >
+                                        <div className="col-span-1 my-1 mx-auto">
+                                            <img
+                                                src={movie.hinhAnh} alt="hinh-movie"
+                                                onError={e => (e.target.src = "https://picsum.photos/64/80")}
+                                                className="object-cover w-16 h-20 mr-5"
+                                            />
+                                        </div>
+                                        <div className="text-left col-span-3">
+                                            <h1 className="text-white text-lg 
+                                            hover:text-green-500 transition duration-150 ease-in-out">
+                                                {movie.tenPhim}
+                                            </h1>
+                                            <div className="flex flex-wrap">
+                                                {movie.lstLichChieuTheoPhim?.slice(0, 8).map((schedule, index) => {
+                                                    return <NavLink to="/" className="text-md font-semibold text-indigo-300 m-1 hover:text-purple-800
+                                                    bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out
+                                                    ">
+                                                        {moment(schedule.ngayChieuGioChieu).format('h:mm')}
+                                                    </NavLink>
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </Scrollbars>
+                    </div>
                 </div>
-
             </div>
         </section>
+
     );
 };
 

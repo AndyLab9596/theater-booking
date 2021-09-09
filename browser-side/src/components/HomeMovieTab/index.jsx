@@ -10,14 +10,14 @@ const HomeMovieTab = ({ arrMovies, arrMoviesOnShowing, arrMoviesUpComing }) => {
         console.log(key);
     }
     return (
-        <section className="py-14 bg-bgColorMain">
+        <section className="py-8 bg-bgColorMain">
             <div className="container mx-auto w-full px-1">
 
                 <div className="px-10">
                     <Tabs defaultActiveKey="1" onChange={callback}  >
                         <TabPane tab={
                             <h2 className="text-2xl text-white leading-10 uppercase mb-5">
-                                All
+                                All MOVIES
                             </h2>
                         } key="1">
                             <MovieSlider movieArr={arrMovies} />

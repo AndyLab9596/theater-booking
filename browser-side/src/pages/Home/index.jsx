@@ -1,16 +1,14 @@
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import { Pagination } from 'antd';
+import { Tabs } from 'antd';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeCarousel from '../../components/HomeCarousel';
-import MovieList from '../../components/MovieList';
-import MovieSlider from '../../components/MovieSlider';
-import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
-import './home.scss';
-import { Tabs } from 'antd';
-import HomeMovieTab from '../../components/HomeMovieTab';
 import HomeMenuTabs from '../../components/HomeMenuTabs';
+import HomeMovieTab from '../../components/HomeMovieTab';
+import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
+import Testing from '../Testing';
+import './home.scss';
 
 const { TabPane } = Tabs;
 
@@ -23,7 +21,8 @@ const HomePage = () => {
     const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
 
-    const arrTheater = useSelector(state => state.TheaterReducer.arrTheater)
+    const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
+
 
     const { items, totalCount } = arrMoviesPagination || {}
 
@@ -131,6 +130,7 @@ const HomePage = () => {
                 arrMoviesUpComing={arrMoviesUpComing} />
 
             <HomeMenuTabs arrTheater={arrTheater} />
+            {/* <Testing arrTheater={arrTheater} /> */}
         </div>
     );
 };
