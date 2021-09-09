@@ -31,7 +31,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
         <section className=" bg-bgColorMain" >
 
             <div className="container mx-auto w-full px-1">
-                <div className="px-10">
+                <div className="px-10 mb-5">
                     <div className="flex justify-center align-middle">
                         <div className="list__header text-left">
                             <h2 className="text-4xl text-white leading-10 uppercase mb-5">SCHEDULE LIST</h2>
@@ -80,7 +80,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
                         </Scrollbars>
                     </div>
 
-                    <div className="col-span-4 ml-5 overflow-y-auto h-96" >
+                    <div className="col-span-5 ml-5 overflow-y-auto h-96" >
                         <Scrollbars>
                             {danhSachPhim?.map((movie, index) => {
                                 return (
@@ -98,7 +98,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
                                                 {movie.tenPhim}
                                             </h1>
                                             <div className="flex flex-wrap">
-                                                {movie.lstLichChieuTheoPhim?.slice(0, 8).map((schedule, index) => {
+                                                {movie.lstLichChieuTheoPhim?.slice(0, 10).map((schedule, index) => {
                                                     return <NavLink to="/" className="text-md font-semibold text-indigo-300 m-1 hover:text-purple-800
                                                     bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out
                                                     ">
