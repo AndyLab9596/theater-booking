@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import HomeCarousel from '../../components/HomeCarousel';
 import HomeMenuTabs from '../../components/HomeMenuTabs';
 import HomeMovieTab from '../../components/HomeMovieTab';
+import Modal from '../../components/Modal'
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
-import Testing from '../Testing';
 import './home.scss';
 
 const { TabPane } = Tabs;
@@ -130,6 +130,8 @@ const HomePage = () => {
                 arrMoviesUpComing={arrMoviesUpComing} />
 
             <HomeMenuTabs arrTheater={arrTheater} />
+            <Modal />
+
             {/* <Testing arrTheater={arrTheater} /> */}
         </div>
     );

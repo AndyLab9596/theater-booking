@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { NavLink } from 'react-router-dom';
 
@@ -12,20 +12,17 @@ const HomeMenuTabs = ({ arrTheater }) => {
 
     const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
-    console.log('lstCumRap', lstCumRap)
 
-    // const daysShow = danhSachPhim?.map((movie) => {
-    //     return movie.lstLichChieuTheoPhim.map((days) => {
-    //         return days.ngayChieuGioChieu
+    // const mangChiChuaNgay = danhSachPhim?.map((lichChieu) => {
+    //     return lichChieu.lstLichChieuTheoPhim.map((item) => {
+    //         return item.ngayChieuGioChieu.slice(0, 10)
     //     })
     // })
-    // console.log(daysShow?.[0].slice(0, 5))
-    // const displayDayshow = daysShow[0].slice(0, 5)
-    // const testing1 = daysShow.map((day) => (
-    //     moment(day).format('dddd')
-    // ))
-    // console.log(testing1)
 
+    // const mangChuaNgayKhongTrungLap = [...new Set(mangChiChuaNgay)]
+    // console.log(mangChiChuaNgay, mangChuaNgayKhongTrungLap)
+
+    // console.log('lstCumRap', lstCumRap)
 
     return (
         <section className=" bg-bgColorMain" >
@@ -47,7 +44,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
                             <div className={`flex justify-center flex-wrap p-2 transition duration-150 ease-in-out 
                             ${index === valueLstCumRap && `border-r-2 border-green-500`}`}>
                                 <img src={theater?.logo} alt="logo"
-                                    className="object-cover w-12s h-12 rounded-full"
+                                    className="object-cover w-12 h-12 rounded-full cursor-pointer"
                                     onClick={() => setValueLstCumRap(index)}
                                 />
                             </div>
@@ -60,7 +57,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
                             {lstCumRap?.map((station, index) => {
                                 return (
 
-                                    <div className={`flex flex-nowrap p-1 opacity-50 ${index === valueDsPhim && 'opacity-100'}`} key={index}
+                                    <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 ${index === valueDsPhim && 'opacity-100'}`} key={index}
                                         onClick={() => setValueDsPhim(index)}
                                     >
                                         <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" />
@@ -93,17 +90,25 @@ const HomeMenuTabs = ({ arrTheater }) => {
                                             />
                                         </div>
                                         <div className="text-left col-span-3">
-                                            <h1 className="text-white text-lg 
+                                            <h1 className="text-white text-lg cursor-pointer
                                             hover:text-green-500 transition duration-150 ease-in-out">
                                                 {movie.tenPhim}
                                             </h1>
                                             <div className="flex flex-wrap">
-                                                {movie.lstLichChieuTheoPhim?.slice(0, 10).map((schedule, index) => {
-                                                    return <NavLink to="/" className="text-md font-semibold text-indigo-300 m-1 hover:text-purple-800
-                                                    bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out
-                                                    ">
-                                                        {moment(schedule.ngayChieuGioChieu).format('h:mm')}
-                                                    </NavLink>
+
+                                                {movie.lstLichChieuTheoPhim?.slice(0, 5).map((schedule, index) => {
+                                                    return (
+
+                                                        <div className="m-1">
+                                                            {/* <p className="text-white">
+                                                                {moment(schedule.ngayChieuGioChieu).format('MMM Do YY')}
+                                                            </p> */}
+                                                            <NavLink to="/" className="text-md font-semibold text-indigo-300 m-1 
+                                                            hover:text-purple-800 bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out">
+                                                                {moment(schedule.ngayChieuGioChieu).format('hh:mm')} ~ {moment(schedule.ngayChieuGioChieu).add(120, 'm').format('hh:mm')}
+                                                            </NavLink>
+                                                        </div>
+                                                    )
                                                 })}
                                             </div>
                                         </div>
