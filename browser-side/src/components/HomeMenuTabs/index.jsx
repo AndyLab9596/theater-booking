@@ -11,7 +11,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
     const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
 
-
+    console.log(arrTheater)
     return (
         <section className=" bg-bgColorMain" >
 
@@ -91,7 +91,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
                                                             {/* <p className="text-white">
                                                                 {moment(schedule.ngayChieuGioChieu).format('MMM Do YY')}
                                                             </p> */}
-                                                            <NavLink to="/" className="text-md font-semibold text-indigo-300 m-1 
+                                                            <NavLink to={`/checkout/${schedule.maLichChieu}`} className="text-md font-semibold text-indigo-300 m-1 
                                                             hover:text-purple-800 bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out">
                                                                 {moment(schedule.ngayChieuGioChieu).format('hh:mm')} ~ {moment(schedule.ngayChieuGioChieu).add(120, 'm').format('hh:mm')}
                                                             </NavLink>

@@ -39,7 +39,7 @@ const SignInPage = () => {
             validationSchema={schema}
             onSubmit={(values) => {
                 dispatch(loginUser(values,
-                    () => { history.push('/') },
+                    () => { history.goBack() },
                     (desc) => { openNotification(desc) }
                 ))
             }}

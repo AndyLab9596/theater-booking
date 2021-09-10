@@ -71,7 +71,7 @@ const DetailMenuTabs = ({ arrTheater }) => {
                             {lichChieuPhim?.slice(0, 5).map((movie, index) => {
                                 return (
                                     <div className="flex flex-nowrap">
-                                        <NavLink to="/" className="text-md font-semibold text-indigo-300 m-1 
+                                        <NavLink to={`/checkout/${movie.maLichChieu}`} className="text-md font-semibold text-indigo-300 m-1 
                                     hover:text-purple-800 bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out">
                                             {moment(movie.ngayChieuGioChieu).format('hh:mm')} ~ {moment(movie.ngayChieuGioChieu).add(120, 'm').format('hh:mm')}
                                         </NavLink>
