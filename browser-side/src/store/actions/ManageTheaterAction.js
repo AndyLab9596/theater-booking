@@ -14,3 +14,15 @@ export const getShowScheduleTheaterLocation = (setTheaters) => {
         }
     }
 }
+
+export const getSingleMovieWithSchedule = (id) => {
+    return async (dispatch) => {
+        try {
+            const res = await manageTheaterService.getSingleMovieWithSchedule(id);
+            dispatch(createAction(actionTypes.FETCH_MOVIE_SCHEDULE, res.data.content))
+        }
+        catch (error) {
+            console.log(error.response.data.content)
+        }
+    }
+}

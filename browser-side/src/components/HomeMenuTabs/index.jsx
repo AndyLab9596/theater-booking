@@ -5,24 +5,12 @@ import { NavLink } from 'react-router-dom';
 
 const HomeMenuTabs = ({ arrTheater }) => {
 
-    console.log(arrTheater)
     const [valueLstCumRap, setValueLstCumRap] = useState(0);
     const [valueDsPhim, setValueDsPhim] = useState(0);
-
 
     const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
 
-    // const mangChiChuaNgay = danhSachPhim?.map((lichChieu) => {
-    //     return lichChieu.lstLichChieuTheoPhim.map((item) => {
-    //         return item.ngayChieuGioChieu.slice(0, 10)
-    //     })
-    // })
-
-    // const mangChuaNgayKhongTrungLap = [...new Set(mangChiChuaNgay)]
-    // console.log(mangChiChuaNgay, mangChuaNgayKhongTrungLap)
-
-    // console.log('lstCumRap', lstCumRap)
 
     return (
         <section className=" bg-bgColorMain" >

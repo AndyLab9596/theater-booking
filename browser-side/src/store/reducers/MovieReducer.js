@@ -4,7 +4,8 @@ const initialValue = {
     arrBanner: [],
     arrMoviesPagination: [],
     arrMovies: [],
-    modalState: {}
+    modalState: {},
+    singleMovie: {},
 }
 
 export const MovieReducer = (state = initialValue, action) => {
@@ -23,6 +24,10 @@ export const MovieReducer = (state = initialValue, action) => {
         }
         case actionTypes.PLAY_MODAL: {
             state.modalState = action.payload
+            return { ...state }
+        }
+        case actionTypes.FETCH_MOVIE: {
+            state.singleMovie = action.payload
             return { ...state }
         }
 

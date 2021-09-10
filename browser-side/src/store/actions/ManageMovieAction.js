@@ -37,3 +37,15 @@ export const getArrMovies = () => {
         }
     }
 }
+
+export const getSingleMovie = (id) => {
+    return async (dispatch) => {
+        try {
+            const res = await manageMovieService.getSingleMovie(id);
+            dispatch(createAction(actionTypes.FETCH_MOVIE, res.data.content))
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+}

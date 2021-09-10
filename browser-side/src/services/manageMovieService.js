@@ -17,7 +17,9 @@ export class ManageMovieService extends baseService {
     getArrMoviesPagination = (page) => {
         return this.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${GROUPID}&soTrang=${page}&soPhanTuTrenTrang=8`)
     }
-
+    getSingleMovie = (id) => {
+        return this.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`)
+    }
 }
 
 export const manageMovieService = new ManageMovieService();

@@ -8,9 +8,9 @@ import './modal.scss';
 const Modal = () => {
     const dispatch = useDispatch()
     const playModal = useSelector(state => state.MovieReducer.modalState)
-    const { isOpen, trailer } = playModal;
+    const { isOpen, trailer } = playModal || {};
 
-    const trailerId = trailer.length > 30 ? trailer?.slice(30) : trailer?.slice(16)
+    const trailerId = trailer?.length > 30 ? trailer?.slice(30) : trailer?.slice(16)
     return (
         <div>
             <ModalVideo

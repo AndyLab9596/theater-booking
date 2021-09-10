@@ -10,7 +10,9 @@ export class ManageTheaterService extends baseService {
     getShowScheduleTheaterLocation = () => {
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`)
     }
-
+    getSingleMovieWithSchedule = (id) => {
+        return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`)
+    }
 
 }
 

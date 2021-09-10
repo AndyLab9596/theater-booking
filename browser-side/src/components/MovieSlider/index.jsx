@@ -1,12 +1,11 @@
 import { LeftOutlined, PlayCircleOutlined, RightOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Slider from "react-slick";
-import './movieSlider.scss';
-import Modal from '../Modal/'
-import { useDispatch } from 'react-redux';
 import createAction from '../../store/actions/createAction';
 import { actionTypes } from '../../store/actions/Types';
+import './movieSlider.scss';
 
 
 export function NextArrow(props) {
@@ -36,14 +35,13 @@ const MovieSlider = ({ movieArr }) => {
         prevArrow: <PrevArrow />
 
     };
-    const [isOpen, setOpen] = useState(false)
+    // const [isOpen, setOpen] = useState(false)
     const dispatch = useDispatch()
 
 
     const renderArrMovies = () => {
         return movieArr.map((movie, index) => {
             const { hinhAnh, tenPhim, moTa, maPhim, danhGia, trailer } = movie
-            console.log(trailer)
             return (
                 <div className="card group px-2 py-3 w-full rounded-lg overflow-hidden" >
                     <div className="relative card-thumbnail block  h-96 rounded overflow-hidden">
@@ -69,7 +67,7 @@ const MovieSlider = ({ movieArr }) => {
                         </h5>
 
                         <div className="card__content__button py-8 flex align-middle justify-start">
-                            <NavLink to="/">
+                            <NavLink to={`/detail/${maPhim}`}>
                                 <button className="button--action-sm">
                                     BOOKING TICKET
                                 </button>

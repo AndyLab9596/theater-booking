@@ -1,19 +1,20 @@
-import './App.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
+import './App.css';
+import DetailPage from './pages/Detail';
+import HomePage from './pages/Home';
 // import pages
 import SignInPage from './pages/SignIn';
 import SignUpPage from './pages/SignUp';
-
+import Testing from './pages/Testing';
+import { fetchUser } from './store/actions/ManageUserAction';
 // import template
 import AuthTemplate from './templates/AuthTemplate';
-import HomeTemplate from './templates/HomeTemplate';
-import HomePage from './pages/Home';
+import { PrivateHomeTemplate, PublicHomeTemplate } from './templates/HomeTemplate';
 
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchUser } from './store/actions/ManageUserAction';
-import Testing from './pages/Testing';
+
+
 
 function App() {
 
@@ -28,7 +29,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/testing" exact component={Testing} />
-          <HomeTemplate path="/" exact Component={HomePage} />
+          <PublicHomeTemplate path="/" exact Component={HomePage} />
+          <PrivateHomeTemplate path="/detail/:id" redirectPath="/" exact Component={DetailPage} />
           <AuthTemplate path="/signin" exact Component={SignInPage} redirectPath="/" />
           <AuthTemplate path="/signup" exact Component={SignUpPage} redirectPath="/" />
         </Switch>
