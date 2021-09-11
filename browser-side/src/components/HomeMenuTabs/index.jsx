@@ -11,7 +11,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
     const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
 
-    console.log(arrTheater)
+    // console.log(arrTheater)
     return (
         <section className=" bg-bgColorMain" >
 

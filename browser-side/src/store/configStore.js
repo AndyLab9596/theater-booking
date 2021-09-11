@@ -5,11 +5,13 @@ import thunk from "redux-thunk";
 import { UserReducer } from "./reducers/UserReducer";
 import { MovieReducer } from "./reducers/MovieReducer";
 import { TheaterReducer } from "./reducers/TheaterReducer";
+import { BookingReducer } from "./reducers/BookingReducer";
 
 const rootReducer = combineReducers({
     UserReducer,
     MovieReducer,
-    TheaterReducer
+    TheaterReducer,
+    BookingReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
