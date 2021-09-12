@@ -28,6 +28,7 @@ module.exports = {
       pink: colors.pink,
       bgColorMain: '#001232',
       bgColorDetail: '#032055',
+      greenText: '#31d7a9',
     },
     spacing: {
       px: '1px',

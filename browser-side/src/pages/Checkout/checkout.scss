@@ -31,3 +31,30 @@
 .gheVip {
     background-color: rgb(228, 74, 8);
 }
+
+.gheDaDuocDat {
+    background-color: #ccc;
+}
+
+// --------------------------------------------
+.customTab {
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: #31d7a9 !important;
+    }
+    .ant-tabs-tab-btn {
+        font-size: 18px;
+    }
+    .ant-tabs-tab-active {
+        padding: 14px;
+        font-size: 18px;
+    }
+    .ant-tabs-ink-bar {
+        background: #31d7a9;
+        padding-top: 2px;
+    }
+    .ant-tabs-nav::before {
+        /* For the line to the right and close to the tabs */
+        // border-bottom: 2px solid #31d7a9 !important;
+        border-bottom: none !important;
+    }
+}
