@@ -7,33 +7,22 @@
     opacity: 0.1;
 }
 
-// Ghế thường
-.ghe {
-    width: 35px;
-    height: 35px;
-    border: none;
-    border-right: 5px;
-    cursor: pointer;
-    margin: 5px;
-    background-color: rgb(123, 122, 122);
-    color: #fff;
-}
-
-.gheDaDat {
-    background-color: rgb(232, 76, 76);
+.seatServed {
+    background-color: #ef4444;
     cursor: no-drop;
 }
 
-.gheDangDat {
-    background-color: rgb(18, 176, 18) !important;
+.seatOnChoose {
+    background-color: #10b981 !important;
+    color: #fff;
 }
 
-.gheVip {
-    background-color: rgb(228, 74, 8);
+.seatVip {
+    background-color: #f59e0b;
 }
 
-.gheDaDuocDat {
-    background-color: #ccc;
+.seatChooseByMe {
+    background-color: #fff;
 }
 
 // --------------------------------------------
@@ -41,9 +30,9 @@
     .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
         color: #31d7a9 !important;
     }
-    .ant-tabs-tab-btn {
-        font-size: 18px;
-    }
+    // .ant-tabs-tab-btn {
+    //     font-size: 16px;
+    // }
     .ant-tabs-tab-active {
         padding: 14px;
         font-size: 18px;
