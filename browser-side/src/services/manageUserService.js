@@ -18,6 +18,10 @@ export class ManageUserService extends baseService {
         return this.post(`/api/QuanLyNguoiDung/DangKy`, values)
     }
 
+    fetchUserInfo = () => {
+        return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
+    }
+
 }
 
 export const manageUserService = new ManageUserService();

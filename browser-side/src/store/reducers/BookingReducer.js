@@ -3,7 +3,8 @@ import { actionTypes } from "../actions/Types";
 
 const initialValue = {
     bookingInfo: new BookingInfo(),
-    onBookingArr: []
+    onBookingArr: [],
+    tabActive: "1",
 }
 
 export const BookingReducer = (state = initialValue, action) => {
@@ -25,6 +26,19 @@ export const BookingReducer = (state = initialValue, action) => {
 
             return { ...state, onBookingArr: updateBookingArr }
         }
+        case actionTypes.FINISH_BOOKING: {
+            state.onBookingArr = [];
+            return { ...state }
+        }
+        case actionTypes.CHANGE_TAB: {
+            state.tabActive = "2";
+            return { ...state }
+        }
+        case actionTypes.CHANGE_TAB_TYPE: {
+            state.tabActive = action.payload;
+            return { ...state }
+        }
+
 
         default: return { ...state }
 

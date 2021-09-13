@@ -42,3 +42,15 @@ export const registerUser = (values, history, openNotification) => {
         }
     }
 }
+
+export const getUserInfo = () => {
+    return async (dispatch) => {
+        try {
+            const res = await manageUserService.fetchUserInfo();
+            dispatch(createAction(actionTypes.FETCH_USER_INFO, res.data.content))
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+}

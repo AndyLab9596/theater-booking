@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Loading from './components/Loading';
 import CheckoutPage from './pages/Checkout';
 import DetailPage from './pages/Detail';
 import HomePage from './pages/Home';
@@ -29,6 +30,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Loading />
         <Switch>
           <Route path="/testing" exact component={Testing} />
           <PublicHomeTemplate path="/" exact Component={HomePage} />
