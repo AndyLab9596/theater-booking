@@ -20,31 +20,9 @@ const HomePage = () => {
     const arrMovies = useSelector(state => state.MovieReducer.arrMovies)
     const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
-
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
 
-
     const { items, totalCount } = arrMoviesPagination || {}
-
-
-    // const [movieMode, setMovieMode] = useState(arrMoviesOnShowing)
-    // const [buttonMode, setButtonMode] = useState(true)
-
-
-    // console.log(movieMode, arrMoviesOnShowing, arrMoviesUpComing)
-
-    // const handleOnShowing = () => {
-    //     setMovieMode(arrMoviesOnShowing)
-    //     setButtonMode(state => !state)
-    // }
-    // const handleUpComing = () => {
-    //     setMovieMode(arrMoviesUpComing)
-    //     setButtonMode(state => !state)
-    // }
-    // function callback(key) {
-    //     console.log(key);
-    // }
-
 
     const [page, setPage] = useState(1);
     const onChange = (page) => {
