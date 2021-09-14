@@ -1,0 +1,15 @@
+.spinCustom {
+    .ant-spin-dot {
+        font-size: 64px !important;
+    }
+
+    .ant-spin-dot-item {
+        background-color: #31d7a9;
+    }
+
+    .ant-spin-lg .ant-spin-dot i,
+    .ant-spin-dot-item {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}

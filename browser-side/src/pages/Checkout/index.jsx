@@ -1,10 +1,10 @@
-import { CloseOutlined, UserOutlined } from '@ant-design/icons';
-import { Steps, Tabs } from 'antd';
+import { ArrowRightOutlined, CloseOutlined, InfoOutlined, UserOutlined } from '@ant-design/icons';
+import { Modal, Result, Tabs } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import BookingTicketInfo from '../../core/models/bookingTicketInfo';
 import createAction from '../../store/actions/createAction';
 import { getUserInfo } from '../../store/actions/ManageUserAction';
@@ -12,16 +12,18 @@ import { getBookingInfo, getBookingTicketInfo } from '../../store/actions/MangeB
 import { actionTypes } from '../../store/actions/Types';
 import formMoney from '../../utils/formMoney';
 import './checkout.scss';
+import TimeOut from './TimeOut';
 
 const { TabPane } = Tabs;
 
 
 const CheckoutPage = () => {
-    const { Step } = Steps;
     const currentUser = useSelector(state => state.UserReducer.currentUser);
     const { bookingInfo, onBookingArr } = useSelector(state => state.BookingReducer);
-
     const [checked, setChecked] = useState(false)
+
+    console.log(bookingInfo)
+    const history = useHistory()
 
     const handleChange = (e) => {
         setChecked(e.target.checked)
@@ -54,8 +56,21 @@ const CheckoutPage = () => {
         const bookingTicketInfo = new BookingTicketInfo();
         bookingTicketInfo.maLichChieu = movieId.id;
         bookingTicketInfo.danhSachVe = onBookingArr;
+        setIsModalVisible(false)
         dispatch(getBookingTicketInfo(bookingTicketInfo))
     }
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+        if (checked) {
+            setIsModalVisible(true);
+        }
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
     const { thongTinPhim, danhSachGhe } = bookingInfo
 
@@ -74,18 +89,21 @@ const CheckoutPage = () => {
                 classChooseByMe = 'seatChooseByMe'
             }
 
+
             return (
                 <Fragment key={index}>
-                    <button onClick={() => {
-                        dispatch(createAction(actionTypes.BOOKING_SEAT, seat))
-                    }}
+                    <button
+                        onClick={() => {
+                            dispatch(createAction(actionTypes.BOOKING_SEAT, seat))
+                        }}
                         disabled={seat.daDat} className={`
                         w-8 h-8 rounded-lg m-1 bg-blue-500 
                         hover:bg-greenText transition duration-300 ease-in-out
                         ${classVipSeat} 
                         ${classSeatServed} 
                         ${classSeatOnChoose} 
-                        ${classChooseByMe}`}
+                        ${classChooseByMe}
+                        `}
                         key={index}>
                         {seat.daDat ? classChooseByMe !== '' ?
                             <UserOutlined style={{ color: "#31d7a9" }} />
@@ -102,19 +120,19 @@ const CheckoutPage = () => {
         <div className=" py-4">
             <div className="grid grid-cols-12 ">
                 <div className="col-span-8">
-                    {/* <div className="p-5 border-b-4 border-black">
-                        <Steps>
-                            <Step status="finish" title="Verification" icon={<SolutionOutlined />} />
-                            <Step status="process" title="Pay" icon={<LoadingOutlined />} />
-                            <Step status="wait" title="Done" icon={<SmileOutlined />} />
-                        </Steps>
-                    </div> */}
-                    {/* <div className="flex items-center justify-center mt-5 flex-col">
-                        <div className="bg-black w-5/6">
-                            screen
+
+                    <div className="flex justify-between align-middle">
+                        <div className="ml-10 text-left">
+                            <h3 className="text-white text-xl font-bold">{thongTinPhim.tenCumRap} </h3>
+                            <p className="text-gray-400 text-base">{thongTinPhim.diaChi} - {thongTinPhim.tenRap}</p>
                         </div>
-                        <div className="trapezoid"></div>
-                    </div> */}
+                        <div className="mr-10">
+                            <p className="text-gray-400 text-base">Time Out</p>
+                            <TimeOut />
+                        </div>
+                    </div>
+
+
                     <div className="py-5">
                         <div className="flex justify-center align-middle">
                             <img src="http://pixner.net/boleto/demo/assets/images/movie/screen-thumb.png" alt="screen" />
@@ -126,10 +144,10 @@ const CheckoutPage = () => {
                     <div>
                         {renderSeats()}
                     </div>
-                    <div className="mt-5 flex justify-evenly">
+                    <div className="mt-5 flex justify-center">
                         <table className="divide-y divide-gray-200 w-2/3 table-auto">
                             <thead>
-                                <tr className="flex space-x-4">
+                                <tr className="flex space-x-5">
                                     <th className="flex justify-center">
                                         <button className="w-8 h-8 rounded-lg m-1 bg-blue-500 "></button>
                                         <span className="text-white leading-10">Available</span>
@@ -149,10 +167,14 @@ const CheckoutPage = () => {
                                         <span className="text-white leading-10">Choosing</span>
                                     </th>
                                     <th className="flex justify-center">
+                                        <button className="w-8 h-8 rounded-lg m-1 bg-pink-500 "></button>
+                                        <span className="text-white leading-10">Others</span>
+                                    </th>
+                                    <th className="flex justify-center">
                                         <button className="w-8 h-8 rounded-lg m-1 bg-white text-greenText ">
                                             <UserOutlined />
                                         </button>
-                                        <span className="text-white leading-10">Choose by me</span>
+                                        <span className="text-white leading-10">My</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -219,13 +241,36 @@ const CheckoutPage = () => {
                                     : `disabled:opacity-50 bg-transparent border-2 border-indigo-500 cursor-not-allowed`
                                 }
                         `}
-                            onClick={() => handleSendBookingTicket()}
-                        >
+                            // onClick={() => handleSendBookingTicket()}
+                            onClick={showModal}>
 
                             BOOKING TICKET
                         </button>
 
                     </div>
+                    <Modal
+                        bodyStyle={{ backgroundColor: '#032055' }}
+                        visible={isModalVisible}
+                        footer={null}
+                        centered
+                        keyboard
+                        closable={false}
+                    >
+
+                        <Result
+                            icon={<InfoOutlined style={{ color: "#31d7a9" }} />}
+                            title={<h5 className="text-4xl text-white">Confirm Booking !</h5>}
+                            extra={[
+                                <button className="button--action-modal"
+                                    onClick={() => handleSendBookingTicket()}
+                                >Confirm</button>,
+                                <button
+                                    onClick={handleCancel}
+                                    className="button--transparent-modal">Go back</button>,
+                            ]}
+                            className="customResult"
+                        />
+                    </Modal>
 
                 </div>
             </div>
@@ -235,9 +280,10 @@ const CheckoutPage = () => {
     );
 };
 
+
+
 const BookingHistory = () => {
     const currentUserInfo = useSelector(state => state.UserReducer.currentUserInfo)
-    console.log(currentUserInfo)
 
     const renderTicketItem = () => {
         return currentUserInfo.thongTinDatVe.map((ticket, index) => {
@@ -252,7 +298,7 @@ const BookingHistory = () => {
                             <h2 className="text-white title-font font-medium">{ticket.tenPhim}</h2>
                             <p className="text-white">Booking day: {moment(ticket.ngayDat).format('hh:mm A / DD-MM-YYYY')}</p>
                             <p className="text-white">Address: {_.first(ticket.danhSachGhe).tenHeThongRap} - {_.first(ticket.danhSachGhe).tenCumRap}</p>
-                            <p className="text-white">Seats: {ticket.danhSachGhe.slice(0, 10).map(seat => {
+                            <p className="text-white">Seats: {ticket.danhSachGhe.slice(-5).map(seat => {
                                 return <span className="mx-1">{seat.tenGhe}</span>
                             })}</p>
                         </div>
@@ -279,6 +325,8 @@ const BookingHistory = () => {
 }
 
 const Demo = (props) => {
+    const currentUser = useSelector(state => state.UserReducer.currentUser);
+    const history = useHistory()
 
     const tabActive = useSelector(state => state.BookingReducer.tabActive);
     const dispatch = useDispatch()
@@ -294,6 +342,22 @@ const Demo = (props) => {
                 padding: "8px"
             }}
             onChange={(key) => dispatch(createAction(actionTypes.CHANGE_TAB_TYPE, key))}
+            tabBarExtraContent={<div className="mr-5" >
+                <div className="flex align-middle">
+                    <UserOutlined
+                        className="py-1.5 mr-2 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full h-8 w-8 leading-8"
+                        style={{ fontSize: "20px", color: "white", fontWeight: 500 }}
+                    />
+                    <p className="text-pink-200 text-lg font-bold flex items-center border-r-2 border-indigo-500 pr-5 mb-0">
+                        {currentUser?.taiKhoan}
+                    </p>
+
+                    <ArrowRightOutlined style={{ fontSize: "20px", color: "white", fontWeight: 500 }}
+                        className="ml-1 py-1.5 "
+                        onClick={() => history.push('/')}
+                    />
+                </div>
+            </div>}
         >
             <TabPane tab="01 CHOOSE YOUR SEAT" key="1">
                 <CheckoutPage {...props} />
