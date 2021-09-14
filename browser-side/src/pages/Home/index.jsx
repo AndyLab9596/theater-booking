@@ -1,16 +1,14 @@
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import { Tabs } from 'antd';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import HomeCarousel from '../../components/HomeCarousel';
-import HomeMenuTabs from '../../components/HomeMenuTabs';
 import HomeMovieTab from '../../components/HomeMovieTab';
-import Modal from '../../components/Modal'
+import ModalTrailer from '../../components/ModalTrailer';
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
 import './home.scss';
+import HomeCarousel from './HomeCarousel';
+import HomeMenuTabs from './HomeMenuTabs';
 
-const { TabPane } = Tabs;
 
 const HomePage = () => {
 
@@ -22,13 +20,13 @@ const HomePage = () => {
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
 
-    const { items, totalCount } = arrMoviesPagination || {}
 
+    // Pagination
+    const { items, totalCount } = arrMoviesPagination || {}
     const [page, setPage] = useState(1);
     const onChange = (page) => {
         setPage(page)
     }
-
     function itemRender(current, type, originalElement) {
         if (type === 'prev') {
             return <a>
@@ -108,7 +106,7 @@ const HomePage = () => {
                 arrMoviesUpComing={arrMoviesUpComing} />
 
             <HomeMenuTabs arrTheater={arrTheater} />
-            <Modal />
+            <ModalTrailer />
 
             {/* <Testing arrTheater={arrTheater} /> */}
         </div>

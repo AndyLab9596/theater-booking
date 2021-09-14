@@ -5,7 +5,7 @@ import createAction from '../../store/actions/createAction';
 import { actionTypes } from '../../store/actions/Types';
 import './modal.scss';
 
-const Modal = () => {
+const ModalTrailer = () => {
     const dispatch = useDispatch()
     const playModal = useSelector(state => state.MovieReducer.modalState)
     const { isOpen, trailer } = playModal || {};
@@ -20,4 +20,4 @@ const Modal = () => {
     );
 };
 
-export default Modal;
+export default ModalTrailer;

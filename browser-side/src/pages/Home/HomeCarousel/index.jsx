@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { Carousel } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { getArrBanner } from '../../store/actions/ManageMovieAction';
+import { getArrBanner } from '../../../store/actions/ManageMovieAction';
 
 import './carousel.scss'
 
