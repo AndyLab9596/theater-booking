@@ -20,9 +20,6 @@ const HomePage = () => {
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
 
-    console.log(arrMovies)
-
-
     // Pagination
     const { items, totalCount } = arrMoviesPagination || {}
     const [page, setPage] = useState(1);

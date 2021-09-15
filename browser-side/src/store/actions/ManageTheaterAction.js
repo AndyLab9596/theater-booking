@@ -12,7 +12,7 @@ export const getShowScheduleTheaterLocation = (setTheaters) => {
             dispatch(createAction(actionTypes.HIDE_THEATER_REQUEST))
         }
         catch (error) {
-            console.log(error.response.data.content)
+            console.log(error)
             dispatch(createAction(actionTypes.HIDE_THEATER_REQUEST))
         }
     }
@@ -25,7 +25,7 @@ export const getSingleMovieWithSchedule = (id) => {
             dispatch(createAction(actionTypes.FETCH_MOVIE_SCHEDULE, res.data.content))
         }
         catch (error) {
-            console.log(error.response.data.content)
+            console.log(error)
         }
     }
 }

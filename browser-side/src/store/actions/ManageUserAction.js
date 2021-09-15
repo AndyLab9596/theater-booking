@@ -29,7 +29,7 @@ export const fetchUser = () => {
 
         }
         catch (error) {
-            console.log(error.response.data.content)
+            console.log(error)
             dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
         }
     }
@@ -42,7 +42,6 @@ export const registerUser = (values, history, openNotification) => {
             history()
         }
         catch (error) {
-            console.log(error.response.data.content)
             openNotification(error.response.data.content)
         }
     }

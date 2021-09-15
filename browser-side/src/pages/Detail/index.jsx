@@ -7,7 +7,7 @@ import { useParams } from 'react-router';
 import { getSingleMovieWithSchedule } from '../../store/actions/ManageTheaterAction';
 import { CalendarFilled, ClockCircleFilled } from '@ant-design/icons';
 import './detail.scss';
-import DetailMenuTabs from '../../components/DetailMenuTabs';
+import DetailMenuTabs from './DetailMenuTabs';
 
 const DetailPage = () => {
 

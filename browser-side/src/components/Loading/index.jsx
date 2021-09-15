@@ -14,7 +14,7 @@ const Loading = () => {
     const HomePageLoading = userLoading || arrMovieLoading || arrTheaterLoading
 
     const playLoading = loading || HomePageLoading || isLoading
-    console.log('HomePageLoading', HomePageLoading)
+    // console.log('HomePageLoading', HomePageLoading)
 
     return (
         <Fragment>

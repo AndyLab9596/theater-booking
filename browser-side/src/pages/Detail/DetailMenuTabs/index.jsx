@@ -10,6 +10,7 @@ const DetailMenuTabs = ({ arrTheater }) => {
 
     const { logo, cumRapChieu, maHeThongRap, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { lichChieuPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = cumRapChieu?.[valueDsPhim] || {};
+    console.log('lichChieuPhim', lichChieuPhim)
 
 
     return (
