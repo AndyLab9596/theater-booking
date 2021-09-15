@@ -28,66 +28,61 @@ const DetailPage = () => {
     return (
         <Fragment>
             <section className="detail" style={{ backgroundImage: `url(${hinhAnh}), url(${`https://picsum.photos/255/367/`})` }}>
-                <CustomCard
-                    effectColor="#001232" // required
-                    // color="#14AEFF" // default color is white
-                    blur={10} // default blur value is 10px
-                    // borderRadius={0} // default border radius value is 10px
-                    className="detail__customCard"
-                >
-                    <div className="detail__content container mx-auto w-full px-1 pt-40">
-                        <div className="px-10 flex flex-nowrap ">
-                            <div className=" flex-shrink-0 mr-10">
-                                <img src={hinhAnh}
-                                    alt="img"
-                                    onError={e => (e.target.src = "https://picsum.photos/255/367/")}
-                                    className="object-cover object-center w-64 h-80"
-                                />
-                            </div>
-                            <div className=" text-left">
-                                <h3 className="detail__title text-green-500 text-4xl font-bold">
-                                    {tenPhim}
-                                </h3>
-                                <p className="text-base text-indigo-500 font-semibold">
-                                    {moTa}
-                                </p>
-                                <div className="flex text-black">
-                                    <p className="mr-10 text-base">
-                                        <CalendarFilled className="transform -translate-y-1 mr-2" />
-                                        {moment(ngayKhoiChieu).format("MMM Do YY")}
-                                    </p>
-                                    <p className="mr-10 text-base">
-                                        <ClockCircleFilled className="transform -translate-y-1 mr-2" />
-                                        120mn
-                                    </p>
-                                </div>
-                                <div className=" flex align-middle justify-start mb-5">
-                                    <div className="flex align-middle w-auto pr-5">
-                                        <div className="align-baseline">
-                                            <img className="object-cover w-full object-center leading-7 mt-1"
-                                                src="http://pixner.net/boleto/demo/assets/images/movie/tomato.png"
-                                                alt="tomato" />
-                                        </div>
-                                        <span className="pl-2 text-black font-bold text-lg self-center leading-7">{danhGia * 10}%</span>
-                                    </div>
-                                    <div className="flex align-middle w-auto pr-5">
-                                        <div className="align-baseline">
-                                            <img className="object-cover w-full object-center leading-7 mt-1"
-                                                src="http://pixner.net/boleto/demo/assets/images/movie/cake.png" alt="tomato" />
-                                        </div>
-                                        <span className="pl-2 text-black font-bold text-lg self-center leading-7">{danhGia * 10}%</span>
-                                    </div>
-                                </div>
+                <div className="detail__overlay"></div>
 
-                                <div className="items-center flex-shrink-0 hidden lg:flex">
-                                    <button className="button--action ">BOOKING TICKET</button>
+                <div className="detail__content container mx-auto w-full px-1 pt-40 z-50 relative transform -translate-y-3.5">
+                    <div className="px-10 flex flex-nowrap ">
+                        <div className=" flex-shrink-0 mr-10">
+                            <img src={hinhAnh}
+                                alt="img"
+                                onError={e => (e.target.src = "https://picsum.photos/255/367/")}
+                                className="object-cover object-center w-64 h-80"
+                            />
+                        </div>
+                        <div className=" text-left">
+                            <h3 className="detail__title text-green-500 text-4xl font-bold">
+                                {tenPhim}
+                            </h3>
+                            <p className="text-base text-white font-semibold">
+                                {moTa}
+                            </p>
+                            <div className="flex text-greenText">
+                                <p className="mr-10 text-base">
+                                    <CalendarFilled className="transform -translate-y-1 mr-2" />
+                                    {moment(ngayKhoiChieu).format("MMM Do YY")}
+                                </p>
+                                <p className="mr-10 text-base">
+                                    <ClockCircleFilled className="transform -translate-y-1 mr-2" />
+                                    120mn
+                                </p>
+                            </div>
+                            <div className=" flex align-middle justify-start mb-5">
+                                <div className="flex align-middle w-auto pr-5">
+                                    <div className="align-baseline">
+                                        <img className="object-cover w-full object-center leading-7 mt-1"
+                                            src="http://pixner.net/boleto/demo/assets/images/movie/tomato.png"
+                                            alt="tomato" />
+                                    </div>
+                                    <span className="pl-2 text-black font-bold text-lg self-center leading-7">{danhGia * 10}%</span>
                                 </div>
+                                <div className="flex align-middle w-auto pr-5">
+                                    <div className="align-baseline">
+                                        <img className="object-cover w-full object-center leading-7 mt-1"
+                                            src="http://pixner.net/boleto/demo/assets/images/movie/cake.png" alt="tomato" />
+                                    </div>
+                                    <span className="pl-2 text-black font-bold text-lg self-center leading-7">{danhGia * 10}%</span>
+                                </div>
+                            </div>
+
+                            <div className="items-center flex-shrink-0 hidden lg:flex">
+                                <button className="button--action ">BOOKING TICKET</button>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                </CustomCard>
             </section>
+
             <DetailMenuTabs arrTheater={heThongRapChieu} />
         </Fragment >
 

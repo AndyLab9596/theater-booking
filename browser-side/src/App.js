@@ -5,7 +5,7 @@ import './App.css';
 import ActiveLazyLoading from './components/ActiveLazyLoading';
 import Loading from './components/Loading';
 import CheckoutPage from './pages/Checkout';
-import DetailPage from './pages/Detail';
+// import DetailPage from './pages/Detail';
 // import HomePage from './pages/Home';
 // import pages
 // import SignInPage from './pages/SignIn';
@@ -24,6 +24,7 @@ const AuthTemplate = lazy(() => import('./templates/AuthTemplate'));
 
 // Page
 const HomePage = lazy(() => import('./pages/Home'))
+const DetailPage = lazy(() => import('./pages/Detail'))
 const SignInPage = lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(import('./pages/SignIn')), 500)
@@ -34,6 +35,7 @@ const SignUpPage = lazy(() => {
     setTimeout(() => resolve(import('./pages/SignUp')), 500)
   })
 })
+
 
 
 function App() {
