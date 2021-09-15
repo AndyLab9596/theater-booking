@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Redirect, Route } from "react-router";
 import { TOKEN } from "../../utils/config";
 
-export const CheckoutTemplate = (props) => {
+const CheckoutTemplate = (props) => {
 
     const { Component, redirectPath, ...restProps } = props;
 
@@ -23,3 +23,5 @@ export const CheckoutTemplate = (props) => {
         </Route>
     );
 };
+
+export default CheckoutTemplate;

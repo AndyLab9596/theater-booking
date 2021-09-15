@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Slider from "react-slick";
-import createAction from '../../store/actions/createAction';
-import { actionTypes } from '../../store/actions/Types';
+import createAction from '../../../../store/actions/createAction';
+import { actionTypes } from '../../../../store/actions/Types';
 import './movieSlider.scss';
 
 

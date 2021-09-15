@@ -6,11 +6,14 @@ import { actionTypes } from './Types/index';
 export const getShowScheduleTheaterLocation = (setTheaters) => {
     return async (dispatch) => {
         try {
+            dispatch(createAction(actionTypes.FETCH_THEATER_REQUEST));
             const res = await manageTheaterService.getShowScheduleTheaterLocation();
-            dispatch(createAction(actionTypes.FETCH_THEATER, res.data.content))
+            await dispatch(createAction(actionTypes.FETCH_THEATER, res.data.content));
+            dispatch(createAction(actionTypes.HIDE_THEATER_REQUEST))
         }
         catch (error) {
             console.log(error.response.data.content)
+            dispatch(createAction(actionTypes.HIDE_THEATER_REQUEST))
         }
     }
 }

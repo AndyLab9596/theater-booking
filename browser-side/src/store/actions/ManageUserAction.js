@@ -1,7 +1,8 @@
-import createAction from './createAction/index'
-import { actionTypes } from './Types/index'
 import { manageUserService } from '../../services/manageUserService';
 import { TOKEN } from '../../utils/config';
+import createAction from './createAction/index';
+import { actionTypes } from './Types/index';
+
 
 
 export const loginUser = (values, history, openNotification) => {
@@ -21,11 +22,15 @@ export const loginUser = (values, history, openNotification) => {
 export const fetchUser = () => {
     return async (dispatch) => {
         try {
+            dispatch(createAction(actionTypes.FETCH_USER_REQUEST))
             const res = await manageUserService.fetchUser();
-            dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
+            await dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
+            dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
+
         }
         catch (error) {
             console.log(error.response.data.content)
+            dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
         }
     }
 }

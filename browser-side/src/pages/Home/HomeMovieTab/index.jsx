@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieSlider from '../../components/MovieSlider';
+import MovieSlider from './MovieSlider/index';
 
 import { Tabs } from 'antd';
 

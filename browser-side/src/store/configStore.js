@@ -7,13 +7,15 @@ import { MovieReducer } from "./reducers/MovieReducer";
 import { TheaterReducer } from "./reducers/TheaterReducer";
 import { BookingReducer } from "./reducers/BookingReducer";
 import { LoadingReducer } from "./reducers/LoadingReducer";
+import { LazyReducer } from "./reducers/LazyReducer"
 
 const rootReducer = combineReducers({
     UserReducer,
     MovieReducer,
     TheaterReducer,
     BookingReducer,
-    LoadingReducer
+    LoadingReducer,
+    LazyReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

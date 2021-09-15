@@ -7,11 +7,19 @@ const Loading = () => {
 
     const isLoading = useSelector(state => state.LoadingReducer.isLoading)
 
+    const loading = useSelector(state => state.LazyReducer.isLazy)
+    const { userLoading, arrMovieLoading, arrTheaterLoading } = useSelector(state => state.LoadingReducer)
+
+    const HomePageLoading = userLoading || arrMovieLoading || arrTheaterLoading
+
+    const playLoading = loading || HomePageLoading || isLoading
+
     return (
         <Fragment>
-            {isLoading ? <div style={{
+            {playLoading ? <div style={{
                 position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                backgroundColor: 'rgba(0,0,0,.8)', display: 'flex', justifyContent: 'center',
+                backgroundColor: '#032055', display: 'flex', justifyContent: 'center',
+                opacity: .8,
                 alignItems: 'center',
                 zIndex: 20
             }}>

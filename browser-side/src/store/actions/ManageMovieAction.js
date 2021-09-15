@@ -29,11 +29,14 @@ export const getArrMoviesPagination = (page) => {
 export const getArrMovies = () => {
     return async (dispatch) => {
         try {
+            dispatch(createAction(actionTypes.FETCH_ARRAY_MOVIE_REQUEST))
             const res = await manageMovieService.getArrMovies();
-            dispatch(createAction(actionTypes.FETCH_MOVIES, res.data.content))
+            await dispatch(createAction(actionTypes.FETCH_MOVIES, res.data.content))
+            dispatch(createAction(actionTypes.HIDE_ARRAY_MOVIE_REQUEST))
         }
         catch (error) {
             console.log(error)
+            dispatch(createAction(actionTypes.HIDE_ARRAY_MOVIE_REQUEST))
         }
     }
 }

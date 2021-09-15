@@ -4,7 +4,7 @@ import { actionTypes } from "../actions/Types"
 
 const initialValue = {
     currentUser: null,
-    currentUserInfo: new CurrentUserInfo()
+    currentUserInfo: new CurrentUserInfo(),
 }
 
 export const UserReducer = (state = initialValue, action) => {

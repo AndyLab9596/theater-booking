@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import { Redirect, Route } from 'react-router';
-import { TOKEN } from '../../utils/config';
+import { Route } from 'react-router';
 import Header from './Header';
 
-export const PublicHomeTemplate = (props) => {
+const HomeTemplate = (props) => {
 
     const { Component, redirectPath, ...restProps } = props;
 
@@ -21,29 +20,30 @@ export const PublicHomeTemplate = (props) => {
         </Route>
     );
 };
+export default HomeTemplate
 
-export const PrivateHomeTemplate = (props) => {
+// export const PrivateHomeTemplate = (props) => {
 
-    const { Component, redirectPath, ...restProps } = props;
+//     const { Component, redirectPath, ...restProps } = props;
 
 
-    return (
-        <Route {...restProps} render={(propsRoute) => {
-            if (localStorage.getItem(TOKEN)) {
-                return (
-                    <Fragment>
-                        <Header {...propsRoute} />
-                        <Component {...propsRoute} />
-                    </Fragment>
-                )
-            } else {
-                return <Redirect to={redirectPath} />
-            }
-        }}>
+//     return (
+//         <Route {...restProps} render={(propsRoute) => {
+//             if (localStorage.getItem(TOKEN)) {
+//                 return (
+//                     <Fragment>
+//                         <Header {...propsRoute} />
+//                         <Component {...propsRoute} />
+//                     </Fragment>
+//                 )
+//             } else {
+//                 return <Redirect to={redirectPath} />
+//             }
+//         }}>
 
-        </Route>
-    );
-};
+//         </Route>
+//     );
+// };
 
 
 

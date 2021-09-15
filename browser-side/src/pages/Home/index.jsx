@@ -1,13 +1,13 @@
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import HomeMovieTab from '../../components/HomeMovieTab';
-import ModalTrailer from '../../components/ModalTrailer';
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
 import './home.scss';
 import HomeCarousel from './HomeCarousel';
 import HomeMenuTabs from './HomeMenuTabs';
+import HomeMovieTab from './HomeMovieTab';
+
 
 
 const HomePage = () => {
@@ -19,6 +19,8 @@ const HomePage = () => {
     const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
+
+    console.log(arrMovies)
 
 
     // Pagination
@@ -106,7 +108,6 @@ const HomePage = () => {
                 arrMoviesUpComing={arrMoviesUpComing} />
 
             <HomeMenuTabs arrTheater={arrTheater} />
-            <ModalTrailer />
 
             {/* <Testing arrTheater={arrTheater} /> */}
         </div>
