@@ -99,7 +99,7 @@ const MovieSlider = ({ movieArr }) => {
 
 
     return (
-        <div className="container px-12 py-24 mx-auto">
+        <div className="container px-12 py-12 mx-auto">
             <Slider {...settings} >
                 {renderArrMovies()}
             </Slider>

@@ -10,19 +10,15 @@ const Loading = () => {
     const loading = useSelector(state => state.LazyReducer.isLazy)
     const { userLoading, arrMovieLoading, arrTheaterLoading } = useSelector(state => state.LoadingReducer)
 
+
     const HomePageLoading = userLoading || arrMovieLoading || arrTheaterLoading
 
     const playLoading = loading || HomePageLoading || isLoading
+    console.log('HomePageLoading', HomePageLoading)
 
     return (
         <Fragment>
-            {playLoading ? <div style={{
-                position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                backgroundColor: '#032055', display: 'flex', justifyContent: 'center',
-                opacity: .8,
-                alignItems: 'center',
-                zIndex: 20
-            }}>
+            {playLoading ? <div className="fixed top-0 left-0 w-full h-full bg-bgColorDetail flex justify-center items-center opacity-80 z-50">
                 <div className="text-4xl text-white">
                     <Spin size="large" className="spinCustom" />
                 </div>
