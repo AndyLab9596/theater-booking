@@ -7,7 +7,8 @@ import { MovieReducer } from "./reducers/MovieReducer";
 import { TheaterReducer } from "./reducers/TheaterReducer";
 import { BookingReducer } from "./reducers/BookingReducer";
 import { LoadingReducer } from "./reducers/LoadingReducer";
-import { LazyReducer } from "./reducers/LazyReducer"
+import { LazyReducer } from "./reducers/LazyReducer";
+import { SearchReducer } from "./reducers/SearchReducer";
 
 const rootReducer = combineReducers({
     UserReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     TheaterReducer,
     BookingReducer,
     LoadingReducer,
-    LazyReducer
+    LazyReducer,
+    SearchReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

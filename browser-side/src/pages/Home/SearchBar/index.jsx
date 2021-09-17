@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import { useDispatch } from 'react-redux';
 import { getSingleMovieWithSchedule } from '../../../store/actions/ManageTheaterAction';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 const { Option } = Select;
 
 
 const SearchBar = ({ arrTheater, arrMovies }) => {
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const { singleMovieWithSchedule } = useSelector(state => state.TheaterReducer)
 
@@ -84,6 +86,8 @@ const SearchBar = ({ arrTheater, arrMovies }) => {
         }))
 
     };
+
+
     // console.log(data.rapRender)
 
     const handleSelectRap = (value) => {
@@ -116,8 +120,53 @@ const SearchBar = ({ arrTheater, arrMovies }) => {
     }
 
     const handleSelectNgayXem = (value) => {
-        console.log(value)
+        setData((data) => ({
+            ...data,
+            setNgayXem: value,
+            openCtr: { ...data.openCtr, suatChieu: true },
+            // reset
+            suatChieuRender: [],
+            lichChieuPhimDataSelected: [],
+            setSuatChieu: "",
+            maLichChieu: "",
+        }));
+
+        const lichChieuPhimDataSelected = data.lichChieuPhimData.filter((item) => {
+            // lấy tất cả item có ngày chiếu giống với ngày chiếu đã chọn
+            if (item.ngayChieuGioChieu.slice(0, 10) === value) {
+                return true;
+            }
+            return false;
+        });
+        const suatChieuRender = lichChieuPhimDataSelected.map((item) => {
+            // cắt lấy giờ chiếu trong ngayChieuGioChieu: "2019-01-01T20:00:00" > "20:00"
+            return item.ngayChieuGioChieu.slice(11, 16);
+        });
+        setData((data) => ({
+            ...data,
+            suatChieuRender,
+            lichChieuPhimDataSelected,
+        }));
     }
+
+    // input: suatChieu
+    // output: setSuatChieu(suatChieu), maLichChieu(suatChieu)[maLichChieu]
+    const handleSelectSuatChieu = (value) => {
+        setData((data) => ({
+            ...data,
+            setSuatChieu: value,
+            // reset
+            maLichChieu: "",
+        }));
+        const indexMaLichChieuSelect = data.lichChieuPhimDataSelected.findIndex(
+            (item) => item.ngayChieuGioChieu.slice(11, 16) === value
+        );
+        const maLichChieu =
+            data.lichChieuPhimDataSelected[indexMaLichChieuSelect].maLichChieu;
+        setData((data) => ({ ...data, maLichChieu }));
+    };
+
+
 
     return (
         <div className="max-w-4xl h-24 mx-auto">
@@ -136,7 +185,7 @@ const SearchBar = ({ arrTheater, arrMovies }) => {
                     ))}
                 </Select>
 
-                <Select style={{ width: 120 }} onChange={handleSelectRap}>
+                <Select style={{ width: 200 }} onChange={handleSelectRap}>
                     {data.rapRender?.map((item, index) => (
                         <Option value={item} key={index}>
                             {item}
@@ -144,7 +193,7 @@ const SearchBar = ({ arrTheater, arrMovies }) => {
                     ))}
                 </Select>
 
-                <Select style={{ width: 120 }} onChange={handleSelectNgayXem}>
+                <Select style={{ width: 200 }} onChange={handleSelectNgayXem}>
                     {data.ngayChieuRender?.map((item, index) => {
                         return (
                             <Option value={item} key={index}>
@@ -153,6 +202,18 @@ const SearchBar = ({ arrTheater, arrMovies }) => {
                         )
                     })}
                 </Select>
+
+                <Select style={{ width: 200 }} onChange={handleSelectSuatChieu}>
+                    {data.suatChieuRender?.map((item, index) => {
+                        return (
+                            <Option value={item} key={index}>
+                                {item}
+                            </Option>
+                        )
+                    })}
+                </Select>
+
+                <button onClick={() => history.push(`/checkout/${data.maLichChieu}`)}>Mua vé</button>
 
             </div>
         </div>

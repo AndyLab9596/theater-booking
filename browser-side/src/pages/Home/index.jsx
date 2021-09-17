@@ -8,6 +8,7 @@ import HomeCarousel from './HomeCarousel';
 import HomeMenuTabs from './HomeMenuTabs';
 import HomeMovieTab from './HomeMovieTab';
 import SearchBar from './SearchBar';
+import SearchBar2 from './SearchBar2';
 import SearchBarCascader from './SearchBarCascader';
 
 
@@ -108,7 +109,8 @@ const HomePage = () => {
 
             <HomeMenuTabs arrTheater={arrTheater} />
 
-            <SearchBar arrTheater={arrTheater} arrMovies={arrMovies} />
+            <SearchBar2 arrTheater={arrTheater} arrMovies={arrMovies} />
+            {/* <SearchBar arrTheater={arrTheater} arrMovies={arrMovies} /> */}
             {/* <SearchBarCascader arrTheater={arrTheater} arrMovies={arrMovies} /> */}
             {/* <Testing arrTheater={arrTheater} /> */}
         </div>
