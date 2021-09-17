@@ -17,10 +17,6 @@ const initialState = {
 
     // handleSelectSuatChieu
     maLichChieu: "",
-
-
-
-
 }
 
 export const SearchReducer = (state = initialState, action) => {

@@ -7,9 +7,6 @@ import './home.scss';
 import HomeCarousel from './HomeCarousel';
 import HomeMenuTabs from './HomeMenuTabs';
 import HomeMovieTab from './HomeMovieTab';
-import SearchBar from './SearchBar';
-import SearchBar2 from './SearchBar2';
-import SearchBarCascader from './SearchBarCascader';
 
 
 
@@ -68,7 +65,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <HomeCarousel />
+            <HomeCarousel arrMovies={arrMovies} />
 
             {/* <section className="py-28 bg-bgColorMain">
                 <div className="container mx-auto w-full px-1">
@@ -109,9 +106,6 @@ const HomePage = () => {
 
             <HomeMenuTabs arrTheater={arrTheater} />
 
-            <SearchBar2 arrTheater={arrTheater} arrMovies={arrMovies} />
-            {/* <SearchBar arrTheater={arrTheater} arrMovies={arrMovies} /> */}
-            {/* <SearchBarCascader arrTheater={arrTheater} arrMovies={arrMovies} /> */}
             {/* <Testing arrTheater={arrTheater} /> */}
         </div>
     );

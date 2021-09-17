@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { Fragment, memo, useCallback, useEffect } from 'react';
 import { Carousel } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArrBanner } from '../../../store/actions/ManageMovieAction';
 
 import './carousel.scss'
+import SearchBar from './SearchBar';
 
 const contentStyle = {
     height: '100vh',
@@ -16,7 +17,7 @@ const contentStyle = {
 };
 
 
-const HomeCarousel = () => {
+const HomeCarousel = ({ arrMovies }) => {
 
     const dispatch = useDispatch();
     const fetchArrBanner = useCallback(() => {
@@ -41,10 +42,15 @@ const HomeCarousel = () => {
 
 
     return (
-        <Carousel autoplay={true} style={{ width: '100%', padding: 0, margin: 0 }} >
-            {renderBanner()}
-        </Carousel>
+        <Fragment>
+            <Carousel autoplay={true} style={{ width: '100%', padding: 0, margin: 0 }} >
+                {renderBanner()}
+            </Carousel>
+
+            <SearchBar arrMovies={arrMovies} />
+
+        </Fragment>
     );
 };
 
-export default HomeCarousel;
+export default memo(HomeCarousel);

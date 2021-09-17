@@ -1,8 +1,10 @@
 import { Tabs } from 'antd';
+import _ from 'lodash';
 import moment from 'moment';
 import React, { Fragment, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { NavLink } from 'react-router-dom';
+import LstLichChieu from './lstLichChieu';
 
 const HomeMenuTabs = ({ arrTheater }) => {
     const { TabPane } = Tabs;
@@ -12,19 +14,6 @@ const HomeMenuTabs = ({ arrTheater }) => {
 
     const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
-
-
-    const ArrayShowDay = danhSachPhim?.map((movie) => {
-        return movie.lstLichChieuTheoPhim.map((item) => {
-            return item.ngayChieuGioChieu.slice(0, 10)
-        })
-    })
-
-
-    const NotDuplicateArrayShowDay = ArrayShowDay?.map((days) => {
-        return [...new Set(days)]
-    })
-
 
     return (
 
@@ -97,40 +86,8 @@ const HomeMenuTabs = ({ arrTheater }) => {
                                             hover:text-green-500 transition duration-150 ease-in-out">
                                                 {movie.tenPhim}
                                             </h1>
-                                            <div>
-                                                {NotDuplicateArrayShowDay.map((date, index) => {
-                                                    return (
-                                                        date.map((day) => {
-                                                            return (
-                                                                <Fragment>
-                                                                    <p className="
-                                                                    text-lg text-pink-500 mb-0
-                                                                    ">
-                                                                        {moment(day).format('dddd - MMM Do YY')}
-                                                                    </p>
-                                                                    <div className="flex flex-wrap">
-                                                                        {movie.lstLichChieuTheoPhim?.map((schedule, index) => {
-                                                                            if (schedule.ngayChieuGioChieu.slice(0, 10) === day) {
-                                                                                return (
-                                                                                    <div className="space-x-1 m-2">
-                                                                                        <NavLink to={`/checkout/${schedule.maLichChieu}`}
-                                                                                            className="text-md font-semibold text-indigo-300 m-1 
-                                                                                        hover:text-purple-800 bg-gray-600 p-1 rounded-lg 
-                                                                                        hover:bg-green-500 transition duration-150 ease-in-out">
-                                                                                            {moment(schedule.ngayChieuGioChieu).format('hh:mm')} ~ {moment(schedule.ngayChieuGioChieu).add(120, 'm').format('hh:mm')}
+                                            <LstLichChieu lstLichChieuTheoPhim={movie.lstLichChieuTheoPhim} />
 
-                                                                                        </NavLink>
-                                                                                    </div>
-                                                                                )
-                                                                            }
-                                                                        })}
-                                                                    </div>
-                                                                </Fragment>
-                                                            )
-                                                        })
-                                                    )
-                                                })}
-                                            </div>
                                         </div>
                                     </div>
                                 )
