@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './movieItem.scss'
 
 const MovieItem = ({ movie }) => {
-    const { trailer, tenPhim, moTa, hinhAnh, danhGia } = movie
+    const { trailer, tenPhim, moTa, hinhAnh, danhGia, maPhim } = movie
     return (
         <div className="card px-2 w-full rounded-lg overflow-hidden" >
             <NavLink to="/" className="card__thumbnail block relative h-96 rounded overflow-hidden">
@@ -22,9 +22,11 @@ const MovieItem = ({ movie }) => {
                     {tenPhim}
                 </h5>
                 <div className="card__content__button py-8 flex align-middle justify-start">
-                    <button className="button--action-sm">
-                        BOOKING TICKET
-                    </button>
+                    <NavLink to={`/detail/${maPhim}`}>
+                        <button className="button--action-sm">
+                            BOOKING TICKET
+                        </button>
+                    </NavLink>
                 </div>
 
                 <div className="card__content__footer py-8 flex align-middle justify-start">

@@ -26,6 +26,8 @@ const Footer = () => {
         { ref: "https://laban.vn/", iconImg: "https://tix.vn/app/assets/img/icons/laban.png" },
     ]
 
+
+
     return (
         <footer className="py-6 bg-bgColorDetail">
             <div className="container">

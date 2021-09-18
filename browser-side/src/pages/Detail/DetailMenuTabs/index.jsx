@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React, { Fragment, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { NavLink } from 'react-router-dom';
+import ButtonCheckout from '../../../components/ButtonCheckout';
 
 const DetailMenuTabs = ({ arrTheater }) => {
 
@@ -10,7 +10,25 @@ const DetailMenuTabs = ({ arrTheater }) => {
 
     const { logo, cumRapChieu, maHeThongRap, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { lichChieuPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = cumRapChieu?.[valueDsPhim] || {};
-    console.log('lichChieuPhim', lichChieuPhim)
+
+    const showInfo = lichChieuPhim?.map((item) => {
+        return item.ngayChieuGioChieu.slice(0, 10)
+    })
+
+    const notDuplicateShowInfo = [...new Set(showInfo)]
+
+
+    const filterByDay = (date) => {
+        const gioChieuRenDer = lichChieuPhim.filter(item => {
+            if (item.ngayChieuGioChieu.slice(0, 10) === date) {
+                return true
+            }
+            return false
+        })
+        return gioChieuRenDer;
+    }
+
+    console.log('lichChieuPhim', notDuplicateShowInfo)
 
 
     return (
@@ -28,7 +46,7 @@ const DetailMenuTabs = ({ arrTheater }) => {
 
                 <div className="grid grid-cols-12 ">
 
-                    <div className="col-start-4 py-5 ">
+                    <div className="col-start-3 py-5 ">
                         {arrTheater?.map((theater, index) => (
                             <div className={`flex justify-center flex-wrap p-2 transition duration-150 ease-in-out 
                             ${index === valueLstCumRap && `border-r-2 border-green-500`}`}>
@@ -41,13 +59,13 @@ const DetailMenuTabs = ({ arrTheater }) => {
                         ))}
                     </div>
 
-                    <div className="col-start-5 col-span-4 ml-5 overflow-y-auto h-96">
+                    <div className="col-start-4 col-span-4 ml-5 overflow-y-auto h-96">
                         <Scrollbars>
                             {cumRapChieu?.map((station, index) => {
-                                console.log(cumRapChieu)
                                 return (
 
-                                    <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 ${index === valueDsPhim && 'opacity-100'}`} key={index}
+                                    <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 
+                                    ${index === valueDsPhim && 'opacity-100'}`} key={index}
                                         onClick={() => setValueDsPhim(index)}
                                     >
                                         <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" />
@@ -67,19 +85,26 @@ const DetailMenuTabs = ({ arrTheater }) => {
                         </Scrollbars>
                     </div>
 
-                    <div className="col-span-2 ml-5 overflow-y-auto h-96" >
+                    <div className="col-span-4 ml-5 overflow-y-auto h-96" >
                         <Scrollbars>
-                            {lichChieuPhim?.slice(0, 5).map((movie, index) => {
+                            {notDuplicateShowInfo?.map((date) => {
                                 return (
-                                    <div className="flex flex-nowrap">
-                                        <NavLink to={`/checkout/${movie.maLichChieu}`} className="text-md font-semibold text-indigo-300 m-1 
-                                    hover:text-purple-800 bg-gray-600 p-1 rounded-lg hover:bg-green-500 transition duration-150 ease-in-out">
-                                            {moment(movie.ngayChieuGioChieu).format('hh:mm')} ~ {moment(movie.ngayChieuGioChieu).add(120, 'm').format('hh:mm')}
-                                        </NavLink>
+                                    <Fragment key={date}>
+                                        <p className="text-lg text-left text-pink-500 mb-0">
+                                            {moment(date).format('dddd - MMM Do YY')}
+                                        </p>
 
-                                    </div>
+                                        <div className="flex flex-wrap">
+                                            {filterByDay(date).map(schedule => {
+                                                return <Fragment key={schedule.maLichChieu}>
+                                                    <ButtonCheckout schedule={schedule} />
+                                                </Fragment>
+                                            })}
+                                        </div>
+                                    </Fragment>
                                 )
                             })}
+
                         </Scrollbars>
                     </div>
                 </div>
@@ -90,3 +115,16 @@ const DetailMenuTabs = ({ arrTheater }) => {
 };
 
 export default DetailMenuTabs;
+
+{/* <Fragment key={date}>
+    <p className="text-lg text-pink-500 mb-0">
+        {moment(date).format('dddd - MMM Do YY')}
+    </p>
+    <div className="flex flex-wrap">
+        {filterByDay(date).map(schedule => {
+            return <Fragment key={schedule.maLichChieu}>
+                <ButtonCheckout schedule={schedule} />
+            </Fragment>
+        })}
+    </div>
+</Fragment> */}

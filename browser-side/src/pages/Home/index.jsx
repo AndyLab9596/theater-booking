@@ -1,4 +1,5 @@
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import { Pagination } from 'antd';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
@@ -7,6 +8,7 @@ import './home.scss';
 import HomeCarousel from './HomeCarousel';
 import HomeMenuTabs from './HomeMenuTabs';
 import HomeMovieTab from './HomeMovieTab';
+import MovieList from '../../components/MovieList'
 
 
 

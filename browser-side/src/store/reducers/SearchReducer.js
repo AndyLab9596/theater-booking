@@ -57,14 +57,12 @@ export const SearchReducer = (state = initialState, action) => {
             state.lichChieuPhimDataSelected = [];
             state.maLichChieu = "";
             const lichChieuPhimDataSelected = state.lichChieuPhimData.filter((item) => {
-                // lấy tất cả item có ngày chiếu giống với ngày chiếu đã chọn
                 if (item.ngayChieuGioChieu.slice(0, 10) === action.payload) {
                     return true;
                 }
                 return false;
             });
             const suatChieuRender = lichChieuPhimDataSelected.map((item) => {
-                // cắt lấy giờ chiếu trong ngayChieuGioChieu: "2019-01-01T20:00:00" > "20:00"
                 return item.ngayChieuGioChieu.slice(11, 16);
             });
             state.suatChieuRender = suatChieuRender;
