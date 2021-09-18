@@ -1,16 +1,35 @@
 .slick-dots-bottom {
     margin: 0 !important;
     padding: 0 !important;
+    display: none;
 }
 
-.ant-carousel .slick-dots li button {
-    width: 12px !important;
-    height: 12px !important;
-    border-radius: 50% !important;
-}
-.ant-carousel .slick-dots li.slick-active button {
-    margin: 0 !important;
-    padding: 0 !important;
+// .ant-carousel .slick-dots li button {
+//     width: 12px !important;
+//     height: 12px !important;
+//     border-radius: 50% !important;
+//     display: none;
+// }
+// .ant-carousel .slick-dots li.slick-active button {
+//     margin: 0 !important;
+//     padding: 0 !important;
+// }
+
+.slider-arrow {
+    position: absolute;
+    top: 53%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    z-index: 2;
+    width: 50px;
+    height: 100px;
+    color: #d8d8d8 !important;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        color: #fb4226 !important;
+    }
 }
 
 .overlay {

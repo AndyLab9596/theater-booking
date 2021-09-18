@@ -49,7 +49,8 @@ const HomeMenuTabs = ({ arrTheater }) => {
                             {lstCumRap?.map((station, index) => {
                                 return (
 
-                                    <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 ${index === valueDsPhim && 'opacity-100'}`} key={index}
+                                    <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 
+                                    ${index === valueDsPhim && 'opacity-100'}`} key={index}
                                         onClick={() => setValueDsPhim(index)}
                                     >
                                         <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" />
@@ -87,7 +88,6 @@ const HomeMenuTabs = ({ arrTheater }) => {
                                                 {movie.tenPhim}
                                             </h1>
                                             <LstLichChieu lstLichChieuTheoPhim={movie.lstLichChieuTheoPhim} />
-
                                         </div>
                                     </div>
                                 )

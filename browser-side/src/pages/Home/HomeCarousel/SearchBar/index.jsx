@@ -1,4 +1,4 @@
-import { Select } from 'antd';
+import { Alert, Select, Tooltip } from 'antd';
 import React, { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -52,12 +52,18 @@ const SearchBar = ({ arrMovies }) => {
         console.log(value)
     };
 
+    const handleBookingTicket = () => {
+        if (!maLichChieu) return
+        history.push(`/checkout/${maLichChieu}`)
+
+    }
+
     // const [arrowMode, setArrowMode] = useState(false);
     // console.log('arrowMode', arrowMode)
 
 
     return (
-        <div className="w-full absolute bottom-8 mx-auto">
+        <div className="w-full absolute transform -translate-y-1/4 mx-auto">
 
             <div className="container max-w-5xl mx-auto">
 
@@ -71,11 +77,13 @@ const SearchBar = ({ arrMovies }) => {
                             <h3 className="text-3xl font-bold text-white leading-6">WHAT ARE YOUT LOOKING FOR?</h3>
                         </div>
                         <div className="flex justify-center items-center">
-                            <button
-                                className="button--transparent"
-                                onClick={() => history.push(`/checkout/${maLichChieu}`)}>
-                                BOOKING TICKET
-                            </button>
+                            <Tooltip title="Choose your movie then booking !">
+                                <button
+                                    className={`${maLichChieu ? 'button--action' : 'button--transparent cursor-not-allowed'}`}
+                                    onClick={() => handleBookingTicket()}>
+                                    BOOKING TICKET
+                                </button>
+                            </Tooltip>
                         </div>
 
                     </div>
@@ -85,15 +93,17 @@ const SearchBar = ({ arrMovies }) => {
                     border-t-2 border-b-2 border-indigo-500
                     bg-black
                     bg-opacity-50
+                    max-h-full
                     ">
                         <Select
                             // className="searchBar"
+
                             placeholder={
                                 <div className="flex items-center">
                                     <h6 className="mr-2 text-lg text-greenText font-semibold">Select Movie</h6>
                                     <DownOutlined style={{
                                         color: "#c1c1c1", fontSize: "14px", marginBottom: "8px",
-                                        // transform: arrowMode ? 'rotate(180deg)' : null, transition: 'all .2s linear'
+                                        // transform: 'rotate(180deg)', transition: 'all .2s linear'
                                     }} />
                                 </div>
                             }
@@ -101,7 +111,7 @@ const SearchBar = ({ arrMovies }) => {
                             onChange={handleSelectMovie}
                             bordered={false}
                             // suffixIcon={<DownOutlined style={{ color: "#c1c1c1", fontSize: "14px", marginBottom: "8px" }} />}
-                            // onDropdownVisibleChange={() => setArrowMode(state => !state)}
+                            // onDropdownVisibleChange={() => setArrowMode((state) => !state)}
                             showArrow={false}
                         >
                             {arrMovies.map((movie, index) => {
@@ -113,12 +123,15 @@ const SearchBar = ({ arrMovies }) => {
                         </Select>
 
                         <Select
+                            notFoundContent={
+                                <Alert showIcon message="Choose movie first " type="error" />
+                            }
                             placeholder={
                                 <div className="flex items-center">
                                     <h6 className="mr-2 text-lg text-greenText font-semibold">Select Theater</h6>
                                     <DownOutlined style={{
                                         color: "#c1c1c1", fontSize: "14px", marginBottom: "8px",
-                                        // transform: arrowMode ? 'rotate(180deg)' : null, transition: 'all .2s linear'
+
                                     }} />
                                 </div>
                             }
@@ -136,13 +149,16 @@ const SearchBar = ({ arrMovies }) => {
                         </Select>
 
                         <Select
+                            notFoundContent={
+                                <Alert showIcon message="Movie and theater first" type="error" />
+                            }
                             bordered={false}
                             placeholder={
                                 <div className="flex items-center">
                                     <h6 className="mr-2 text-lg text-greenText font-semibold">Select Day</h6>
                                     <DownOutlined style={{
                                         color: "#c1c1c1", fontSize: "14px", marginBottom: "8px",
-                                        // transform: arrowMode ? 'rotate(180deg)' : null, transition: 'all .2s linear'
+
                                     }} />
                                 </div>
                             }
@@ -161,13 +177,16 @@ const SearchBar = ({ arrMovies }) => {
                         </Select>
 
                         <Select
+                            notFoundContent={
+                                <Alert showIcon message="Movie, theater, day are required!" type="error" />
+                            }
                             bordered={false}
                             placeholder={
                                 <div className="flex items-center">
                                     <h6 className="mr-2 text-lg text-greenText font-semibold">Select Time</h6>
                                     <DownOutlined style={{
                                         color: "#c1c1c1", fontSize: "14px", marginBottom: "8px",
-                                        // transform: arrowMode ? 'rotate(180deg)' : null, transition: 'all .2s linear'
+
                                     }} />
                                 </div>
                             }

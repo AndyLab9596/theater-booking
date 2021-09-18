@@ -4,11 +4,11 @@ import ButtonCheckout from '../../../../components/ButtonCheckout';
 
 const LstLichChieu = ({ lstLichChieuTheoPhim }) => {
 
-    const mangChiChuaNgay = lstLichChieuTheoPhim.map(item => {  // tạo mảng mới chỉ chứa ngày
-        return item.ngayChieuGioChieu.slice(0, 10);// item là "2020-12-17" cắt ra từ 2020-12-17T10:10:00
+    const mangChiChuaNgay = lstLichChieuTheoPhim.map(item => {
+        return item.ngayChieuGioChieu.slice(0, 10);
     })
     const MangNgayKhongTrungLap = [...new Set(mangChiChuaNgay)]
-    const filterByDay = (date) => { // lọc ra item từ mảng gốc
+    const filterByDay = (date) => {
         const gioChieuRenDer = lstLichChieuTheoPhim.filter(item => {
             if (item.ngayChieuGioChieu.slice(0, 10) === date) {
                 return true
