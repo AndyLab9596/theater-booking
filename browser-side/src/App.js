@@ -51,11 +51,11 @@ function App() {
       <BrowserRouter>
         <Loading />
         <ModalTrailer />
-
         <Suspense fallback={<ActiveLazyLoading />}>
           <Switch>
             <Route path="/testing" exact component={Testing} />
             <HomeTemplate path="/" exact Component={HomePage} />
+            <HomeTemplate path="/page/:number" exact Component={HomePage} />
             <HomeTemplate path="/detail/:id" exact Component={DetailPage} />
             <AuthTemplate path="/signin" exact Component={SignInPage} redirectPath="/" />
             <AuthTemplate path="/signup" exact Component={SignUpPage} redirectPath="/" />

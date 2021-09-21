@@ -4,7 +4,7 @@ const MovieList = ({ arrMovies }) => {
 
     return (
         <section>
-            <div className="container px-5 py-24 mx-auto">
+            <div className="container px-5 py-8 mx-auto">
 
                 <div className="grid grid-cols-4 gap-7">
                     {arrMovies?.map((movie, index) => {

@@ -13,7 +13,7 @@ const MovieNews = () => {
                             <div className="absolute bottom-0 left-2">
                                 <h3 className="text-gray-800 text-2xl font-bold text-left transition cursor-pointer group-hover:text-white">
                                     <a href="https://screenrant.com/mcu-movie-directors-insult-criticize-marvel/"
-                                        target="_blank" rel="noreferrer" className="text-gray-800 group-hover:text-white"
+                                        target="_blank" rel="noreferrer" className="text-white group-hover:text-red-500"
                                     >
                                         Why Do Great Directors Need To Insult The MCU's Film-Makers?</a>
                                 </h3>
@@ -31,7 +31,7 @@ const MovieNews = () => {
                                 <div className="absolute bottom-0 left-2">
                                     <h3 className="text-gray-800 text-2xl font-bold text-left transition cursor-pointer group-hover:text-white">
                                         <a href="https://screenrant.com/mcu-movie-directors-insult-criticize-marvel/"
-                                            target="_blank" rel="noreferrer" className="text-gray-800 group-hover:text-white"
+                                            target="_blank" rel="noreferrer" className="text-white group-hover:text-red-500"
                                         >
                                             Why Do Great Directors Need To Insult The MCU's Film-Makers?</a>
                                     </h3>
@@ -43,7 +43,7 @@ const MovieNews = () => {
                                 <div className="absolute bottom-0 left-2">
                                     <h3 className="text-gray-800 text-2xl font-bold text-left transition cursor-pointer group-hover:text-white">
                                         <a href="https://screenrant.com/mcu-movie-directors-insult-criticize-marvel/"
-                                            target="_blank" rel="noreferrer" className="text-gray-800 group-hover:text-white"
+                                            target="_blank" rel="noreferrer" className="text-white group-hover:text-red-500"
                                         >
                                             Why Do Great Directors Need To Insult The MCU's Film-Makers?</a>
                                     </h3>
@@ -63,7 +63,7 @@ const MovieNews = () => {
                                 <div className="absolute bottom-0 left-2">
                                     <h3 className="text-gray-800 text-2xl font-bold text-left transition cursor-pointer group-hover:text-white">
                                         <a href="https://screenrant.com/mcu-movie-directors-insult-criticize-marvel/"
-                                            target="_blank" rel="noreferrer" className="text-gray-800 group-hover:text-white"
+                                            target="_blank" rel="noreferrer" className="text-white group-hover:text-red-500"
                                         >
                                             Why Do Great Directors Need To Insult The MCU's Film-Makers?</a>
                                     </h3>
@@ -75,7 +75,7 @@ const MovieNews = () => {
                                 <div className="absolute bottom-0 left-2">
                                     <h3 className="text-gray-800 text-2xl font-bold text-left transition cursor-pointer group-hover:text-white">
                                         <a href="https://screenrant.com/mcu-movie-directors-insult-criticize-marvel/"
-                                            target="_blank" rel="noreferrer" className="text-gray-800 group-hover:text-white"
+                                            target="_blank" rel="noreferrer" className="text-white group-hover:text-red-500"
                                         >
                                             Why Do Great Directors Need To Insult The MCU's Film-Makers?</a>
                                     </h3>

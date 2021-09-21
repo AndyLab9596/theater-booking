@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { TOKEN } from '../../../utils/config'
 import { UserOutlined, LoginOutlined } from '@ant-design/icons';
@@ -16,8 +16,24 @@ const Header = () => {
         window.location.reload();
     }
 
+    const [scroll, setScroll] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScroll(window.scrollY > 250)
+        };
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, [scroll])
+
+    console.log(scroll)
+
+
     return (
-        <header className="py-5 w-full fixed bg-transparent z-10">
+        <header className={`py-5 w-full fixed z-10 ${scroll ? 'bg-bgColorDetail' : 'bg-transparent'}`}>
             <div className="container flex justify-between align-middle h-16 mx-auto">
                 <NavLink to="/" className="flex items-center">
                     <img src="http://pixner.net/boleto/demo/assets/images/logo/logo.png" alt="logo" className="h-10 object-cover" />

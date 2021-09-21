@@ -11,12 +11,14 @@ import HomeMovieTab from './HomeMovieTab';
 import MovieList from '../../components/MovieList'
 import HomeNews from './HomeNews';
 import HomeApp from './HomeApp';
-
-
+import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const HomePage = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
 
     const arrMoviesPagination = useSelector(state => state.MovieReducer.arrMoviesPagination);
     const arrMovies = useSelector(state => state.MovieReducer.arrMovies)
@@ -26,9 +28,12 @@ const HomePage = () => {
 
     // Pagination
     const { items, totalCount } = arrMoviesPagination || {}
-    const [page, setPage] = useState(1);
+    const pageParam = useParams();
+    const page = pageParam.number;
+
+
     const onChange = (page) => {
-        setPage(page)
+        history.push({ pathname: `/page/${page}` })
     }
     function itemRender(current, type, originalElement) {
         if (type === 'prev') {
@@ -49,8 +54,9 @@ const HomePage = () => {
 
 
     const fetchArrMoviesPagination = useCallback((page) => {
-        dispatch(getArrMoviesPagination(page))
-    }, [dispatch])
+        // dispatch(getArrMoviesPagination(page))
+        page ? dispatch(getArrMoviesPagination(page)) : dispatch(getArrMoviesPagination(1))
+    }, [dispatch, page])
 
     const fetchArrMovies = useCallback(() => {
         dispatch(getArrMovies())
@@ -71,12 +77,12 @@ const HomePage = () => {
         <div>
             <HomeCarousel arrMovies={arrMovies} />
 
-            {/* <section className="py-28 bg-bgColorMain">
+            <section className="pt-64 pb-8 bg-bgColorMain">
                 <div className="container mx-auto w-full px-1">
-                    <div className="px-10">
-                        <div className="flex justify-between align-middle">
-                            <div className="list__header text-left">
-                                <h2 className="text-5xl text-white leading-10 uppercase mb-5">movies list</h2>
+                    <div className="px-10 py-8">
+                        <div className="">
+                            <div className="list__header text-center">
+                                <h2 className="text-5xl text-greenText leading-10 uppercase mb-5">movies list</h2>
                                 <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
                             </div>
                         </div>
@@ -85,8 +91,7 @@ const HomePage = () => {
                         <MovieList arrMovies={items} />
                         <Pagination
                             onChange={onChange}
-                            current={page}
-                            defaultCurrent={1}
+                            defaultCurrent={page}
                             total={totalCount}
                             itemRender={itemRender}
                             showSizeChanger={false}
@@ -101,7 +106,7 @@ const HomePage = () => {
                         />
                     </div>
                 </div>
-            </section> */}
+            </section>
 
             <HomeMovieTab
                 arrMovies={arrMovies}

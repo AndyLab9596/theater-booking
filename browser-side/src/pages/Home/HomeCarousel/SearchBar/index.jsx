@@ -9,6 +9,7 @@ import "./searchBar.scss"
 import { DownOutlined } from '@ant-design/icons';
 import SearchBarbg from '../../../../assets/img/searchbar.jpg'
 import { TOKEN } from '../../../../utils/config';
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
@@ -73,7 +74,7 @@ const SearchBar = ({ arrMovies }) => {
                         <div className="flex justify-center items-center">
                             <Tooltip title="Choose your movie then booking !">
                                 <button
-                                    className={`${maLichChieu ? 'button--action' : 'button--transparent cursor-not-allowed'}`}
+                                    className={`${maLichChieu && localStorage.getItem(TOKEN) ? 'button--action' : 'button--transparent cursor-not-allowed'}`}
                                     onClick={() => handleBookingTicket()}>
                                     BOOKING TICKET
                                 </button>
@@ -116,7 +117,12 @@ const SearchBar = ({ arrMovies }) => {
 
                         <Select
                             notFoundContent={
-                                <Alert showIcon message="Choose movie first " type="error" />
+                                <div className="flex justify-center items-center align-middle">
+                                    <p className="text-sm text-red-500 font-semibold pt-2">
+                                        {/* <span className="mb-12"><CloseCircleOutlined /></span> */}
+                                        Movie First !!
+                                    </p>
+                                </div>
                             }
                             placeholder={
                                 <div className="flex items-center">
@@ -142,7 +148,13 @@ const SearchBar = ({ arrMovies }) => {
 
                         <Select
                             notFoundContent={
-                                <Alert showIcon message="Movie and theater first" type="error" />
+                                // <Alert showIcon message="Movie and theater first" type="error" />
+                                <div className="flex justify-center items-center align-middle">
+                                    <p className="text-sm text-red-500 font-semibold pt-2">
+                                        {/* <span className="mb-12"><CloseCircleOutlined /></span> */}
+                                        Movie and Theater First !!
+                                    </p>
+                                </div>
                             }
                             bordered={false}
                             placeholder={
@@ -170,7 +182,12 @@ const SearchBar = ({ arrMovies }) => {
 
                         <Select
                             notFoundContent={
-                                <Alert showIcon message="Movie, theater, day are required!" type="error" />
+                                <div className="flex justify-center items-center align-middle">
+                                    <p className="text-sm text-red-500 font-semibold pt-2">
+                                        {/* <span className="mb-12"><CloseCircleOutlined /></span> */}
+                                        Movie, Theater and Day First !!
+                                    </p>
+                                </div>
                             }
                             bordered={false}
                             placeholder={

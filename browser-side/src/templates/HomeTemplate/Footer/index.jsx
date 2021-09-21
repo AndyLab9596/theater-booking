@@ -50,7 +50,7 @@ const Footer = () => {
                         <h6 className="text-left text-sm leading-8 text-white">Partners</h6>
                         <div className="grid grid-flow-col grid-cols-5 grid-rows-4 gap-3">
                             {icons.map((icon, index) => (
-                                <a href={icon.ref} key={index}>
+                                <a href={icon.ref} key={index} target="_blank" rel="noreferrer">
                                     <img src={icon.iconImg} alt="cgv"
                                         className="w-8 h-8 rounded-full flex items-center justify-center bg-white object-cover" />
                                 </a>
@@ -61,10 +61,14 @@ const Footer = () => {
                         <div>
                             <h6 className="text-white">Mobile Apps</h6>
                             <div className="flex justify-between items-center space-x-5 p-1">
-                                <a href="https://apps.apple.com/vn/app/tix-%C4%91%E1%BA%B7t-v%C3%A9-nhanh-nh%E1%BA%A5t/id615186197">
+                                <a href="https://apps.apple.com/vn/app/tix-%C4%91%E1%BA%B7t-v%C3%A9-nhanh-nh%E1%BA%A5t/id615186197"
+                                    target="_blank" rel="noreferrer"
+                                >
                                     <img src="https://tix.vn/app/assets/img/icons/apple-logo.png" alt="apple" className="h-8 w-auto object-cover" />
                                 </a>
-                                <a href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123">
+                                <a href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
+                                    target="_blank" rel="noreferrer"
+                                >
                                     <img src="https://tix.vn/app/assets/img/icons/android-logo.png" alt="gg play" className="h-8 w-auto object-cover" />
                                 </a>
                             </div>
@@ -72,10 +76,14 @@ const Footer = () => {
                         <div>
                             <h6 className="text-white">Social</h6>
                             <div className="flex justify-between items-center space-x-5 p-1">
-                                <a href="https://www.facebook.com/tix.vn/">
+                                <a href="https://www.facebook.com/tix.vn/"
+                                    target="_blank" rel="noreferrer"
+                                >
                                     <img src="https://tix.vn/app/assets/img/icons/facebook-logo.png" alt="fb" className="h-8 w-auto object-cover" />
                                 </a>
-                                <a href="https://zalo.me/tixdatve">
+                                <a href="https://zalo.me/tixdatve"
+                                    target="_blank" rel="noreferrer"
+                                >
                                     <img src="https://tix.vn/app/assets/img/icons/zalo-logo.png" alt="zalo" className="h-8 w-auto object-cover" />
                                 </a>
                             </div>
