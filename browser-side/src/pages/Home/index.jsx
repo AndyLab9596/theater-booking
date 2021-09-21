@@ -9,6 +9,8 @@ import HomeCarousel from './HomeCarousel';
 import HomeMenuTabs from './HomeMenuTabs';
 import HomeMovieTab from './HomeMovieTab';
 import MovieList from '../../components/MovieList'
+import HomeNews from './HomeNews';
+import HomeApp from './HomeApp';
 
 
 
@@ -107,6 +109,8 @@ const HomePage = () => {
                 arrMoviesUpComing={arrMoviesUpComing} />
 
             <HomeMenuTabs arrTheater={arrTheater} />
+            <HomeNews />
+            <HomeApp />
 
             {/* <Testing arrTheater={arrTheater} /> */}
         </div>

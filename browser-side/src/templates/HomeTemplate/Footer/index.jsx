@@ -15,7 +15,6 @@ const Footer = () => {
         { ref: "https://touchcinema.com/", iconImg: "https://tix.vn/app/assets/img/icons/TOUCH.png" },
         { ref: "https://cinemaxvn.com/", iconImg: "https://tix.vn/app/assets/img/icons/cnx.jpg" },
         { ref: "http://starlight.vn/", iconImg: "https://tix.vn/app/assets/img/icons/STARLIGHT.png" },
-        // { ref: "https://www.dcine.vn/", iconImg: "https://tix.vn/app/assets/img/icons/dcine.png" },
         { ref: "https://zalopay.vn/", iconImg: "https://tix.vn/app/assets/img/icons/zalopay_icon.png" },
         { ref: "https://www.payoo.vn/", iconImg: "https://tix.vn/app/assets/img/icons/payoo.jpg" },
         { ref: "https://portal.vietcombank.com.vn/Pages/Home.aspx", iconImg: "https://tix.vn/app/assets/img/icons/VCB.png" },
@@ -32,16 +31,16 @@ const Footer = () => {
         <footer className="py-6 bg-bgColorDetail">
             <div className="container">
                 <div className="grid grid-cols-12">
+
                     <div className="col-start-3">
-                        <img src="https://movie-booking-project.vercel.app/img/headTixLogo.png" alt="logo" className="h-10 object-cover" />
-                    </div>
-                    <div>
+                        <img src="http://pixner.net/boleto/demo/assets/images/logo/logo.png" alt="logo"
+                            className="h-10 object-cover object-scale-down" />
                         <ul className="text-xs leading-8 text-white text-left">
                             <li>Agreements</li>
                             <li>Policies</li>
                         </ul>
                         <ul className="text-xs leading-4 text-white text-left">
-                            <li>TIX</li>
+                            <li>BOLETO</li>
                             <li>FAQ</li>
                             <li>Brand</li>
                             <li>Guidelines</li>

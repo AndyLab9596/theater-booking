@@ -1,12 +1,14 @@
 import { Alert, Select, Tooltip } from 'antd';
 import React, { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import createAction from '../../../../store/actions/createAction';
 import { searchSingleMovie } from '../../../../store/actions/ManageSearchBarAction';
 import { actionTypes } from '../../../../store/actions/Types';
 import "./searchBar.scss"
 import { DownOutlined } from '@ant-design/icons';
+import SearchBarbg from '../../../../assets/img/searchbar.jpg'
+import { TOKEN } from '../../../../utils/config';
 
 const { Option } = Select;
 
@@ -27,13 +29,7 @@ const SearchBar = ({ arrMovies }) => {
     const dispatch = useDispatch()
     const handleSelectMovie = (maPhim) => {
         if (!maPhim) return;
-
-        dispatch(searchSingleMovie(maPhim));
-
-        console.log('cumRapChieuData', thongTinLichChieu)
-
-        console.log('rapRender', rapRender)
-
+        dispatch(searchSingleMovie(maPhim))
     }
 
     const handleSelectRap = (value) => {
@@ -44,23 +40,21 @@ const SearchBar = ({ arrMovies }) => {
 
     const handleSelectNgayXem = (value) => {
         dispatch(createAction(actionTypes.SELECT_NGAYXEM, value))
-        console.log(value)
     }
 
     const handleSelectSuatChieu = (value) => {
         dispatch(createAction(actionTypes.SELECT_SUATCHIEU, value))
-        console.log(value)
     };
 
     const handleBookingTicket = () => {
+        if (!localStorage.getItem(TOKEN)) {
+            return history.push('/signin')
+        }
+
         if (!maLichChieu) return
         history.push(`/checkout/${maLichChieu}`)
 
     }
-
-    // const [arrowMode, setArrowMode] = useState(false);
-    // console.log('arrowMode', arrowMode)
-
 
     return (
         <div className="w-full absolute transform -translate-y-1/4 mx-auto">
@@ -69,7 +63,7 @@ const SearchBar = ({ arrMovies }) => {
 
                 {/* Có thể chèn background linear gradient chỗ này để cho đẹp hơn, cần nâng cấp !!! */}
                 <div className="py-10 px-8 bg-cover bg-center bg-no-repeat rounded-xl"
-                    style={{ backgroundImage: "url('http://pixner.net/boleto/demo/assets/images/ticket/ticket-bg01.jpg')" }}>
+                    style={{ backgroundImage: `url(${SearchBarbg})` }}>
 
                     <div className="grid grid-cols-2">
                         <div className="text-left">
@@ -103,15 +97,13 @@ const SearchBar = ({ arrMovies }) => {
                                     <h6 className="mr-2 text-lg text-greenText font-semibold">Select Movie</h6>
                                     <DownOutlined style={{
                                         color: "#c1c1c1", fontSize: "14px", marginBottom: "8px",
-                                        // transform: 'rotate(180deg)', transition: 'all .2s linear'
+
                                     }} />
                                 </div>
                             }
                             style={{ width: "25%", fontSize: '20px', color: "#31d7a9" }}
                             onChange={handleSelectMovie}
                             bordered={false}
-                            // suffixIcon={<DownOutlined style={{ color: "#c1c1c1", fontSize: "14px", marginBottom: "8px" }} />}
-                            // onDropdownVisibleChange={() => setArrowMode((state) => !state)}
                             showArrow={false}
                         >
                             {arrMovies.map((movie, index) => {

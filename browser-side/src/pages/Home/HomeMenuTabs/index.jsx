@@ -17,7 +17,7 @@ const HomeMenuTabs = ({ arrTheater }) => {
 
     return (
 
-        <section className=" bg-bgColorMain" >
+        <section className=" bg-bgColorMain pb-8" >
 
             <div className="container mx-auto w-full px-1">
                 <div className="px-10 mb-5">

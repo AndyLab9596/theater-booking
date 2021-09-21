@@ -116,15 +116,3 @@ const DetailMenuTabs = ({ arrTheater }) => {
 
 export default DetailMenuTabs;
 
-{/* <Fragment key={date}>
-    <p className="text-lg text-pink-500 mb-0">
-        {moment(date).format('dddd - MMM Do YY')}
-    </p>
-    <div className="flex flex-wrap">
-        {filterByDay(date).map(schedule => {
-            return <Fragment key={schedule.maLichChieu}>
-                <ButtonCheckout schedule={schedule} />
-            </Fragment>
-        })}
-    </div>
-</Fragment> */}

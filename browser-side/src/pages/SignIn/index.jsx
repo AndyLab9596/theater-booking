@@ -1,12 +1,12 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import InputField from '../../components/InputField';
 import * as yup from 'yup';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/actions/ManageUserAction';
 import { notification } from 'antd';
-
+import { useSelector } from 'react-redux';
 
 const schema = yup.object().shape({
     taiKhoan: yup.string()
@@ -18,6 +18,9 @@ const schema = yup.object().shape({
 })
 
 const SignInPage = () => {
+    // const currentUser = useSelector(state => state.UserReducer.currentUser);
+    const location = useLocation();
+    console.log('location', location)
     const dispatch = useDispatch();
     const history = useHistory();
     const openNotification = (desc) => {
@@ -30,6 +33,12 @@ const SignInPage = () => {
             }
         });
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+
+    }, [])
+
     return (
         <Formik
             initialValues={{
@@ -59,9 +68,11 @@ const SignInPage = () => {
                             <button type="submit" className="authBtn">
                                 SIGN IN
                             </button>
-                            <button type="reset" className="authBtn" >
-                                RESET
-                            </button>
+                            <NavLink to="/">
+                                <button type="button" className="authBtn" >
+                                    HOME
+                                </button>
+                            </NavLink>
                         </div>
                     </Form>
                     <p className="text-base text-white mt-6">

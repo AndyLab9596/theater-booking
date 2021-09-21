@@ -1,13 +1,10 @@
-import { LeftOutlined, PlayCircleOutlined, RightOutlined } from '@ant-design/icons';
-import React, { Fragment, memo, useCallback, useEffect, useRef } from 'react';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { Carousel } from 'antd';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArrBanner } from '../../../store/actions/ManageMovieAction';
 import './carousel.scss';
 import SearchBar from './SearchBar';
-import Slider from "react-slick";
-import { Carousel } from 'antd';
-import createAction from '../../../store/actions/createAction';
-import { actionTypes } from '../../../store/actions/Types';
 
 
 const contentStyle = {
@@ -52,7 +49,6 @@ const HomeCarousel = ({ arrMovies }) => {
     }, [dispatch]);
 
     const arrBanner = useSelector(state => state.MovieReducer.arrBanner);
-    console.log(arrBanner)
 
     const renderBanner = () => {
         return arrBanner.map((banner, index) => {
