@@ -5,7 +5,7 @@ const { TabPane } = Tabs;
 
 const HomeNews = () => {
     return (
-        <section className="py-8 bg-bgColorMain">
+        <section id="news" className="py-8 bg-bgColorMain">
             <div className="container mx-auto w-full px-1 ">
 
                 <div className="px-10 ">

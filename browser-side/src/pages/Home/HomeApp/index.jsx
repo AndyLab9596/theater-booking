@@ -11,7 +11,7 @@ const HomeApp = () => {
         autoplaySpeed: 3000,
     };
     return (
-        <section className="py-8 bg-no-repeat bg-cover bg-center"
+        <section id="app" className="py-8 bg-no-repeat bg-cover bg-center"
             style={{ backgroundImage: `url("https://tix.vn/app/assets/img/icons/backapp.jpg")` }}>
             <div className="container mx-auto w-full px-1 ">
                 <div className="grid grid-cols-12 ">

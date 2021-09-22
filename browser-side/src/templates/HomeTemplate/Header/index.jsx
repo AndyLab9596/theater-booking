@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { TOKEN } from '../../../utils/config'
 import { UserOutlined, LoginOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import createAction from '../../../store/actions/createAction';
 import { actionTypes } from '../../../store/actions/Types';
+import { scroller } from 'react-scroll';
 
 const Header = () => {
     const history = useHistory();
+    const location = useLocation();
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.UserReducer.currentUser);
     const handleLogOut = () => {
@@ -29,35 +31,67 @@ const Header = () => {
         }
     }, [scroll])
 
-    console.log(scroll)
+    const handleClickNav = (id) => {
+        if (location.pathname === "/") {
+            scroller.scrollTo(id, {
+                duration: 800,
+                smooth: 'easeInOutQuint'
+            })
+        } else {
+            setTimeout(() => {
+                history.push("/", id)
+            }, 50)
+        }
+    }
+
+    useEffect(() => {
+
+    }, [])
+
 
 
     return (
         <header className={`py-5 w-full fixed z-10 ${scroll ? 'bg-bgColorDetail' : 'bg-transparent'}`}>
-            <div className="container flex justify-between align-middle h-16 mx-auto">
+            <div className="container flex justify-between items-center align-middle h-16 mx-auto">
                 <NavLink to="/" className="flex items-center">
                     <img src="http://pixner.net/boleto/demo/assets/images/logo/logo.png" alt="logo" className="h-10 object-cover" />
                 </NavLink>
-                <ul className="items-stretch hidden space-x-3 lg:flex align-middle x">
-                    <li className="flex py-1.5 px-3 text-xl font-bold">
-                        <NavLink to="/" className="flex items-center text-white" activeClassName="border-b-2 border-green-500">
+                <ul className="items-center hidden space-x-3 lg:flex align-middle x">
+                    <li className="flex px-3 text-xl font-bold cursor-pointer">
+                        <p className="flex items-center text-white my-auto"
+                            activeClassName="border-b-2 border-green-500"
+                            onClick={() => handleClickNav("home")}
+                        >
                             HOME
-                        </NavLink>
+                        </p>
                     </li>
-                    <li className="flex py-1.5 px-3 text-xl font-bold" >
-                        <NavLink to="/a" className="flex items-center text-white" activeClassName="border-b-2 border-green-500">
-                            STATIONS
-                        </NavLink>
+                    <li className="flex px-3 text-xl font-bold cursor-pointer">
+                        <p className="flex items-center text-white my-auto"
+                            onClick={() => handleClickNav("movie")}
+                            activeClassName="border-b-2 border-green-500">
+                            MOVIE
+                        </p>
                     </li>
-                    <li className="flex py-1.5 px-3 text-xl font-bold">
-                        <NavLink to="/b" className="flex items-center text-white" activeClassName="border-b-2 border-green-500">
+                    <li className="flex px-3 text-xl font-bold cursor-pointer">
+                        <p className="flex items-center text-white my-auto"
+                            onClick={() => handleClickNav("theater")}
+                            activeClassName="border-b-2 border-green-500">
+                            THEATER
+                        </p>
+                    </li>
+                    <li className="flex px-3 text-xl font-bold cursor-pointer">
+                        <p className="flex items-center text-white my-auto"
+                            onClick={() => handleClickNav("news")}
+                            activeClassName="border-b-2 border-green-500">
                             NEWS
-                        </NavLink>
+                        </p>
                     </li>
-                    <li className="flex py-1.5 px-3 text-xl font-bold">
-                        <NavLink to="/c" className="flex items-center text-white" activeClassName="border-b-2 border-green-500">
+                    <li className="flex px-3 text-xl font-bold cursor-pointer">
+                        <p className="flex items-center text-white my-auto"
+                            onClick={() => handleClickNav("app")}
+                            activeClassName="border-b-2 border-green-500">
                             APPLICATION
-                        </NavLink>
+                        </p>
                     </li>
                 </ul>
 

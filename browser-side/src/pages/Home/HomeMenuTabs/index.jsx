@@ -23,8 +23,8 @@ const HomeMenuTabs = ({ arrTheater }) => {
                 <div className="px-10 mb-5">
                     <div className="flex justify-center align-middle">
                         <div className="list__header text-left">
-                            <h2 className="text-4xl text-white leading-10 uppercase mb-5">SCHEDULE LIST</h2>
-                            <p className="text-base text-white leading-7">Be sure not to miss these Movies today</p>
+                            <h2 className="text-4xl text-greenText leading-10 uppercase mb-5">THEATER LIST</h2>
+                            <p className="text-base text-white leading-7">Find your destination here</p>
                         </div>
                     </div>
                 </div>

@@ -77,7 +77,7 @@ const HomePage = () => {
         <div>
             <HomeCarousel arrMovies={arrMovies} />
 
-            <section className="pt-64 pb-8 bg-bgColorMain">
+            <section id="movie" className="pt-64 pb-8 bg-bgColorMain">
                 <div className="container mx-auto w-full px-1">
                     <div className="px-10 py-8">
                         <div className="">

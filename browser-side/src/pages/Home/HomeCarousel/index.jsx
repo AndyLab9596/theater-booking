@@ -68,7 +68,7 @@ const HomeCarousel = ({ arrMovies }) => {
 
 
     return (
-        <div>
+        <div id="home">
             <RightOutlined style={{ right: "0px" }} onClick={() => next()} className="slider-arrow" />
             <Carousel autoplay  {...settings} ref={slider}>
                 {renderBanner()}
