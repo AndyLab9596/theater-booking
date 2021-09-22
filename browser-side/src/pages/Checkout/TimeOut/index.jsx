@@ -1,15 +1,16 @@
 import React, { useMemo } from 'react';
 import { zeroPad } from 'react-countdown';
 import Countdown from 'react-countdown';
+import { useSelector } from 'react-redux';
 
-const TimeOut = () => {
+const TimeOut = ({ currentUser }) => {
 
-    const setTimeCount = useMemo(() => { // dùng useMemo để không bị reset
+    const setTimeCount = useMemo(() => {
         return Date.now() + 300000
     }, [])
 
     const handleTimeOut = () => {
-        console.log('Time Out')
+        // console.log('Time Out')
     }
 
     return (

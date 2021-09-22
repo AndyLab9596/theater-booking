@@ -2,9 +2,9 @@ import _ from 'lodash';
 import moment from 'moment';
 import React from 'react';
 
-const BookingHistory = ({ currentUserInfo }) => {
+const BookingHistory = ({ currentUser }) => {
     const renderTicketItem = () => {
-        return currentUserInfo.thongTinDatVe.map((ticket, index) => {
+        return currentUser.thongTinDatVe.map((ticket, index) => {
             return (
                 <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
                     <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">

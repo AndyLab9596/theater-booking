@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import ActiveLazyLoading from './components/ActiveLazyLoading';
 import Loading from './components/Loading';
-import CheckoutPage from './pages/Checkout';
+// import CheckoutPage from './pages/Checkout';
 // import DetailPage from './pages/Detail';
 // import HomePage from './pages/Home';
 // import pages
@@ -14,13 +14,14 @@ import Testing from './pages/Testing';
 import { fetchUser } from './store/actions/ManageUserAction';
 // import template
 // import AuthTemplate from './templates/AuthTemplate';
-import CheckoutTemplate from './templates/CheckoutTemplate';
+// import CheckoutTemplate from './templates/CheckoutTemplate';
 
 import ModalTrailer from './components/ModalTrailer'
 
 // Layout
 const HomeTemplate = lazy(() => import('./templates/HomeTemplate'));
 const AuthTemplate = lazy(() => import('./templates/AuthTemplate'));
+const CheckoutTemplate = lazy(() => import('./templates/CheckoutTemplate'));
 
 // Page
 const HomePage = lazy(() => import('./pages/Home'))
@@ -35,6 +36,7 @@ const SignUpPage = lazy(() => {
     setTimeout(() => resolve(import('./pages/SignUp')), 500)
   })
 })
+const CheckoutPage = lazy(() => import('./pages/Checkout'))
 
 
 

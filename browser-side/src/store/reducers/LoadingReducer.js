@@ -1,7 +1,8 @@
 import { actionTypes } from "../actions/Types"
 
 const initialState = {
-    isLoading: false,
+    bookingLoading: false,
+    bookingInfoLoading: false,
 
     userLoading: false,
     arrMovieLoading: false,
@@ -11,13 +12,23 @@ const initialState = {
 
 export const LoadingReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.DISPLAY_LOADING: {
-            state.isLoading = true;
+        case actionTypes.FETCH_BOOKING_INFO_REQUEST: {
+            state.bookingInfoLoading = true;
             return { ...state }
         }
 
-        case actionTypes.HIDE_LOADING: {
-            state.isLoading = false;
+        case actionTypes.HIDE_BOOKING_INFO_REQUEST: {
+            state.bookingInfoLoading = false;
+            return { ...state }
+        }
+
+        case actionTypes.FETCH_TICKET_REQUEST: {
+            state.bookingLoading = true;
+            return { ...state }
+        }
+
+        case actionTypes.HIDE_TICKET_REQUEST: {
+            state.bookingLoading = false;
             return { ...state }
         }
 

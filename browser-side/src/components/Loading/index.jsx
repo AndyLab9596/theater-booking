@@ -5,20 +5,19 @@ import './loading.scss'
 
 const Loading = () => {
 
-    const isLoading = useSelector(state => state.LoadingReducer.isLoading)
 
-    const loading = useSelector(state => state.LazyReducer.isLazy)
-    const { userLoading, arrMovieLoading, arrTheaterLoading } = useSelector(state => state.LoadingReducer)
+    const isLazy = useSelector(state => state.LazyReducer.isLazy)
+    const {
+        userLoading, arrMovieLoading, arrTheaterLoading, bookingInfoLoading
+
+    } = useSelector(state => state.LoadingReducer)
 
 
-    const HomePageLoading = userLoading || arrMovieLoading || arrTheaterLoading
+    const HomePageLoading = userLoading || arrMovieLoading || arrTheaterLoading;
+    const CheckoutPageLoading = bookingInfoLoading;
 
-    const playLoading = loading || HomePageLoading || isLoading
+    const playLoading = isLazy || HomePageLoading || CheckoutPageLoading
 
-    console.log('HomePageLoading', HomePageLoading)
-    console.log('userLoading', userLoading)
-    console.log('arrMovieLoading', arrMovieLoading)
-    console.log('arrTheaterLoading', arrTheaterLoading)
 
     return (
         <Fragment>

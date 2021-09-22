@@ -47,14 +47,16 @@ export const registerUser = (values, history, openNotification) => {
     }
 }
 
-export const getUserInfo = () => {
-    return async (dispatch) => {
-        try {
-            const res = await manageUserService.fetchUserInfo();
-            dispatch(createAction(actionTypes.FETCH_USER_INFO, res.data.content))
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
-}
+// export const getUserInfo = () => {
+//     return async (dispatch) => {
+//         try {
+//             dispatch(createAction(actionTypes.FETCH_USER_REQUEST))
+//             const res = await manageUserService.fetchUserInfo();
+//             await dispatch(createAction(actionTypes.FETCH_USER_INFO, res.data.content))
+//             dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
+//         }
+//         catch (error) {
+//             console.log(error)
+//         }
+//     }
+// }

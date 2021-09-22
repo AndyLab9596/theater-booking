@@ -1,5 +1,5 @@
 import { CloseOutlined, InfoOutlined, UserOutlined } from '@ant-design/icons';
-import { Modal, Result } from 'antd';
+import { message, Modal, Result } from 'antd';
 import _ from 'lodash';
 import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -9,18 +9,22 @@ import { getBookingTicketInfo } from '../../../store/actions/MangeBookingAction'
 import { actionTypes } from '../../../store/actions/Types';
 import formMoney from '../../../utils/formMoney';
 import TimeOut from '../TimeOut';
+import CheckoutModal from '../CheckoutModal';
+import { useHistory } from 'react-router';
 
 const Payment = ({
     bookingInfo,
     movieId,
     onBookingArr,
     currentUser,
-
+    next,
+    prev
 }) => {
 
     const handleChange = (e) => {
         setChecked(e.target.checked)
     }
+    const history = useHistory()
 
     const dispatch = useDispatch()
     const [checked, setChecked] = useState(false)
@@ -32,18 +36,25 @@ const Payment = ({
         bookingTicketInfo.danhSachVe = onBookingArr;
         setIsModalVisible(false)
         dispatch(getBookingTicketInfo(bookingTicketInfo))
+        message.success('Processing complete!')
+        setTimeout(() => {
+            history.push('/')
+        }, 500)
     }
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
+
         if (checked) {
             setIsModalVisible(true);
         }
+        next()
     };
 
     const handleCancel = () => {
         setIsModalVisible(false);
+        prev()
     };
 
     const { thongTinPhim, danhSachGhe } = bookingInfo
@@ -68,7 +79,8 @@ const Payment = ({
                 <Fragment key={index}>
                     <button
                         onClick={() => {
-                            dispatch(createAction(actionTypes.BOOKING_SEAT, seat))
+                            dispatch(createAction(actionTypes.BOOKING_SEAT, seat));
+
                         }}
                         disabled={seat.daDat} className={`
                         w-8 h-8 rounded-lg m-1 bg-blue-500 
@@ -102,7 +114,7 @@ const Payment = ({
                         </div>
                         <div className="mr-10">
                             <p className="text-gray-400 text-base">Time Out</p>
-                            <TimeOut />
+                            <TimeOut currentUser={currentUser} />
                         </div>
                     </div>
 
@@ -202,7 +214,8 @@ const Payment = ({
                             <input type="checkbox" className="form-checkbox h-14 w-14 text-indigo-600"
                                 onChange={(e) => handleChange(e)} />
                             <p className="ml-2 text-white">
-                                I Accept" button, you represent that you have read and understand this agreement, any additional terms and conditions imposed by the promoter
+                                I Accept" button, you represent that you have read and understand this agreement,
+                                any additional terms and conditions imposed by the promoter
                             </p>
                         </label>
                     </div>
@@ -215,35 +228,23 @@ const Payment = ({
                                     : `disabled:opacity-50 bg-transparent border-2 border-indigo-500 cursor-not-allowed`
                                 }
                         `}
-                            onClick={showModal}>
+                            onClick={showModal}
+                        >
                             BOOKING TICKET
                         </button>
 
                     </div>
                     <Modal
-                        bodyStyle={{ backgroundColor: '#032055' }}
                         visible={isModalVisible}
                         footer={null}
                         centered
                         keyboard
                         closable={false}
+                        onCancel
+                        bodyStyle={{ padding: 0, margin: 0 }}
                     >
-
-                        <Result
-                            icon={<InfoOutlined style={{ color: "#31d7a9" }} />}
-                            title={<h5 className="text-4xl text-white">Confirm Booking !</h5>}
-                            extra={[
-                                <button className="button--action-modal"
-                                    onClick={() => handleSendBookingTicket()}
-                                >Confirm</button>,
-                                <button
-                                    onClick={handleCancel}
-                                    className="button--transparent-modal">Go back</button>,
-                            ]}
-                            className="customResult"
-                        />
+                        <CheckoutModal handleSendBookingTicket={handleSendBookingTicket} handleCancel={handleCancel} />
                     </Modal>
-
                 </div>
             </div>
 
