@@ -27,9 +27,9 @@ export const getBookingTicketInfo = (bookingInfo = new BookingTicketInfo()) => {
             dispatch(createAction(actionTypes.GET_BOOKING_TICKET_INFO, res.data.content))
 
             // nếu đặt vé thành công gọi api load lại phòng vé 
-            // await dispatch(getBookingInfo(bookingInfo.maLichChieu))
+            await dispatch(getBookingInfo(bookingInfo.maLichChieu))
             // đồng thời clear mảng bên booking summary
-            // await dispatch(createAction(actionTypes.FINISH_BOOKING))
+            dispatch(createAction(actionTypes.FINISH_BOOKING))
             // await dispatch(createAction(actionTypes.HIDE_TICKET_REQUEST))
             // dispatch(createAction(actionTypes.CHANGE_TAB))
             console.log(res)

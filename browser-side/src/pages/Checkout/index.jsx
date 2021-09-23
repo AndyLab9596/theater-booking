@@ -3,8 +3,11 @@ import { Button, message, Steps, Tabs } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
+import createAction from '../../store/actions/createAction';
 import { getBookingInfo } from '../../store/actions/MangeBookingAction';
+import { actionTypes } from '../../store/actions/Types';
 import './checkout.scss';
+import NotiModal from './NotiModal';
 import Payment from './Payment';
 
 const { Step } = Steps;
@@ -15,6 +18,7 @@ const CheckoutPage = (props) => {
     const currentUser = useSelector(state => state.UserReducer.currentUser);
     const { bookingInfo, onBookingArr } = useSelector(state => state.BookingReducer);
     const tabActive = useSelector(state => state.BookingReducer.tabActive);
+    console.log(onBookingArr)
 
     const history = useHistory()
     const movieId = useParams()
@@ -26,6 +30,7 @@ const CheckoutPage = (props) => {
     }, [dispatch, movieId])
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isNotiModalVisible, setIsNotiModalVisible] = useState(false);
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -38,6 +43,11 @@ const CheckoutPage = (props) => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    const handleBackToHome = () => {
+        dispatch(createAction(actionTypes.FINISH_BOOKING));
+        history.push('/')
+    }
 
     const steps = [
         {
@@ -69,6 +79,12 @@ const CheckoutPage = (props) => {
     useEffect(() => {
         fetchBooking()
     }, [fetchBooking])
+
+    useEffect(() => {
+        if (onBookingArr.length > 10) {
+            setIsNotiModalVisible(state => !state)
+        }
+    }, [onBookingArr.length])
 
 
 
@@ -118,7 +134,7 @@ const CheckoutPage = (props) => {
 
                     <ArrowRightOutlined style={{ fontSize: "20px", color: "white", fontWeight: 500 }}
                         className="ml-1 py-1.5 "
-                        onClick={() => history.push('/')}
+                        onClick={() => handleBackToHome()}
                     />
                 </div>
             </div>
@@ -130,6 +146,10 @@ const CheckoutPage = (props) => {
             next={next}
             prev={prev}
             {...props} />
+        {/* <button onClick={() => setIsNotiModalVisible(state => !state)}>Click</button>
+        {onBookingArr.length > 10 ? !isNotiModalVisible : isNotiModalVisible} */}
+
+        <NotiModal isNotiModalVisible={isNotiModalVisible} setIsNotiModalVisible={setIsNotiModalVisible} />
 
         {/* <Tabs defaultActiveKey="1"
             activeKey={tabActive}

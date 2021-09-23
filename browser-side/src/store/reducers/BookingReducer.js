@@ -30,6 +30,11 @@ export const BookingReducer = (state = initialValue, action) => {
             state.onBookingArr = [];
             return { ...state }
         }
+        case actionTypes.OVER_10_SEATS: {
+            let updateBookingArr = [...state.onBookingArr];
+            updateBookingArr.pop()
+            return { ...state, onBookingArr: updateBookingArr }
+        }
         case actionTypes.CHANGE_TAB: {
             state.tabActive = "2";
             return { ...state }
