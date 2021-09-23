@@ -10,6 +10,7 @@ export const getBookingInfo = (maLichChieu) => {
             dispatch(createAction(actionTypes.FETCH_BOOKING_INFO_REQUEST))
             const res = await manageBookingService.getBookingInfo(maLichChieu);
             await dispatch(createAction(actionTypes.GET_BOOKING_INFO, res.data.content))
+            await dispatch(createAction(actionTypes.FINISH_BOOKING))
             dispatch(createAction(actionTypes.HIDE_BOOKING_INFO_REQUEST))
         }
         catch (error) {

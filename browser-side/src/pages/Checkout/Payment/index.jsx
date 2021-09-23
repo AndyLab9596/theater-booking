@@ -19,7 +19,8 @@ const Payment = ({
     onBookingArr,
     currentUser,
     next,
-    prev
+    prev,
+    key
 }) => {
 
     const handleChange = (e) => {
@@ -47,7 +48,7 @@ const Payment = ({
 
     const showModal = () => {
 
-        if (checked) {
+        if (checked && onBookingArr.length > 0) {
             setIsModalVisible(true);
         }
         next()
@@ -115,7 +116,7 @@ const Payment = ({
                         </div>
                         <div className="mr-10">
                             <p className="text-gray-400 text-base">Time Out</p>
-                            <TimeOut />
+                            <TimeOut key={key} />
                         </div>
                     </div>
 
@@ -225,7 +226,7 @@ const Payment = ({
                         <button
                             className={
                                 `px-12 py-3 font-semibold text-sm rounded-full text-white duration-300 ease-in-out min-w-52
-                            ${checked ? `bg-gradient-to-r from-yellow-400 via-red-500 to-indigo-700 hover:shadow-button`
+                            ${checked && onBookingArr.length > 0 ? `bg-gradient-to-r from-yellow-400 via-red-500 to-indigo-700 hover:shadow-button`
                                     : `disabled:opacity-50 bg-transparent border-2 border-indigo-500 cursor-not-allowed`
                                 }
                         `}

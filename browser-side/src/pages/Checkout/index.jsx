@@ -1,6 +1,6 @@
 import { ArrowRightOutlined, DollarOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, message, Steps, Tabs } from 'antd';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import createAction from '../../store/actions/createAction';
@@ -16,21 +16,23 @@ const { TabPane } = Tabs;
 
 const CheckoutPage = (props) => {
     const currentUser = useSelector(state => state.UserReducer.currentUser);
-    const { bookingInfo, onBookingArr } = useSelector(state => state.BookingReducer);
-    const tabActive = useSelector(state => state.BookingReducer.tabActive);
-    console.log(onBookingArr)
-
+    const { bookingInfo, onBookingArr, timeOut } = useSelector(state => state.BookingReducer);
+    // const tabActive = useSelector(state => state.BookingReducer.tabActive);
+    console.log('timeOut', timeOut)
     const history = useHistory()
     const movieId = useParams()
     const dispatch = useDispatch()
 
-    const fetchBooking = useCallback(() => {
-        dispatch(getBookingInfo(movieId.id))
+    const fetchBooking = useCallback(async () => {
+        await dispatch(getBookingInfo(movieId.id))
+
+        refreshKey(Date.now())
 
     }, [dispatch, movieId])
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isNotiModalVisible, setIsNotiModalVisible] = useState(false);
+    const [key, refreshKey] = useState(1)
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -78,13 +80,17 @@ const CheckoutPage = (props) => {
 
     useEffect(() => {
         fetchBooking()
+
     }, [fetchBooking])
 
     useEffect(() => {
         if (onBookingArr.length > 10) {
             setIsNotiModalVisible(state => !state)
         }
-    }, [onBookingArr.length])
+        if (timeOut) {
+            setIsNotiModalVisible(state => !state)
+        }
+    }, [onBookingArr.length, timeOut])
 
 
 
@@ -139,7 +145,9 @@ const CheckoutPage = (props) => {
                 </div>
             </div>
         </header>
-        <Payment bookingInfo={bookingInfo}
+        <Payment
+            key={key}
+            bookingInfo={bookingInfo}
             onBookingArr={onBookingArr}
             currentUser={currentUser}
             movieId={movieId}
@@ -149,7 +157,12 @@ const CheckoutPage = (props) => {
         {/* <button onClick={() => setIsNotiModalVisible(state => !state)}>Click</button>
         {onBookingArr.length > 10 ? !isNotiModalVisible : isNotiModalVisible} */}
 
-        <NotiModal isNotiModalVisible={isNotiModalVisible} setIsNotiModalVisible={setIsNotiModalVisible} />
+        <NotiModal
+            fetchBooking={fetchBooking}
+            onBookingArr={onBookingArr}
+            timeOut={timeOut}
+            isNotiModalVisible={isNotiModalVisible}
+            setIsNotiModalVisible={setIsNotiModalVisible} />
 
         {/* <Tabs defaultActiveKey="1"
             activeKey={tabActive}
@@ -195,4 +208,4 @@ const CheckoutPage = (props) => {
     </section>
 }
 
-export default CheckoutPage;
+export default memo(CheckoutPage);
