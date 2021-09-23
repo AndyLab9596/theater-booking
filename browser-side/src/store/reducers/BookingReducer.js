@@ -35,14 +35,14 @@ export const BookingReducer = (state = initialValue, action) => {
             updateBookingArr.pop()
             return { ...state, onBookingArr: updateBookingArr }
         }
-        case actionTypes.CHANGE_TAB: {
-            state.tabActive = "2";
-            return { ...state }
-        }
-        case actionTypes.CHANGE_TAB_TYPE: {
-            state.tabActive = action.payload;
-            return { ...state }
-        }
+        // case actionTypes.CHANGE_TAB: {
+        //     state.tabActive = "2";
+        //     return { ...state }
+        // }
+        // case actionTypes.CHANGE_TAB_TYPE: {
+        //     state.tabActive = action.payload;
+        //     return { ...state }
+        // }
 
 
         default: return { ...state }

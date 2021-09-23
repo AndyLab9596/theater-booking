@@ -11,6 +11,7 @@ import formMoney from '../../../utils/formMoney';
 import TimeOut from '../TimeOut';
 import CheckoutModal from '../CheckoutModal';
 import { useHistory } from 'react-router';
+import './payment.scss'
 
 const Payment = ({
     bookingInfo,
@@ -114,7 +115,7 @@ const Payment = ({
                         </div>
                         <div className="mr-10">
                             <p className="text-gray-400 text-base">Time Out</p>
-                            <TimeOut currentUser={currentUser} />
+                            <TimeOut />
                         </div>
                     </div>
 
@@ -243,7 +244,12 @@ const Payment = ({
                         onCancel
                         bodyStyle={{ padding: 0, margin: 0 }}
                     >
-                        <CheckoutModal handleSendBookingTicket={handleSendBookingTicket} handleCancel={handleCancel} />
+                        <CheckoutModal
+                            currentUser={currentUser}
+                            onBookingArr={onBookingArr}
+                            thongTinPhim={thongTinPhim}
+                            handleSendBookingTicket={handleSendBookingTicket}
+                            handleCancel={handleCancel} />
                     </Modal>
                 </div>
             </div>

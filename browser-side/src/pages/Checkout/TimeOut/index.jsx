@@ -3,7 +3,7 @@ import { zeroPad } from 'react-countdown';
 import Countdown from 'react-countdown';
 import { useSelector } from 'react-redux';
 
-const TimeOut = ({ currentUser }) => {
+const TimeOut = () => {
 
     const setTimeCount = useMemo(() => {
         return Date.now() + 300000
