@@ -6,9 +6,6 @@ export class ManageMovieService extends baseService {
     constructor(props) {
         super()
     }
-    getArrBanner = () => {
-        return this.get(`/api/QuanLyPhim/LayDanhSachBanner`)
-    }
 
     getArrMovies = () => {
         return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`)
@@ -17,6 +14,10 @@ export class ManageMovieService extends baseService {
     getArrMoviesPagination = (page) => {
         return this.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${GROUPID}&soTrang=${page}&soPhanTuTrenTrang=8`)
     }
+    // getArrMoviesPagination = (page) => {
+    //     return this.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${GROUPID}&soTrang=${page}&soPhanTuTrenTrang=8`)
+    // }
+
     getSingleMovie = (id) => {
         return this.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`)
     }

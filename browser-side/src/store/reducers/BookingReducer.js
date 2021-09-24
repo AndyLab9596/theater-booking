@@ -43,16 +43,6 @@ export const BookingReducer = (state = initialValue, action) => {
             state.timeOut = true;
             return { ...state }
         }
-        // case actionTypes.CHANGE_TAB: {
-        //     state.tabActive = "2";
-        //     return { ...state }
-        // }
-        // case actionTypes.CHANGE_TAB_TYPE: {
-        //     state.tabActive = action.payload;
-        //     return { ...state }
-        // }
-
-
         default: return { ...state }
 
     }

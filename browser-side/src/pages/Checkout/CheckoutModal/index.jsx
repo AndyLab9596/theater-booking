@@ -1,10 +1,10 @@
-import { CheckOutlined } from '@ant-design/icons';
 import React from 'react';
 import formMoney from '../../../utils/formMoney';
 
 
 const CheckoutModal = ({ currentUser, onBookingArr, thongTinPhim, handleSendBookingTicket, handleCancel }) => {
     const { diaChi, gioChieu, hinhAnh, maLichChieu, ngayChieu, tenCumRap, tenPhim, tenRap } = thongTinPhim
+    console.log(currentUser)
     return (
 
         <div className="bg-bgColorDetail p-14 rounded-2xl overflow-hidden">
@@ -30,9 +30,9 @@ const CheckoutModal = ({ currentUser, onBookingArr, thongTinPhim, handleSendBook
             <div className>
                 <h3 className="text-center text-lg font-bold text-white pt-2 border-t-2 border-yellow-300 ">TICKET INFO</h3>
                 <div>
-                    <p className="text-base text-white">Name: {currentUser.hoTen}</p>
-                    <p className="text-base text-white">Email: {currentUser.email}</p>
-                    <p className="text-base text-white">Phone: {currentUser.soDT}</p>
+                    <p className="text-base text-white">Name: {currentUser?.hoTen}</p>
+                    <p className="text-base text-white">Email: {currentUser?.email}</p>
+                    <p className="text-base text-white">Phone: {currentUser?.soDT}</p>
                     <p className="text-lg text-red-500 font-semibold">Total Pay:
                         <span className="ml-1">
                             {formMoney(

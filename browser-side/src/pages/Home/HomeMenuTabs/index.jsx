@@ -5,6 +5,7 @@ import React, { Fragment, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { NavLink } from 'react-router-dom';
 import LstLichChieu from './lstLichChieu';
+import rapChieu from '../../../assets/img/rapchieu.jpg'
 
 const HomeMenuTabs = ({ arrTheater }) => {
     const { TabPane } = Tabs;
@@ -47,13 +48,16 @@ const HomeMenuTabs = ({ arrTheater }) => {
                     <div className="col-start-3 col-span-4 ml-5 overflow-y-auto h-96">
                         <Scrollbars>
                             {lstCumRap?.map((station, index) => {
+                                console.log(station)
                                 return (
 
                                     <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 
                                     ${index === valueDsPhim && 'opacity-100'}`} key={index}
                                         onClick={() => setValueDsPhim(index)}
                                     >
-                                        <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" />
+                                        {/* Cần fix lại chỗ này vì api trả về ko có hình ảnh cụm rạp */}
+                                        <img src={rapChieu}
+                                            alt={index} className="mr-5 object-cover w-12 h-12" />
 
                                         <div className="text-left">
                                             <h6 className="text-md text-white font-semibold 

@@ -10,17 +10,13 @@ export class ManageUserService extends baseService {
         return this.post(`/api/QuanLyNguoiDung/DangNhap`, values)
     }
 
-    fetchUser = () => {
-        return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
+    fetchUser = (value) => {
+        return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`, value)
     }
 
     registerUser = (values) => {
         return this.post(`/api/QuanLyNguoiDung/DangKy`, values)
     }
-
-    // fetchUserInfo = () => {
-    //     return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
-    // }
 
 }
 

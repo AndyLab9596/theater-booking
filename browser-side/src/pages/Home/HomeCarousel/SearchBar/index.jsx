@@ -91,8 +91,6 @@ const SearchBar = ({ arrMovies }) => {
                     max-h-full
                     ">
                         <Select
-                            // className="searchBar"
-
                             placeholder={
                                 <div className="flex items-center">
                                     <h6 className="mr-2 text-lg text-greenText font-semibold">Select Movie</h6>

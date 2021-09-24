@@ -1,15 +1,6 @@
 import React from 'react';
-import Slider from "react-slick";
-import './homeApp.scss'
+import './homeApp.scss';
 const HomeApp = () => {
-    const settings = {
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-    };
     return (
         <section id="app" className="py-8 bg-no-repeat bg-cover bg-center"
             style={{ backgroundImage: `url("https://tix.vn/app/assets/img/icons/backapp.jpg")` }}>
@@ -47,40 +38,12 @@ const HomeApp = () => {
                     </div>
 
                     <div className="col-span-6 ">
-                        {/* <div className="p-0 relative">
-                            <img src="https://tix.vn/app/assets/img/icons/mobile.png" alt=""
-                                className="w-full object-cover block" style={{ padding: '0 28%' }}
-                            />
-                            <Slider {...settings} className="slickMobile">
-                                <div>
-                                    <img src="https://tix.vn/app/assets/img/icons/slide/slide16.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <img src="https://tix.vn/app/assets/img/icons/slide/slide1.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <img src="https://tix.vn/app/assets/img/icons/slide/slide2.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <img src="https://tix.vn/app/assets/img/icons/slide/slide3.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <img src="https://tix.vn/app/assets/img/icons/slide/slide4.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <img src="https://tix.vn/app/assets/img/icons/slide/slide5.jpg" alt="" />
-                                </div>
-
-                            </Slider>
-                        </div> */}
-
                         <div className="p-0 relative">
                             <img src="http://pixner.net/boleto/demo/assets/images/apps/apps01.png" alt=""
                                 className="w-full object-cover block" style={{ padding: '0 28%' }}
                             />
 
                         </div>
-
                     </div>
                 </div>
 

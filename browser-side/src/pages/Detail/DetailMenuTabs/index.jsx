@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { Fragment, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import ButtonCheckout from '../../../components/ButtonCheckout';
+import rapChieu from '../../../assets/img/rapchieu.jpg'
 
 const DetailMenuTabs = ({ arrTheater }) => {
 
@@ -28,9 +29,6 @@ const DetailMenuTabs = ({ arrTheater }) => {
         return gioChieuRenDer;
     }
 
-    console.log('lichChieuPhim', notDuplicateShowInfo)
-
-
     return (
         <section className="py-14 bg-bgColorMain" >
 
@@ -54,6 +52,7 @@ const DetailMenuTabs = ({ arrTheater }) => {
                                     className="object-cover w-12 h-12 rounded-full cursor-pointer"
                                     onClick={() => setValueLstCumRap(index)}
                                 />
+
                             </div>
 
                         ))}
@@ -68,7 +67,8 @@ const DetailMenuTabs = ({ arrTheater }) => {
                                     ${index === valueDsPhim && 'opacity-100'}`} key={index}
                                         onClick={() => setValueDsPhim(index)}
                                     >
-                                        <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" />
+                                        {/* <img src={station.hinhAnh} alt={index} className="mr-5 object-cover w-12 h-12" /> */}
+                                        <img src={rapChieu} alt={index} className="mr-5 object-cover w-12 h-12" />
 
                                         <div className="text-left">
                                             <h6 className="text-md text-white font-semibold 

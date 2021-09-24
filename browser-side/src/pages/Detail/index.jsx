@@ -1,7 +1,7 @@
 import { CustomCard } from '@tsamantanis/react-glassmorphism';
 import '@tsamantanis/react-glassmorphism/dist/index.css';
 import moment from 'moment';
-import React, { Fragment, useCallback, useEffect } from 'react';
+import React, { Fragment, memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { getSingleMovieWithSchedule } from '../../store/actions/ManageTheaterAction';
@@ -92,4 +92,4 @@ const DetailPage = () => {
     );
 };
 
-export default DetailPage;
+export default memo(DetailPage);

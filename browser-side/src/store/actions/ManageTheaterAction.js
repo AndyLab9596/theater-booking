@@ -8,7 +8,7 @@ export const getShowScheduleTheaterLocation = (setTheaters) => {
         try {
             dispatch(createAction(actionTypes.FETCH_THEATER_REQUEST));
             const res = await manageTheaterService.getShowScheduleTheaterLocation();
-            await dispatch(createAction(actionTypes.FETCH_THEATER, res.data.content));
+            await dispatch(createAction(actionTypes.FETCH_THEATER, res.data));
             dispatch(createAction(actionTypes.HIDE_THEATER_REQUEST))
         }
         catch (error) {
@@ -22,7 +22,7 @@ export const getSingleMovieWithSchedule = (id) => {
     return async (dispatch) => {
         try {
             const res = await manageTheaterService.getSingleMovieWithSchedule(id);
-            dispatch(createAction(actionTypes.FETCH_MOVIE_SCHEDULE, res.data.content))
+            dispatch(createAction(actionTypes.FETCH_MOVIE_SCHEDULE, res.data))
         }
         catch (error) {
             console.log(error)

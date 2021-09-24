@@ -30,8 +30,6 @@ const settings = {
 };
 
 
-
-
 const HomeCarousel = ({ arrMovies }) => {
 
     const slider = useRef(null);
@@ -43,11 +41,8 @@ const HomeCarousel = ({ arrMovies }) => {
         slider.current.innerSlider.slickPrev()
     }
 
-
     const dispatch = useDispatch();
-    // const fetchArrBanner = useCallback(() => {
-    //     dispatch(getArrBanner())
-    // }, [dispatch]);
+
 
     const arrBanner = useSelector(state => state.MovieReducer.arrBanner);
     console.log(arrBanner)

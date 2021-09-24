@@ -9,22 +9,25 @@ export const loginUser = (values, history, openNotification) => {
     return async (dispatch) => {
         try {
             const res = await manageUserService.loginUser(values);
-            dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
-            localStorage.setItem(TOKEN, res.data.content.accessToken)
+            console.log(res)
+            dispatch(createAction(actionTypes.LOGIN_USER, res.data))
+            localStorage.setItem(TOKEN, res.data.taiKhoan)
             history()
         }
         catch (error) {
-            openNotification(error.response.data.content)
+            console.log(error.response)
+            openNotification(error.response.data)
         }
     }
 }
 
-export const fetchUser = () => {
+export const fetchUser = (taiKhoan) => {
     return async (dispatch) => {
         try {
             dispatch(createAction(actionTypes.FETCH_USER_REQUEST))
-            const res = await manageUserService.fetchUser();
-            await dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
+            const res = await manageUserService.fetchUser(taiKhoan);
+            console.log(res)
+            await dispatch(createAction(actionTypes.LOGIN_USER, res.data))
             dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
 
         }
@@ -42,21 +45,7 @@ export const registerUser = (values, history, openNotification) => {
             history()
         }
         catch (error) {
-            openNotification(error.response.data.content)
+            openNotification(error.response.data)
         }
     }
 }
-
-// export const getUserInfo = () => {
-//     return async (dispatch) => {
-//         try {
-//             dispatch(createAction(actionTypes.FETCH_USER_REQUEST))
-//             const res = await manageUserService.fetchUserInfo();
-//             await dispatch(createAction(actionTypes.FETCH_USER_INFO, res.data.content))
-//             dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
-//         }
-//         catch (error) {
-//             console.log(error)
-//         }
-//     }
-// }
