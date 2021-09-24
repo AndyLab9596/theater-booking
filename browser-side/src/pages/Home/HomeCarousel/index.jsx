@@ -33,7 +33,6 @@ const settings = {
 const HomeCarousel = ({ arrMovies }) => {
 
     const slider = useRef(null);
-    console.log(slider)
 
     const next = () => {
         slider.current.innerSlider.slickNext()

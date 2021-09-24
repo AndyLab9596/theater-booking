@@ -14,7 +14,6 @@ const DetailPage = () => {
     const detailId = useParams();
     const singleMovieWithSchedule = useSelector(state => state.TheaterReducer.singleMovieWithSchedule);
     const { biDanh, dangChieu, danhGia, hinhAnh, hot, maNhom, maPhim, moTa, ngayKhoiChieu, sapChieu, tenPhim, trailer, heThongRapChieu } = singleMovieWithSchedule || {};
-    console.log(heThongRapChieu)
     const dispatch = useDispatch();
     const fetchSingleMovie = useCallback(() => {
         dispatch(getSingleMovieWithSchedule(detailId.id))

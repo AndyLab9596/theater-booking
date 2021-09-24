@@ -11,13 +11,16 @@ import HomeMovieTab from './HomeMovieTab';
 import MovieList from '../../components/MovieList'
 import HomeNews from './HomeNews';
 import HomeApp from './HomeApp';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router';
 
 const HomePage = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation()
+    console.log('history', history)
+    console.log('location', location)
 
 
     const arrMoviesPagination = useSelector(state => state.MovieReducer.arrMoviesPagination);
@@ -54,7 +57,6 @@ const HomePage = () => {
 
 
     const fetchArrMoviesPagination = useCallback((page) => {
-        // dispatch(getArrMoviesPagination(page))
         page ? dispatch(getArrMoviesPagination(page)) : dispatch(getArrMoviesPagination(1))
     }, [dispatch, page])
 
@@ -117,7 +119,6 @@ const HomePage = () => {
             <HomeNews />
             <HomeApp />
 
-            {/* <Testing arrTheater={arrTheater} /> */}
         </div>
     );
 };

@@ -13,13 +13,11 @@ const NotiModal = ({ onBookingArr, fetchBooking, timeOut, isNotiModalVisible, se
         dispatch(createAction(actionTypes.OVER_10_SEATS))
         setIsNotiModalVisible(state => !state)
     }
-    // <NavLink to={`/checkout
 
     const params = useParams();
     const handleTimeOut = () => {
         history.push(`/checkout/${params.id}`)
         setIsNotiModalVisible(state => !state)
-        // fetchBooking()
     }
 
     return (

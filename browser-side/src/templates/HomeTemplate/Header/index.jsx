@@ -12,6 +12,9 @@ const Header = () => {
     const location = useLocation();
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.UserReducer.currentUser);
+    const { userLoading, arrMovieLoading, arrTheaterLoading } = useSelector(state => state.LoadingReducer)
+    const HomepageLoading = userLoading || arrMovieLoading || arrTheaterLoading;
+
     const handleLogOut = () => {
         dispatch(createAction(actionTypes.LOGOUT_USER));
         history.push('/');
@@ -45,9 +48,15 @@ const Header = () => {
     }
 
     useEffect(() => {
-
-    }, [])
-
+        if (!HomepageLoading) {
+            setTimeout(() => {
+                scroller.scrollTo(location.state, {
+                    duration: 800,
+                    smooth: 'easeInOutQuart'
+                })
+            }, 500)
+        }
+    }, [HomepageLoading])
 
 
     return (

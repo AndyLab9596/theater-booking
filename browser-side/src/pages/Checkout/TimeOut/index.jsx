@@ -1,16 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { zeroPad } from 'react-countdown';
-import Countdown from 'react-countdown';
-import { useSelector } from 'react-redux';
+import React, { useMemo } from 'react';
+import Countdown, { zeroPad } from 'react-countdown';
 import { useDispatch } from 'react-redux';
+import createAction from '../../../store/actions/createAction/';
 import { actionTypes } from '../../../store/actions/Types';
-import createAction from '../../../store/actions/createAction/'
 
 const TimeOut = () => {
     const dispatch = useDispatch();
 
     const setTimeCount = useMemo(() => {
-        return Date.now() + 20000
+        return Date.now() + 300000
     }, [])
 
     const handleTimeOut = () => {
