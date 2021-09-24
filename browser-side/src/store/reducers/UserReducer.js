@@ -18,10 +18,6 @@ export const UserReducer = (state = initialValue, action) => {
             localStorage.removeItem(TOKEN);
             return { ...state }
         }
-        // case actionTypes.FETCH_USER_INFO: {
-        //     state.currentUserInfo = action.payload;
-        //     return { ...state }
-        // }
 
         default:
             return { ...state }

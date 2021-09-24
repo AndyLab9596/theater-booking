@@ -1,7 +1,32 @@
-import { actionTypes } from "../actions/Types"
+import { actionTypes } from "../actions/Types";
+import shangchi from '../../assets/img/banner/shangchi.jpg'
+import armyofthedead from '../../assets/img/banner/armyofthedead.jpg'
+import dune from '../../assets/img/banner/dune.jpg'
 
 const initialValue = {
-    arrBanner: [],
+    arrBanner: [
+        {
+            hinhAnh: shangchi,
+            trailer: "https://youtu.be/5K66kfVce0k",
+            tenPhim: "Shang Chi and The Legend of Ten Rings",
+            biDanh: "shang-chi-and-the-legend-of-ten-rings",
+            maPhim: 1322,
+        },
+        {
+            hinhAnh: armyofthedead,
+            trailer: "https://youtu.be/tI1JGPhYBS8",
+            tenPhim: "Army of the Dead",
+            biDanh: "army-of-the-dead",
+            maPhim: 1337,
+        },
+        {
+            hinhAnh: dune,
+            trailer: "https://youtu.be/8g18jFHCLXk",
+            tenPhim: "Dune",
+            biDanh: "dune",
+            maPhim: 1352,
+        },
+    ],
     arrMoviesPagination: [],
     arrMovies: [],
     modalState: {},

@@ -11,6 +11,7 @@ const ModalTrailer = () => {
     const { isOpen, trailer } = playModal || {};
 
     const trailerId = trailer?.length > 30 ? trailer?.slice(30) : trailer?.slice(16)
+    console.log(trailerId)
     return (
         <div>
             <ModalVideo
