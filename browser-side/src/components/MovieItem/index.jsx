@@ -1,18 +1,31 @@
+import { PlayCircleOutlined } from '@ant-design/icons';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import createAction from '../../store/actions/createAction';
+import { actionTypes } from '../../store/actions/Types';
 import './movieItem.scss'
 
 const MovieItem = ({ movie }) => {
+    const dispatch = useDispatch()
     const { trailer, tenPhim, moTa, hinhAnh, danhGia, maPhim } = movie
     return (
         <div className="card px-2 w-full rounded-lg overflow-hidden" >
-            <NavLink to="/" className="card__thumbnail block relative h-96 rounded overflow-hidden">
+            <div className="relative card-thumbnail block  h-96 rounded overflow-hidden">
                 <img
-                    className="card-thumbnail-img object-cover object-center w-full h-full "
+                    className=" card-thumbnail-img object-cover object-center w-full h-full"
                     src={hinhAnh}
                     onError={e => (e.target.src = "https://picsum.photos/264/370/")}
                     alt="movie" />
-            </NavLink>
+                <div className=" absolute bottom-2/4 left-2/4 z-10 transform -translate-x-2/4 translate-y-2/4">
+                    <PlayCircleOutlined
+                        style={{ fontSize: "50px", color: '#31d7a9' }}
+                        className="card-icon"
+                        onClick={() => dispatch(createAction(actionTypes.PLAY_MODAL,
+                            { isOpen: true, trailer: trailer }))}
+                    />
+                </div>
+            </div>
             <div className="card__content px-5 bg-bgColorDetail" >
                 <h5 className="card__content__title py-6 uppercase text-2xl border-b-2 border-dashed border-yellow-500 text-white font-semibold text-left
                                     align-middle

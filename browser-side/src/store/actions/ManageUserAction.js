@@ -1,5 +1,5 @@
 import { manageUserService } from '../../services/manageUserService';
-import { TOKEN } from '../../utils/config';
+import { TAIKHOAN, TOKEN } from '../../utils/config';
 import createAction from './createAction/index';
 import { actionTypes } from './Types/index';
 
@@ -11,7 +11,8 @@ export const loginUser = (values, history, openNotification) => {
             const res = await manageUserService.loginUser(values);
             console.log(res)
             dispatch(createAction(actionTypes.LOGIN_USER, res.data))
-            localStorage.setItem(TOKEN, res.data.taiKhoan)
+            localStorage.setItem(TOKEN, res.data.accessToken)
+            localStorage.setItem(TAIKHOAN, res.data.taiKhoan)
             history()
         }
         catch (error) {

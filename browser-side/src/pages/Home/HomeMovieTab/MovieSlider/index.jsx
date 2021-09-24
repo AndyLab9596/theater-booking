@@ -60,7 +60,7 @@ const MovieSlider = ({ movieArr }) => {
                         </div>
                     </div>
                     <div className="card__content px-5 bg-bgColorDetail" >
-                        <h5 className="card__content__title py-6 uppercase text-2xl border-b-2 border-dashed border-yellow-500 text-white font-semibold text-left align-middle"
+                        <h5 className="card__content__title py-6 uppercase text-lg border-b-2 border-dashed border-yellow-500 text-white font-semibold text-left align-middle"
                             style={{ minHeight: "130px" }}
                         >
                             {tenPhim}

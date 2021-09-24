@@ -76,9 +76,9 @@ const DetailPage = () => {
                                 </div>
                             </div>
 
-                            <div className="items-center flex-shrink-0 hidden lg:flex">
+                            {/* <div className="items-center flex-shrink-0 hidden lg:flex">
                                 <button className="button--action ">BOOKING TICKET</button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

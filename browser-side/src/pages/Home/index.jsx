@@ -1,19 +1,15 @@
-import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import { Pagination } from 'antd';
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
 import './home.scss';
+import HomeApp from './HomeApp';
 import HomeCarousel from './HomeCarousel';
 import HomeMenuTabs from './HomeMenuTabs';
-import HomeMovieTab from './HomeMovieTab';
-import MovieList from '../../components/MovieList'
-import HomeNews from './HomeNews';
-import HomeApp from './HomeApp';
-import { useHistory, useLocation } from 'react-router-dom';
-import { useParams } from 'react-router';
 import HomeMovieList from './HomeMovieList';
+import HomeMovieTab from './HomeMovieTab';
+import HomeNews from './HomeNews';
 
 const HomePage = () => {
 

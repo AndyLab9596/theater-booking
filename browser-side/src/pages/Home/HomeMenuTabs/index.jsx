@@ -48,7 +48,6 @@ const HomeMenuTabs = ({ arrTheater }) => {
                     <div className="col-start-3 col-span-4 ml-5 overflow-y-auto h-96">
                         <Scrollbars>
                             {lstCumRap?.map((station, index) => {
-                                console.log(station)
                                 return (
 
                                     <div className={`cursor-pointer flex flex-nowrap p-1 opacity-50 

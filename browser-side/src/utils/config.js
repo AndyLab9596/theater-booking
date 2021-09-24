@@ -1,6 +1,7 @@
 
 export const DOMAIN = "https://movie0706.cybersoft.edu.vn";
 export const TOKEN = "accessToken";
+export const TAIKHOAN = "taiKhoan";
 export const GROUPID = "GP09";
 export const USER = "USER";
 
