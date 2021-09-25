@@ -433,6 +433,7 @@ module.exports = {
       '5/6': '83.333333%',
       full: '100%',
       screen: '100vh',
+      '104': '416px'
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -750,6 +751,7 @@ module.exports = {
     translate: (theme, { negative }) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
+      '1/10': '12%',
       '1/2': '50%',
       '1/3': '33.333333%',
       '2/3': '66.666667%',

@@ -1,14 +1,13 @@
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import React, { Fragment, useEffect, useState } from 'react';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import { TOKEN } from '../../../utils/config'
-import { UserOutlined, LoginOutlined } from '@ant-design/icons';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
+import { scroller } from 'react-scroll';
+import iconLogo from '../../../assets/img/iconlogo.png';
 import createAction from '../../../store/actions/createAction';
 import { actionTypes } from '../../../store/actions/Types';
-import { scroller } from 'react-scroll';
-import iconLogo from '../../../assets/img/iconlogo.png'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { TOKEN } from '../../../utils/config';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -75,88 +74,8 @@ const Header = () => {
 
 
     return (
-        // <header className={`py-5 w-full fixed z-10 
-        // ${scroll ? 'bg-bgColorDetail' : 'bg-transparent'}`}>
-        //     <div className="container flex justify-between items-center align-middle h-16 mx-auto">
-        //         <NavLink to="/" className="flex items-center">
-        //             <img src={iconLogo} alt="logo" className="h-10 object-cover" />
-        //         </NavLink>
-        //         <ul className="items-center hidden space-x-3 lg:flex align-middle x">
-        //             <li className="flex px-3 text-xl font-bold cursor-pointer">
-        //                 <p className="flex items-center text-white my-auto"
-        //                     activeClassName="border-b-2 border-green-500"
-        //                     onClick={() => handleClickNav("home")}
-        //                 >
-        //                     HOME
-        //                 </p>
-        //             </li>
-        //             <li className="flex px-3 text-xl font-bold cursor-pointer">
-        //                 <p className="flex items-center text-white my-auto"
-        //                     onClick={() => handleClickNav("movie")}
-        //                     activeClassName="border-b-2 border-green-500">
-        //                     MOVIE
-        //                 </p>
-        //             </li>
-        //             <li className="flex px-3 text-xl font-bold cursor-pointer">
-        //                 <p className="flex items-center text-white my-auto"
-        //                     onClick={() => handleClickNav("theater")}
-        //                     activeClassName="border-b-2 border-green-500">
-        //                     THEATER
-        //                 </p>
-        //             </li>
-        //             <li className="flex px-3 text-xl font-bold cursor-pointer">
-        //                 <p className="flex items-center text-white my-auto"
-        //                     onClick={() => handleClickNav("news")}
-        //                     activeClassName="border-b-2 border-green-500">
-        //                     NEWS
-        //                 </p>
-        //             </li>
-        //             <li className="flex px-3 text-xl font-bold cursor-pointer">
-        //                 <p className="flex items-center text-white my-auto"
-        //                     onClick={() => handleClickNav("app")}
-        //                     activeClassName="border-b-2 border-green-500">
-        //                     APPLICATION
-        //                 </p>
-        //             </li>
-        //         </ul>
 
-        // {!localStorage.getItem(TOKEN) && (
-        //     <div className="items-center flex-shrink-0 hidden lg:flex" onClick={() => history.push('/signin')}>
-        //         <button className="authBtn">JOIN US</button>
-        //     </div>
-        // )
-        // }
-
-        // {
-        //     localStorage.getItem(TOKEN) && (
-        //         <div className="items-center flex-shrink-0 hidden lg:flex  align-middle" >
-        //             <div className="flex align-middle">
-        // <UserOutlined
-        //     className="py-1.5 mr-2 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full h-8 w-8 leading-8"
-        //     style={{ fontSize: "20px", color: "white", fontWeight: 500 }}
-        // />
-        // <p className="text-pink-200 text-lg font-bold flex items-center border-r-2 border-indigo-500 pr-5">
-        //     {currentUser?.taiKhoan}
-        // </p>
-
-        // <LoginOutlined style={{ fontSize: "20px", color: "white", fontWeight: 500 }}
-        //     className="ml-5 py-1.5 "
-        //     onClick={handleLogOut}
-        // />
-        //             </div>
-        //         </div>
-        //     )
-        // }
-
-        //         <button className="p-4 lg:hidden">
-        //             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-coolGray-800">
-        //                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        //             </svg>
-        //         </button>
-        //     </div>
-        // </header>
-
-        <Disclosure as="nav" className={`py-1 w-full fixed z-10 bg-bgColorDetail
+        <Disclosure as="nav" className={`py-1 w-full fixed z-20 bg-bgColorDetail
          ${scroll ? 'sm:bg-bgColorDetail' : 'sm:bg-transparent'}`}>
             {({ open }) => (
                 <>
@@ -231,14 +150,15 @@ const Header = () => {
                                                 leaveFrom="transform opacity-100 scale-100"
                                                 leaveTo="transform opacity-0 scale-95"
                                             >
-                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg px-1 py-1 
-                                                bg-bgColorMain ring-1 ring-black ring-opacity-5 focus:outline-none divide-y-2">
+                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg p-3
+                                                bg-bgColorMain ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <span
-                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-1 text-sm text-white')}
+                                                                className={classNames(active ? 'bg-gray-500' : '',
+                                                                    'cursor-pointer block px-4 py-1 my-2 text-sm text-greenText ')}
                                                             >
-                                                                {currentUser?.taiKhoan} ABC
+                                                                {currentUser?.taiKhoan}
                                                             </span>
                                                         )}
                                                     </Menu.Item>
@@ -247,7 +167,8 @@ const Header = () => {
                                                         {({ active }) => (
                                                             <span
                                                                 onClick={() => handleLogOut()}
-                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-1 text-sm text-red-500')}
+                                                                className={classNames(active ? 'bg-gray-500' : '',
+                                                                    'cursor-pointer block px-4 py-1 my-2 text-sm font-semibold text-red-500')}
                                                             >
                                                                 Sign out
                                                             </span>

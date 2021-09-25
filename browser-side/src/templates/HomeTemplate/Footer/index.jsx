@@ -46,7 +46,7 @@ const Footer = () => {
                             <li>Guidelines</li>
                         </ul>
                     </div>
-                    <div className="col-start-5 col-span-3">
+                    <div className="col-start-5 col-span-7 sm:col-span-4 ml-2 sm:ml-5">
                         <h6 className="text-left text-sm leading-8 text-white">Partners</h6>
                         <div className="grid grid-flow-col grid-cols-5 grid-rows-4 gap-3">
                             {icons.map((icon, index) => (
@@ -57,7 +57,7 @@ const Footer = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="col-start-8 col-span-3 flex justify-around">
+                    <div className="col-start-2 col-span-8 sm:col-start-8 sm:col-span-3 flex justify-around">
                         <div>
                             <h6 className="text-white">Mobile Apps</h6>
                             <div className="flex justify-between items-center space-x-5 p-1">

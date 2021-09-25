@@ -58,18 +58,16 @@ const SearchBar = ({ arrMovies }) => {
     }
 
     return (
-        <div className="w-full absolute transform -translate-y-1/4 mx-auto">
-
-            <div className="container max-w-5xl mx-auto">
+        <div className="md:w-4/5 xl:w-full absolute transform xl:translate-x-0  md:translate-x-1/10 -translate-y-1/4 mx-auto hidden sm:block">
+            <div className="container mx-auto">
 
                 {/* Có thể chèn background linear gradient chỗ này để cho đẹp hơn, cần nâng cấp !!! */}
-                <div className="py-10 px-8 bg-cover bg-center bg-no-repeat rounded-xl"
+                <div className="py-8 px-6 xl:py-10 xl:px-8 bg-cover bg-center bg-no-repeat rounded-xl"
                     style={{ backgroundImage: `url(${SearchBarbg})` }}>
-
                     <div className="grid grid-cols-2">
                         <div className="text-left">
                             <h6 className="text-lg font-semibold text-greenText mb-4 -mt-2">WELCOME TO TIX</h6>
-                            <h3 className="text-3xl font-bold text-white leading-6">WHAT ARE YOUT LOOKING FOR?</h3>
+                            <h3 className="md:text-3xl text-xl font-bold text-white leading-6">WHAT ARE YOUT LOOKING FOR?</h3>
                         </div>
                         <div className="flex justify-center items-center">
                             <Tooltip title="Choose your movie then booking !">
@@ -84,7 +82,7 @@ const SearchBar = ({ arrMovies }) => {
                     </div>
 
                     <div className="
-                    p-8 mt-8 shadow-2xl 
+                    p-8 mt-1 xl:mt-8 shadow-2xl 
                     border-t-2 border-b-2 border-indigo-500
                     bg-black
                     bg-opacity-50

@@ -1,24 +1,11 @@
 import { LeftOutlined, PlayCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { Carousel } from 'antd';
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import createAction from '../../../store/actions/createAction';
-import { getArrBanner } from '../../../store/actions/ManageMovieAction';
 import { actionTypes } from '../../../store/actions/Types';
 import './carousel.scss';
 import SearchBar from './SearchBar';
-
-
-const contentStyle = {
-    height: '100vh',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    backgroundPosition: 'center',
-    backgroundSize: '100%',
-    backgroundRepeat: 'no-repeat',
-
-};
 
 const settings = {
     dots: false,
@@ -45,20 +32,40 @@ const HomeCarousel = ({ arrMovies }) => {
 
 
     const arrBanner = useSelector(state => state.MovieReducer.arrBanner);
-    console.log(arrBanner)
 
     const renderBanner = () => {
         return arrBanner.map((banner, index) => {
             return <div key={index}>
-                <div className="flex justify-center items-center" style={{ ...contentStyle, backgroundImage: `url(${banner.hinhAnh})` }} >
-                    <div className="overlay"></div>
+                <div className="flex justify-center items-center
+                bg-center bg-cover bg-no-repeat
+                md:h-104 xl:h-screen 
+                
+                " style={{
+
+                        backgroundImage: `url(${banner.hinhAnh})`
+                    }}>
+                    {/* <div className="overlay"></div> */}
                     <div className="relative z-50">
-                        <PlayCircleOutlined
+                        <div className="group">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                onClick={() => dispatch(createAction(actionTypes.PLAY_MODAL,
+                                    { isOpen: true, trailer: banner.trailer }))}
+                                className="h-16 w-16  text-green-100 opacity-25
+                                transition duration-300 
+                                group-hover:text-green-500 group-hover:opacity-100"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+
+                        </div>
+
+                        {/* <PlayCircleOutlined
                             style={{ fontSize: "50px", color: '#31d7a9', }}
                             className="playIcon"
                             onClick={() => dispatch(createAction(actionTypes.PLAY_MODAL,
                                 { isOpen: true, trailer: banner.trailer }))}
-                        />
+                        /> */}
                     </div>
                 </div>
             </div>
@@ -66,12 +73,28 @@ const HomeCarousel = ({ arrMovies }) => {
     }
 
     return (
-        <div id="home">
-            <RightOutlined style={{ right: "0px" }} onClick={() => next()} className="slider-arrow" />
+        <div id="home" className="hidden sm:block">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                className="h-10 w-10 absolute top-48 right-5 xl:top-2/4 xl:right-10 z-10 cursor-pointer 
+            text-red-500 transition duration-300 hover:text-yellow-500"
+                onClick={() => prev()}
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+
             <Carousel autoplay  {...settings} ref={slider}>
                 {renderBanner()}
             </Carousel>
-            <LeftOutlined style={{ left: "0px" }} onClick={() => prev()} className="slider-arrow" />
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 absolute top-48 left-5 xl:top-2/4 xl:left-10 z-10 cursor-pointer 
+                transition duration-300
+                text-red-500 hover:text-yellow-500"
+                onClick={() => next()}
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+
             <SearchBar arrMovies={arrMovies} />
         </div>
     );

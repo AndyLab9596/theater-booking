@@ -4,17 +4,6 @@
     display: none;
 }
 
-// .ant-carousel .slick-dots li button {
-//     width: 12px !important;
-//     height: 12px !important;
-//     border-radius: 50% !important;
-//     display: none;
-// }
-// .ant-carousel .slick-dots li.slick-active button {
-//     margin: 0 !important;
-//     padding: 0 !important;
-// }
-
 .slider-arrow {
     position: absolute;
     top: 53%;
@@ -26,7 +15,6 @@
     color: #d8d8d8 !important;
     cursor: pointer;
     transition: all 0.2s;
-
     &:hover {
         color: #fb4226 !important;
     }
@@ -43,9 +31,28 @@
 }
 
 .playIcon {
+    display: none;
     transition: all 0.3s linear;
     :hover {
         transform: scale(1.1);
+        display: block;
         transition: all 0.3s linear;
+    }
+}
+
+.contentStyle {
+    height: 100vh;
+    color: #fff;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+    .contentStyle {
+        height: 430px;
+    }
+    .slider-arrow {
+        top: 15%;
     }
 }

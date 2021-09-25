@@ -25,7 +25,7 @@ const HomePage = lazy(() => {
 })
 const DetailPage = lazy(() => {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(import('./pages/Detail')), 500)
+    setTimeout(() => resolve(import('./pages/Detail')), 700)
   })
 })
 const SignInPage = lazy(() => {
