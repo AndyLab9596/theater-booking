@@ -8,7 +8,7 @@ const { TabPane } = Tabs;
 const HomeMovieTab = ({ arrMovies, arrMoviesOnShowing, arrMoviesUpComing }) => {
 
     return (
-        <section className="py-8 bg-bgColorMain">
+        <section className="pt-64 pb-8 bg-bgColorMain">
             <div className="container mx-auto w-full px-1 ">
 
                 <div className="px-10 ">

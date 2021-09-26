@@ -12,7 +12,7 @@ export function NextArrow(props) {
     const { onClick } = props;
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 absolute top-5 -right-5  z-10 cursor-pointer 
+            className="h-5 w-5 absolute top-5 -right-2  z-10 cursor-pointer 
             text-red-500 transition duration-300 hover:text-yellow-500"
             onClick={onClick}
             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -25,7 +25,7 @@ export function PrevArrow(props) {
     const { onClick } = props;
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 absolute top-5 -left-5 z-10 cursor-pointer 
+            class="h-5 w-5 absolute top-5 -left-2 z-10 cursor-pointer 
                 transition duration-300
                 text-red-500 hover:text-yellow-500"
             onClick={onClick}
@@ -76,8 +76,7 @@ const HomeMenuTabsMobileView = ({ arrTheater }) => {
 
     return (
         <div>
-            <h2> Responsive </h2>
-            <div className="container px-12 py-12 mx-auto">
+            <div className="container p-5 mx-auto">
                 <Slider {...settings}>
                     {renderArrTheater()}
                 </Slider>
@@ -111,7 +110,7 @@ const HomeMenuTabsMobileView = ({ arrTheater }) => {
                                                 </div>
                                                 <ChevronUpIcon
                                                     className={`${open ? 'transform rotate-180' : ''
-                                                        } w-5 h-5 text-purple-500`}
+                                                        } w-5 h-5 mr-5 text-purple-500`}
                                                 />
                                             </Disclosure.Button>
                                             {station.danhSachPhim.map((movie, index) => {

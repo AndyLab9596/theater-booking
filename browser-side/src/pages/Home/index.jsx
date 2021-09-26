@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router';
 import { getArrMovies, getArrMoviesPagination } from '../../store/actions/ManageMovieAction';
 import { getShowScheduleTheaterLocation } from '../../store/actions/ManageTheaterAction';
@@ -12,6 +13,8 @@ import HomeMovieTab from './HomeMovieTab';
 import HomeNews from './HomeNews';
 
 const HomePage = () => {
+    const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
+
 
     const dispatch = useDispatch();
 
@@ -20,8 +23,8 @@ const HomePage = () => {
 
     // const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
     // const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
-    const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.slice(-15))
-    const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.slice(15))
+    const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.slice(-(arrMovies.length / 2)))
+    const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.slice((arrMovies.length / 2)))
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
 
     // Pagination
@@ -51,11 +54,14 @@ const HomePage = () => {
     return (
         <div>
             <HomeCarousel arrMovies={arrMovies} />
-            <HomeMovieList arrMovies={arrMovies} page={page} items={items} totalCount={totalCount} />
-            <HomeMovieTab
-                arrMovies={arrMovies}
-                arrMoviesOnShowing={arrMoviesOnShowing}
-                arrMoviesUpComing={arrMoviesUpComing} />
+            {isMobile ?
+                <HomeMovieList arrMovies={arrMovies} page={page} items={items} totalCount={totalCount} />
+                : <HomeMovieTab
+                    arrMovies={arrMovies}
+                    arrMoviesOnShowing={arrMoviesOnShowing}
+                    arrMoviesUpComing={arrMoviesUpComing} />
+            }
+
 
             <HomeMenuTabs arrTheater={arrTheater} />
             <HomeNews />

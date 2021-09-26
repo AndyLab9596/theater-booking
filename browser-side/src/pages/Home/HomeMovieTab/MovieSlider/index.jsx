@@ -32,7 +32,29 @@ const MovieSlider = ({ movieArr }) => {
         rows: 2,
         slidesPerRow: 4,
         nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />
+        prevArrow: <PrevArrow />,
+        responsive: [
+            {
+                breakpoint: 769,
+                settings: {
+                    slidesToShow: 1,
+                    slidesPerRow: 2,
+                    rows: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                }
+            },
+            {
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 1,
+                    slidesPerRow: 3,
+                    rows: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                }
+            },
+        ]
 
     };
     // const [isOpen, setOpen] = useState(false)

@@ -13,12 +13,12 @@ const HomeMovieList = ({ arrMovies, page, items, totalCount }) => {
         if (type === 'prev') {
             return <a>
                 <DoubleLeftOutlined style={{ color: "#5560ff", position: 'relative', transform: "translateY(-4px)", marginRight: "5px" }} />
-                <span className="text-base text-indigo-500">Prev</span>
+                {/* <span className="text-base text-indigo-500">Prev</span> */}
             </a>;
         }
         if (type === 'next') {
             return <a>
-                <span className="text-base text-indigo-500">Next</span>
+                {/* <span className="text-base text-indigo-500">Next</span> */}
                 <DoubleRightOutlined style={{ color: "#5560ff", position: 'relative', transform: "translateY(-4px)", marginLeft: "5px" }} />
             </a>
         }
@@ -30,7 +30,7 @@ const HomeMovieList = ({ arrMovies, page, items, totalCount }) => {
         history.push({ pathname: `/page/${page}` })
     }
     return (
-        <section id="movie" className="pt-64 pb-8 bg-bgColorMain">
+        <section id="movie" className="py-16 bg-bgColorMain">
             <div className="container mx-auto w-full px-1">
                 <div className="px-10 py-8">
                     <div className="">
