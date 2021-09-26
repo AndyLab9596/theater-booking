@@ -31,6 +31,35 @@
         border-radius: 50%;
     }
 
+    @media (max-width: 640px) {
+        .ant-pagination-item-active.ant-pagination-item {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: linear-gradient(169deg, #5560ff 0%, #ff4343 100%);
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 500;
+            outline: none;
+            border: none;
+            color: #ffffff;
+        }
+        .ant-pagination-item {
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 500;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+        }
+    }
+
     .ant-pagination-item a {
         color: #5560ff;
     }

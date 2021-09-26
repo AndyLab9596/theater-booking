@@ -4,9 +4,9 @@ const HomeApp = () => {
     return (
         <section id="app" className="py-8 bg-no-repeat bg-cover bg-center"
             style={{ backgroundImage: `url("https://tix.vn/app/assets/img/icons/backapp.jpg")` }}>
-            <div className="container mx-auto w-full px-1 ">
+            <div className="container mx-auto w-full p-5 ">
                 <div className="grid grid-cols-12 ">
-                    <div className="col-span-6 text-white text-left flex  justify-center items-start flex-col">
+                    <div className="col-span-12 sm:col-span-6 text-white text-left flex  justify-center items-start flex-col">
                         <h3 className="text-4xl text-white">
                             APPLY APPLICATION HERE
                         </h3>
@@ -37,7 +37,7 @@ const HomeApp = () => {
                         </p>
                     </div>
 
-                    <div className="col-span-6 ">
+                    <div className="col-span-12 sm:col-span-6 ">
                         <div className="p-0 relative">
                             <img src="http://pixner.net/boleto/demo/assets/images/apps/apps01.png" alt=""
                                 className="w-full object-cover block" style={{ padding: '0 28%' }}

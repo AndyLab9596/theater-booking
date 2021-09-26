@@ -48,13 +48,13 @@ const HomeMovieList = ({ arrMovies, page, items, totalCount }) => {
                         total={totalCount}
                         itemRender={itemRender}
                         showSizeChanger={false}
-                        showTotal={total => {
-                            return (
-                                <span className="text-white text-sm">
-                                    {`Total ${total} movies`}
-                                </span>
-                            )
-                        }}
+                        // showTotal={total => {
+                        //     return (
+                        //         <span className="text-white text-sm">
+                        //             {`Total ${total} movies`}
+                        //         </span>
+                        //     )
+                        // }}
                         className="homepage__pagination"
                     />
                 </div>

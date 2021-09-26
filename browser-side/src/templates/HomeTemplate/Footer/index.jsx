@@ -29,10 +29,10 @@ const Footer = () => {
 
     return (
         <footer className="py-6 bg-bgColorDetail">
-            <div className="container">
-                <div className="grid grid-cols-12">
+            <div className="container mx-auto p-5">
+                <div className=" grid grid-cols-12">
 
-                    <div className="col-start-3">
+                    <div className="col-start-1 col-span-5 sm:col-start-2">
                         <img src="http://pixner.net/boleto/demo/assets/images/logo/logo.png" alt="logo"
                             className="h-10 object-cover object-scale-down" />
                         <ul className="text-xs leading-8 text-white text-left">
@@ -46,7 +46,7 @@ const Footer = () => {
                             <li>Guidelines</li>
                         </ul>
                     </div>
-                    <div className="col-start-5 col-span-7 sm:col-span-4 ml-2 sm:ml-5">
+                    <div className="order-1 col-span-12 sm:col-start-4 sm:col-span-5">
                         <h6 className="text-left text-sm leading-8 text-white">Partners</h6>
                         <div className="grid grid-flow-col grid-cols-5 grid-rows-4 gap-3">
                             {icons.map((icon, index) => (
@@ -57,7 +57,7 @@ const Footer = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="col-start-2 col-span-8 sm:col-start-8 sm:col-span-3 flex justify-around">
+                    <div className="col-span-5 sm:col-start-9 sm:col-span-3 sm:flex  sm:justify-around  flex flex-col">
                         <div>
                             <h6 className="text-white">Mobile Apps</h6>
                             <div className="flex justify-between items-center space-x-5 p-1">

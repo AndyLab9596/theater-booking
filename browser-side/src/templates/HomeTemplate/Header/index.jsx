@@ -137,7 +137,7 @@ const Header = () => {
                                                 <Menu.Button className="flex text-sm rounded-full 
                                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-10 w-10  bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
+                                                        class="h-8 w-8 sm:h-10 sm:w-10  bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                     </svg>
@@ -199,7 +199,7 @@ const Header = () => {
                                     <p
                                         key={item.name}
                                         className="block px-3 py-2 rounded-md text-gray-300 text-base font-semibold 
-                                        hover:bg-bgColorMain hover:text-greenText"
+                                        hover:bg-bgColorMain hover:text-greenText cursor-pointer"
                                         onClick={() => handleClickNav(item.id)}
                                     >
                                         {item.name}

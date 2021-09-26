@@ -61,10 +61,8 @@ const HomePage = () => {
                     arrMoviesOnShowing={arrMoviesOnShowing}
                     arrMoviesUpComing={arrMoviesUpComing} />
             }
-
-
             <HomeMenuTabs arrTheater={arrTheater} />
-            <HomeNews />
+            {/* <HomeNews /> */}
             <HomeApp />
         </div>
     );
