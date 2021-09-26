@@ -1,4 +1,3 @@
-import { LeftOutlined, PlayCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { Carousel } from 'antd';
 import React, { memo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,33 +38,24 @@ const HomeCarousel = ({ arrMovies }) => {
                 <div className="flex justify-center items-center
                 bg-center bg-cover bg-no-repeat
                 md:h-104 xl:h-screen 
-                
                 " style={{
 
                         backgroundImage: `url(${banner.hinhAnh})`
                     }}>
                     {/* <div className="overlay"></div> */}
                     <div className="relative z-50">
-                        <div className="group">
+                        <div className="group cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 onClick={() => dispatch(createAction(actionTypes.PLAY_MODAL,
                                     { isOpen: true, trailer: banner.trailer }))}
                                 className="h-16 w-16  text-green-100 opacity-25
-                                transition duration-300 
+                                transition duration-300 cursor-pointer
                                 group-hover:text-green-500 group-hover:opacity-100"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-
                         </div>
-
-                        {/* <PlayCircleOutlined
-                            style={{ fontSize: "50px", color: '#31d7a9', }}
-                            className="playIcon"
-                            onClick={() => dispatch(createAction(actionTypes.PLAY_MODAL,
-                                { isOpen: true, trailer: banner.trailer }))}
-                        /> */}
                     </div>
                 </div>
             </div>

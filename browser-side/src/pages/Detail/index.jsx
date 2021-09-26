@@ -75,10 +75,6 @@ const DetailPage = () => {
                                     <span className="pl-2 text-black font-bold text-lg self-center leading-7">{danhGia * 10}%</span>
                                 </div>
                             </div>
-
-                            {/* <div className="items-center flex-shrink-0 hidden lg:flex">
-                                <button className="button--action ">BOOKING TICKET</button>
-                            </div> */}
                         </div>
                     </div>
                 </div>

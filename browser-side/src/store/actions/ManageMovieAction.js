@@ -6,7 +6,6 @@ export const getArrMoviesPagination = (page) => {
     return async (dispatch) => {
         try {
             const res = await manageMovieService.getArrMoviesPagination(page);
-            console.log(res)
             dispatch(createAction(actionTypes.FETCH_MOVIES_PAGINATION, res.data))
         }
         catch (error) {
