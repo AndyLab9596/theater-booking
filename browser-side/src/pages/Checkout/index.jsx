@@ -1,11 +1,13 @@
 import { Steps, Tabs } from 'antd';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { useHistory, useParams } from 'react-router';
 import createAction from '../../store/actions/createAction';
 import { getBookingInfo } from '../../store/actions/MangeBookingAction';
 import { actionTypes } from '../../store/actions/Types';
 import './checkout.scss';
+import CheckoutMobileView from './CheckoutMobileView';
 import Header from './Header';
 import NotiModal from './NotiModal';
 import Payment from './Payment';
@@ -82,10 +84,30 @@ const CheckoutPage = (props) => {
     }, [onBookingArr.length, timeOut])
 
 
+    const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
 
-    return <section className=" bg-bgColorMain">
+    return <section className=" bg-bgColorMain h-screen">
 
-        <Header currentUser={currentUser} current={current} handleBackToPrevPage={handleBackToPrevPage} />
+        {isMobile ?
+            <>
+                <CheckoutMobileView />
+            </>
+            : <>
+
+                <Header currentUser={currentUser} current={current} handleBackToPrevPage={handleBackToPrevPage} />
+                <Payment
+                    key={key}
+                    bookingInfo={bookingInfo}
+                    onBookingArr={onBookingArr}
+                    currentUser={currentUser}
+                    movieId={movieId}
+                    next={next}
+                    prev={prev}
+                    {...props} />
+            </>
+        }
+
+        {/* <Header currentUser={currentUser} current={current} handleBackToPrevPage={handleBackToPrevPage} />
         <Payment
             key={key}
             bookingInfo={bookingInfo}
@@ -94,7 +116,7 @@ const CheckoutPage = (props) => {
             movieId={movieId}
             next={next}
             prev={prev}
-            {...props} />
+            {...props} /> */}
         <NotiModal
             fetchBooking={fetchBooking}
             onBookingArr={onBookingArr}

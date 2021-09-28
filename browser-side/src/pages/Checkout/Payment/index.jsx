@@ -12,6 +12,7 @@ import TimeOut from '../TimeOut';
 import CheckoutModal from '../CheckoutModal';
 import { useHistory } from 'react-router';
 import './payment.scss'
+import SeatPlan from '../SeatPlan';
 
 const Payment = ({
     bookingInfo,
@@ -108,8 +109,16 @@ const Payment = ({
         <div className=" py-4">
             <div className="grid grid-cols-12 ">
                 <div className="col-span-8">
+                    <SeatPlan
 
-                    <div className="flex justify-between align-middle">
+                        danhSachGhe={danhSachGhe}
+                        thongTinPhim={thongTinPhim}
+                        onBookingArr={onBookingArr}
+                        currentUser={currentUser}
+                        key={key}
+                    />
+
+                    {/* <div className="flex justify-between align-middle">
                         <div className="ml-10 text-left">
                             <h3 className="text-white text-xl font-bold">{thongTinPhim.tenCumRap} </h3>
                             <p className="text-gray-400 text-base">{thongTinPhim.diaChi} - {thongTinPhim.tenRap}</p>
@@ -135,7 +144,7 @@ const Payment = ({
                     <div className="mt-5 flex justify-center">
                         <table className="divide-y divide-gray-200 w-2/3 table-auto">
                             <thead>
-                                <tr className="flex space-x-5">
+                                <tr className="flex justify-evenly space-x-5">
                                     <th className="flex justify-center">
                                         <button className="w-8 h-8 rounded-lg m-1 bg-blue-500 "></button>
                                         <span className="text-white leading-10">Available</span>
@@ -167,7 +176,7 @@ const Payment = ({
                                 </tr>
                             </thead>
                         </table>
-                    </div>
+                    </div> */}
 
 
                 </div>
