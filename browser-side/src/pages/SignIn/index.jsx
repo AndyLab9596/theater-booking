@@ -65,11 +65,11 @@ const SignInPage = () => {
                             <InputField type="password" name="matKhau" label="PASSWORD" />
                         </div>
                         <div className="space-y-2 space-x-4">
-                            <button type="submit" className="authBtn">
+                            <button type="submit" className="btn--medium">
                                 SIGN IN
                             </button>
                             <NavLink to="/">
-                                <button type="button" className="authBtn" >
+                                <button type="button" className="btn--medium-transparent" >
                                     HOME
                                 </button>
                             </NavLink>

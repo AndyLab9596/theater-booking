@@ -71,12 +71,14 @@ const SignUpPage = () => {
                             <InputField type="text" name="hoTen" label="FULL NAME" />
                         </div>
                         <div className="space-y-2 space-x-4">
-                            <button type="submit" className="authBtn">
+                            <button type="submit" className="btn--medium">
                                 SIGN UP
                             </button>
-                            <button type="reset" className="authBtn" >
-                                RESET
-                            </button>
+                            <NavLink to="/">
+                                <button type="button" className="btn--medium-transparent" >
+                                    HOME
+                                </button>
+                            </NavLink>
                         </div>
                     </Form>
                     <p className="text-base text-white mt-6">

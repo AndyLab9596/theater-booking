@@ -17,7 +17,7 @@ const navigation = [
     { name: 'HOME', id: 'home' },
     { name: 'MOVIE', id: 'movie' },
     { name: 'THEATER', id: 'theater' },
-    { name: 'NEWS', id: 'news' },
+    // { name: 'NEWS', id: 'news' },
     { name: 'APPLICATION', id: 'app' },
 ]
 

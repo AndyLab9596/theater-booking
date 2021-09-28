@@ -23,8 +23,8 @@ const HomePage = () => {
 
     // const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.dangChieu === true));
     // const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.filter(movie => movie.sapChieu === true));
-    const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.slice(-(arrMovies.length / 2)))
-    const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.slice((arrMovies.length / 2)))
+    const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.slice(-40))
+    const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.slice(40))
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
 
     // Pagination

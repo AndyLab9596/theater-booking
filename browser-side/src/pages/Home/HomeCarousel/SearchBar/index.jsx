@@ -66,7 +66,7 @@ const SearchBar = ({ arrMovies }) => {
                     style={{ backgroundImage: `url(${SearchBarbg})` }}>
                     <div className="grid grid-cols-2">
                         <div className="text-left">
-                            <h6 className="text-lg font-semibold text-greenText mb-4 -mt-2">WELCOME TO TIX</h6>
+                            <h6 className="text-lg font-semibold text-greenText mb-4 -mt-2">WELCOME TO BOLETO</h6>
                             <h3 className="md:text-3xl text-xl font-bold text-white leading-6">WHAT ARE YOUT LOOKING FOR?</h3>
                         </div>
                         <div className="flex justify-center items-center">
