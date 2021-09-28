@@ -6,7 +6,7 @@ const initialValue = {
     onBookingArr: [],
     tabActive: "1",
     timeOut: false,
-    refreshKey: 1,
+    activeStep: 0,
 }
 
 export const BookingReducer = (state = initialValue, action) => {
@@ -41,6 +41,10 @@ export const BookingReducer = (state = initialValue, action) => {
         }
         case actionTypes.TIME_OUT: {
             state.timeOut = true;
+            return { ...state }
+        }
+        case actionTypes.MOBILE_SET_STEP: {
+            state.activeStep = action.payload;
             return { ...state }
         }
         default: return { ...state }

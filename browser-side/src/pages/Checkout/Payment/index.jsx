@@ -189,6 +189,7 @@ const Payment = ({
                         currentUser={currentUser}
                         next={next}
                         prev={prev}
+
                     />
 
                 </div>

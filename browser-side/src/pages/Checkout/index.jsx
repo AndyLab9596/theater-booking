@@ -18,9 +18,8 @@ const { TabPane } = Tabs;
 
 const CheckoutPage = (props) => {
     const currentUser = useSelector(state => state.UserReducer.currentUser);
-    const { bookingInfo, onBookingArr, timeOut } = useSelector(state => state.BookingReducer);
+    const { bookingInfo, onBookingArr, timeOut, activeStep } = useSelector(state => state.BookingReducer);
     // const tabActive = useSelector(state => state.BookingReducer.tabActive);
-    console.log('timeOut', timeOut)
     const history = useHistory()
     const movieId = useParams()
     const dispatch = useDispatch()
@@ -99,6 +98,8 @@ const CheckoutPage = (props) => {
                     handleBackToPrevPage={handleBackToPrevPage}
                     next={next}
                     prev={prev}
+                    activeStep={activeStep}
+                    fetchBooking={fetchBooking}
                 />
             </>
             : <>

@@ -74,7 +74,7 @@ const SeatPlan = ({ danhSachGhe, thongTinPhim, onBookingArr, currentUser, key })
                 {renderSeats()}
             </div>
 
-            <div className="flex flex-wrap justify-evenly items-center mt-10">
+            <div className="flex flex-wrap justify-evenly items-center my-10">
                 <div className=" flex justify-center items-center p-1">
                     <button className="w-8 h-8 rounded-lg m-1 bg-blue-500 "></button>
                     <span className="text-white leading-10">Available</span>
