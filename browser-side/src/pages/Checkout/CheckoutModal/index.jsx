@@ -4,14 +4,13 @@ import formMoney from '../../../utils/formMoney';
 
 const CheckoutModal = ({ currentUser, onBookingArr, thongTinPhim, handleSendBookingTicket, handleCancel }) => {
     const { diaChi, gioChieu, hinhAnh, maLichChieu, ngayChieu, tenCumRap, tenPhim, tenRap } = thongTinPhim
-    console.log(currentUser)
     return (
 
-        <div className="bg-bgColorDetail p-14 rounded-2xl overflow-hidden">
-            <div className="flex space-x-4">
+        <div className="sm:bg-bgColorDetail p-14 rounded-2xl overflow-hidden">
+            <div className="sm:flex sm:space-x-4 flex flex-col items-center">
                 <img src={hinhAnh} alt={tenPhim}
                     onError={e => (e.target.src = "https://picsum.photos/264/370/")}
-                    className="object-cover block w-52 h-60 rounded-lg" />
+                    className="object-cover block w-52 h-60 rounded-lg mb-5" />
                 <div className="flex-grow">
                     <h3 className="text-lg text-greenText">{tenPhim}</h3>
                     <p className="text-base text-indigo-300">{tenCumRap}</p>
@@ -28,7 +27,7 @@ const CheckoutModal = ({ currentUser, onBookingArr, thongTinPhim, handleSendBook
                 </div>
             </div>
             <div className>
-                <h3 className="text-center text-lg font-bold text-white pt-2 border-t-2 border-yellow-300 ">TICKET INFO</h3>
+                <h3 className="text-center text-lg font-bold text-white pt-2 border-t-2 border-yellow-300 ">CUSTOMER INFO</h3>
                 <div>
                     <p className="text-base text-white">Name: {currentUser?.hoTen}</p>
                     <p className="text-base text-white">Email: {currentUser?.email}</p>
@@ -43,7 +42,7 @@ const CheckoutModal = ({ currentUser, onBookingArr, thongTinPhim, handleSendBook
                         </span>
                     </p>
                 </div>
-                <div className="flex justify-between">
+                <div className="sm:flex sm:justify-between hidden">
                     <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-12 py-2 
                     bg-green-600 text-base font-medium text-white 
                     hover:bg-green-700 focus:outline-none 

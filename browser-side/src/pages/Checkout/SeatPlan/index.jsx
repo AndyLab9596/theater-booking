@@ -49,8 +49,8 @@ const SeatPlan = ({ danhSachGhe, thongTinPhim, onBookingArr, currentUser, key })
         })
     }
     return (
-        <Fragment>
-            <div className="flex justify-between align-middle">
+        <div className="bg-bgColorMain h-full py-8">
+            <div className="flex justify-between align-middle mt-5">
                 <div className="ml-10 text-left">
                     <h3 className="text-white text-xl font-bold">{thongTinPhim.tenCumRap} </h3>
                     <p className="text-gray-400 text-base">{thongTinPhim.diaChi} - {thongTinPhim.tenRap}</p>
@@ -70,10 +70,47 @@ const SeatPlan = ({ danhSachGhe, thongTinPhim, onBookingArr, currentUser, key })
             </div>
 
 
-            <div>
+            <div className="overflow-x-scroll whitespace-nowrap sm:overflow-x-hidden p-10">
                 {renderSeats()}
             </div>
-            <div className="mt-5 flex justify-center">
+
+            <div className="flex flex-wrap justify-evenly items-center mt-10">
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-blue-500 "></button>
+                    <span className="text-white leading-10">Available</span>
+                </div>
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-yellow-500 "></button>
+                    <span className="text-white leading-10">Vip</span>
+                </div>
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-red-500 ">
+                        <CloseOutlined />
+                    </button>
+                    <span className="text-white leading-10">Served</span>
+                </div>
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-green-500 "></button>
+                    <span className="text-white leading-10">Choosing</span>
+                </div>
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-pink-500 "></button>
+                    <span className="text-white leading-10">Others</span>
+                </div>
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-blue-500 "></button>
+                    <span className="text-white leading-10">Available</span>
+                </div>
+                <div className=" flex justify-center items-center p-1">
+                    <button className="w-8 h-8 rounded-lg m-1 bg-white text-greenText ">
+                        <UserOutlined />
+                    </button>
+                    <span className="text-white leading-10">My</span>
+                </div>
+
+            </div>
+
+            {/* <div className="mt-5 flex justify-evenly flex-wrap w-96 overflow-x-hidden">
                 <table className="divide-y divide-gray-200 w-2/3 table-auto">
                     <thead>
                         <tr className="flex justify-evenly space-x-5">
@@ -108,8 +145,8 @@ const SeatPlan = ({ danhSachGhe, thongTinPhim, onBookingArr, currentUser, key })
                         </tr>
                     </thead>
                 </table>
-            </div>
-        </Fragment>
+            </div> */}
+        </div>
     );
 };
 

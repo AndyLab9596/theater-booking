@@ -13,6 +13,7 @@ import CheckoutModal from '../CheckoutModal';
 import { useHistory } from 'react-router';
 import './payment.scss'
 import SeatPlan from '../SeatPlan';
+import BookingSummary from '../BookingSummary';
 
 const Payment = ({
     bookingInfo,
@@ -106,7 +107,7 @@ const Payment = ({
 
 
     return (
-        <div className=" py-4">
+        <div className="">
             <div className="grid grid-cols-12 ">
                 <div className="col-span-8">
                     <SeatPlan
@@ -180,7 +181,18 @@ const Payment = ({
 
 
                 </div>
-                <div className="p-5 col-span-4 divide-y-2 divide-yellow-600 divide-dashed">
+                <div className="col-span-4 ">
+                    <BookingSummary
+                        movieId={movieId}
+                        thongTinPhim={thongTinPhim}
+                        onBookingArr={onBookingArr}
+                        currentUser={currentUser}
+                        next={next}
+                        prev={prev}
+                    />
+
+                </div>
+                {/* <div className="p-5 col-span-4 divide-y-2 divide-yellow-600 divide-dashed">
                     <h3 className="text-white text-3xl text-center pb-4">
                         BOOKING SUMMARY
                     </h3>
@@ -261,7 +273,7 @@ const Payment = ({
                             handleSendBookingTicket={handleSendBookingTicket}
                             handleCancel={handleCancel} />
                     </Modal>
-                </div>
+                </div> */}
             </div>
 
         </div>

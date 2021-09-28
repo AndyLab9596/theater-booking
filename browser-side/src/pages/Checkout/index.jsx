@@ -90,7 +90,16 @@ const CheckoutPage = (props) => {
 
         {isMobile ?
             <>
-                <CheckoutMobileView />
+                <CheckoutMobileView
+                    key={key}
+                    bookingInfo={bookingInfo}
+                    onBookingArr={onBookingArr}
+                    currentUser={currentUser}
+                    movieId={movieId}
+                    handleBackToPrevPage={handleBackToPrevPage}
+                    next={next}
+                    prev={prev}
+                />
             </>
             : <>
 
