@@ -59,7 +59,7 @@ const NotiModal = ({ onBookingArr, fetchBooking, timeOut, isNotiModalVisible, se
 
             }
             {onBookingArr.length > 10 && (
-                <div className="bg-bgColorDetail p-12 rounded-2xl overflow-hidden">
+                <div className="bg-bgColorDetail w-64 mx-auto p-4 sm:p-12 rounded-2xl overflow-hidden">
                     <div className="flex items-center space-x-4">
                         <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                             <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -67,7 +67,7 @@ const NotiModal = ({ onBookingArr, fetchBooking, timeOut, isNotiModalVisible, se
                             </svg>
                         </div>
                         <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 className="text-xl leading-6 font-bold text-white" id="modal-title">
+                            <h3 className="text-lg sm:text-xl leading-6 font-bold text-white" id="modal-title">
                                 Cannot choose 10 seats at a time
                             </h3>
                         </div>

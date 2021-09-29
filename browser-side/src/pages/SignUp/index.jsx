@@ -60,7 +60,6 @@ const SignUpPage = () => {
                         <p className="text-2xl text-green-500 font-semibold uppercase mb-3">Welcome to</p>
                         <h1 className="text-white text-4xl uppercase">My Theater App</h1>
                     </div>
-                    {/* {console.log(Formik.values)} */}
                     <Form className="space-y-12 ng-untouched ng-pristine ng-valid" autocomplete="off">
                         <div className="grid grid-cols-2 gap-4">
                             <InputField type="text" name="taiKhoan" label="USERNAME" />

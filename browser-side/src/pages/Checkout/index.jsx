@@ -118,16 +118,6 @@ const CheckoutPage = (props) => {
             </>
         }
 
-        {/* <Header currentUser={currentUser} current={current} handleBackToPrevPage={handleBackToPrevPage} />
-        <Payment
-            key={key}
-            bookingInfo={bookingInfo}
-            onBookingArr={onBookingArr}
-            currentUser={currentUser}
-            movieId={movieId}
-            next={next}
-            prev={prev}
-            {...props} /> */}
         <NotiModal
             fetchBooking={fetchBooking}
             onBookingArr={onBookingArr}

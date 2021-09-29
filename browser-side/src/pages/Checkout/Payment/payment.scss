@@ -1,3 +1,11 @@
 .ant-modal-content {
     border-radius: 18px;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+    .ant-modal-content {
+        transform: translateX(15%);
+        width: 256px;
+    }
 }

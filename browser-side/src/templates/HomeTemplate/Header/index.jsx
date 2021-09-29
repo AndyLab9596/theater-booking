@@ -32,7 +32,6 @@ const Header = () => {
     const handleLogOut = () => {
         dispatch(createAction(actionTypes.LOGOUT_USER));
         history.push('/');
-        // window.location.reload();
     }
 
     const [scroll, setScroll] = useState(false)

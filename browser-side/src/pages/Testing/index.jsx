@@ -14,19 +14,6 @@ const Testing = ({ arrTheater }) => {
 
     const { logo, lstCumRap, maHeThongRap, mahom, tenHeThongRap } = arrTheater?.[valueLstCumRap] || {};
     const { danhSachPhim, diaChi, hinhAnh, maCumRap, tenCumRap } = lstCumRap?.[valueDsPhim] || {};
-    console.log('lstCumRap', lstCumRap)
-
-    // const daysShow = danhSachPhim?.map((movie) => {
-    //     return movie.lstLichChieuTheoPhim.map((days) => {
-    //         return days.ngayChieuGioChieu
-    //     })
-    // })
-    // console.log(daysShow?.[0].slice(0, 5))
-    // const displayDayshow = daysShow[0].slice(0, 5)
-    // const testing1 = daysShow.map((day) => (
-    //     moment(day).format('dddd')
-    // ))
-    // console.log(testing1)
 
 
     return (

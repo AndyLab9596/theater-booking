@@ -5,7 +5,6 @@ import './App.css';
 import ActiveLazyLoading from './components/ActiveLazyLoading';
 import Loading from './components/Loading';
 import ModalTrailer from './components/ModalTrailer';
-import Testing from './pages/Testing';
 import { fetchUser } from './store/actions/ManageUserAction';
 import { TAIKHOAN } from './utils/config';
 

@@ -53,8 +53,12 @@ const BookingSummary = ({ thongTinPhim, onBookingArr, currentUser, next, prev, m
     }
     return (
         <div className="bg-bgColorMain h-full pt-5 px-5 divide-y-2 divide-yellow-600 divide-dashed ">
-            <h3 className="text-white text-3xl text-center">
-                BOOKING SUMMARY
+            <h3 className="text-green-500 text-3xl text-center">
+                {formMoney(
+                    onBookingArr.reduce((total, seat, index) => {
+                        return total += seat.giaVe
+                    }, 0)
+                )}
             </h3>
 
             <div className="py-2 text-left text-white">
@@ -63,19 +67,19 @@ const BookingSummary = ({ thongTinPhim, onBookingArr, currentUser, next, prev, m
                 <p>Show Time: <span className="text-gray-400">{thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}</span> </p>
             </div>
 
-            <div className="flex flex-row py-2">
+            <div className="flex flex-row py-2 ">
                 <div className="flex-none">
                     <span className="text-white text-lg">Seats:</span>
                 </div>
-                <div className="flex-grow flex-wrap">
+                <div className="flex-wrap flex">
                     {_.sortBy(onBookingArr, ['stt']).map((onBookingSeat, index) => {
-                        return <span key={index} className="text-base text-gray-400 m-1">
+                        return <p key={index} className="text-base text-gray-400 m-1">
                             {onBookingSeat.stt}
-                        </span>
+                        </p>
                     })}
                 </div>
 
-                <div className="text-right">
+                {/* <div className="text-center">
                     <span className="text-green-500 text-lg">
                         {formMoney(
                             onBookingArr.reduce((total, seat, index) => {
@@ -83,7 +87,7 @@ const BookingSummary = ({ thongTinPhim, onBookingArr, currentUser, next, prev, m
                             }, 0)
                         )}
                     </span>
-                </div>
+                </div> */}
             </div>
 
             <div className="py-2  text-left">

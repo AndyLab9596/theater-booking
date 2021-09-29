@@ -32,7 +32,7 @@ const SeatPlan = ({ danhSachGhe, thongTinPhim, onBookingArr, currentUser, key })
 
                         }}
                         disabled={seat.daDat} className={`
-                        w-8 h-8 rounded-lg m-1 bg-blue-500 
+                        w-6 h-6 md:w-5 md:h-5 lg:w-8 lg:h-8  text-xs  rounded-lg m-1 bg-blue-500 
                         hover:bg-greenText transition duration-300 ease-in-out
                         ${classVipSeat} 
                         ${classSeatServed} 

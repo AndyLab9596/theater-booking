@@ -28,7 +28,7 @@ const Footer = () => {
 
 
     return (
-        <footer className="py-6 bg-bgColorDetail">
+        <footer className="py-6 bg-bgColorMain">
             <div className="container mx-auto p-5">
                 <div className=" grid grid-cols-12">
 
