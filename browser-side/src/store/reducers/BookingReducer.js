@@ -7,6 +7,7 @@ const initialValue = {
     tabActive: "1",
     timeOut: false,
     activeStep: 0,
+    isChecked: null,
 }
 
 export const BookingReducer = (state = initialValue, action) => {
@@ -47,6 +48,11 @@ export const BookingReducer = (state = initialValue, action) => {
             state.activeStep = action.payload;
             return { ...state }
         }
+        case actionTypes.SET_CHECKED: {
+            return { ...state, isChecked: action.payload }
+        }
+
+
         default: return { ...state }
 
     }

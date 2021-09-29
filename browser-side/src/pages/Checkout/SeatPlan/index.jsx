@@ -7,6 +7,7 @@ import TimeOut from '../TimeOut';
 
 const SeatPlan = ({ danhSachGhe, thongTinPhim, onBookingArr, currentUser, key }) => {
     const dispatch = useDispatch()
+    console.log(danhSachGhe)
     const renderSeats = () => {
         return danhSachGhe.map((seat, index) => {
 

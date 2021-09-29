@@ -18,7 +18,7 @@ const { TabPane } = Tabs;
 
 const CheckoutPage = (props) => {
     const currentUser = useSelector(state => state.UserReducer.currentUser);
-    const { bookingInfo, onBookingArr, timeOut, activeStep } = useSelector(state => state.BookingReducer);
+    const { bookingInfo, onBookingArr, timeOut, activeStep, isChecked } = useSelector(state => state.BookingReducer);
     // const tabActive = useSelector(state => state.BookingReducer.tabActive);
     const history = useHistory()
     const movieId = useParams()
@@ -100,6 +100,7 @@ const CheckoutPage = (props) => {
                     prev={prev}
                     activeStep={activeStep}
                     fetchBooking={fetchBooking}
+                    isChecked={isChecked}
                 />
             </>
             : <>

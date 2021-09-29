@@ -11,6 +11,7 @@ export const getBookingInfo = (maLichChieu) => {
             const res = await manageBookingService.getBookingInfo(maLichChieu);
             await dispatch(createAction(actionTypes.GET_BOOKING_INFO, res.data))
             await dispatch(createAction(actionTypes.FINISH_BOOKING))
+            await dispatch(createAction(actionTypes.MOBILE_SET_STEP, 0))
             dispatch(createAction(actionTypes.HIDE_BOOKING_INFO_REQUEST))
         }
         catch (error) {
@@ -26,9 +27,11 @@ export const getBookingTicketInfo = (bookingInfo = new BookingTicketInfo()) => {
             // dispatch(createAction(actionTypes.FETCH_TICKET_REQUEST))
             const res = await manageBookingService.getBookingTicketInfo(bookingInfo);
             dispatch(createAction(actionTypes.GET_BOOKING_TICKET_INFO, res.data))
-
+            console.log(res)
             // nếu đặt vé thành công gọi api load lại phòng vé 
             await dispatch(getBookingInfo(bookingInfo.maLichChieu))
+            //set step lai = 0
+            dispatch(createAction(actionTypes.MOBILE_SET_STEP, 0))
             // đồng thời clear mảng bên booking summary
             dispatch(createAction(actionTypes.FINISH_BOOKING))
             // await dispatch(createAction(actionTypes.HIDE_TICKET_REQUEST))
@@ -36,7 +39,7 @@ export const getBookingTicketInfo = (bookingInfo = new BookingTicketInfo()) => {
             console.log(res)
         }
         catch (error) {
-            console.log(error)
+            console.log(error.response)
         }
     }
 }

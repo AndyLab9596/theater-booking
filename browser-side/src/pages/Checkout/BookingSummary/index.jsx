@@ -1,10 +1,13 @@
 import { message, Modal } from 'antd';
 import _ from 'lodash';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import BookingTicketInfo from '../../../core/models/bookingTicketInfo';
+import createAction from '../../../store/actions/createAction';
 import { getBookingTicketInfo } from '../../../store/actions/MangeBookingAction';
+import { actionTypes } from '../../../store/actions/Types';
 import formMoney from '../../../utils/formMoney';
 import CheckoutModal from '../CheckoutModal';
 
@@ -13,10 +16,17 @@ const BookingSummary = ({ thongTinPhim, onBookingArr, currentUser, next, prev, m
     const [isModalVisible, setIsModalVisible] = useState(false);
     const dispatch = useDispatch()
     const history = useHistory()
+    // const { isChecked, tabActive } = useSelector(state => state.BookingReducer)
 
     const handleChange = (e) => {
         setChecked(e.target.checked)
+
     }
+
+    useEffect(() => {
+        dispatch(createAction(actionTypes.SET_CHECKED, checked))
+    }, [checked])
+
     const showModal = () => {
 
         if (checked && onBookingArr.length > 0) {
@@ -33,6 +43,7 @@ const BookingSummary = ({ thongTinPhim, onBookingArr, currentUser, next, prev, m
         const bookingTicketInfo = new BookingTicketInfo();
         bookingTicketInfo.maLichChieu = movieId.id;
         bookingTicketInfo.danhSachVe = onBookingArr;
+        bookingTicketInfo.taiKhoanNguoiDung = currentUser.taiKhoan
         setIsModalVisible(false)
         dispatch(getBookingTicketInfo(bookingTicketInfo))
         message.success('Processing complete!')

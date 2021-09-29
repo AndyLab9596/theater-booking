@@ -1,4 +1,5 @@
 import { ArrowRightOutlined, UserOutlined } from '@ant-design/icons';
+import { message } from 'antd';
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -11,16 +12,32 @@ import BookingSummary from '../BookingSummary';
 import CheckoutModal from '../CheckoutModal';
 import SeatPlan from '../SeatPlan';
 
-const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, onBookingArr, key, next, prev, movieId, activeStep }) => {
+const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, onBookingArr, key, next, prev, movieId, activeStep, isChecked }) => {
     const { thongTinPhim, danhSachGhe } = bookingInfo
-    const bookingTicketInfo = new BookingTicketInfo();
-    bookingTicketInfo.maLichChieu = movieId.id;
-    bookingTicketInfo.danhSachVe = onBookingArr;
+
+    // const bookingTicketInfo = new BookingTicketInfo();
+    // bookingTicketInfo.maLichChieu = movieId.id;
+    // bookingTicketInfo.danhSachVe = onBookingArr;
+    // console.log(bookingTicketInfo)
+    console.log(currentUser)
+
+    const handleSendBookingTicket = () => {
+        const bookingTicketInfo = new BookingTicketInfo();
+        bookingTicketInfo.maLichChieu = movieId.id;
+        bookingTicketInfo.danhSachVe = onBookingArr;
+        bookingTicketInfo.taiKhoanNguoiDung = currentUser.taiKhoan
+
+        dispatch(getBookingTicketInfo(bookingTicketInfo))
+        message.success('Processing complete!')
+        setTimeout(() => {
+            history.push('/')
+        }, 500)
+    }
 
     const history = useHistory()
     const dispatch = useDispatch()
 
-    console.log(activeStep)
+    console.log(activeStep, isChecked)
 
     const steps = ['Choosing', 'Payment', 'Booking result'];
 
@@ -29,9 +46,9 @@ const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, on
             case 0:
                 return { left: "Back home", right: "Continue" };
             case 1:
-                return { left: "Back", right: "Confirm" };
+                return { left: "Back", right: "Continue" };
             case 2:
-                return { left: "Buy more", right: "Back home" }
+                return { left: "Back", right: "Check out" }
             default:
                 return {}
         }
@@ -51,7 +68,7 @@ const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, on
 
 
     const handleNext = () => {
-        if (activeStep === 0) {
+        if (activeStep === 0 && onBookingArr.length !== 0) {
             dispatch(createAction(actionTypes.MOBILE_SET_STEP, 1))
         }
         if (activeStep === 1) {
@@ -59,7 +76,7 @@ const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, on
             dispatch(createAction(actionTypes.MOBILE_SET_STEP, 2))
         }
         if (activeStep === 2) {
-            dispatch(getBookingTicketInfo(bookingTicketInfo))
+            handleSendBookingTicket()
         }
     }
 
@@ -67,10 +84,6 @@ const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, on
     return (
         <section>
             <header className="bg-bgColorDetail py-4 flex justify-between items-center px-5">
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-300 hover:text-red-600 transition duration-300" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
 
                 {steps.map((step, index) => (
 
@@ -138,8 +151,14 @@ const CheckoutMobileView = ({ currentUser, handleBackToPrevPage, bookingInfo, on
                         <p className="text-lg font-semibold p-1">{bottomButtons().left}</p>
                     </button>
                     <button
+                        disabled={onBookingArr.length === 0}
                         onClick={() => handleNext()}
-                        className="bg-green-300 hover:bg-green-800 transition duration-300 w-full flex items-center justify-center cursor-pointer">
+                        className={`bg-green-300 hover:bg-green-800 transition duration-300 w-full flex items-center justify-center
+                        ${(activeStep === 0 && onBookingArr.length === 0)
+                                || (activeStep === 1 && !isChecked)
+
+                                ? 'cursor-not-allowed' : 'cursor-pointer'}
+                        `}>
                         <p className="text-lg font-semibold p-1">{bottomButtons().right}</p>
                     </button>
                 </div>

@@ -33,18 +33,19 @@ const Payment = ({
     const dispatch = useDispatch()
     const [checked, setChecked] = useState(false)
 
-    const handleSendBookingTicket = () => {
-        if (!checked) return
-        const bookingTicketInfo = new BookingTicketInfo();
-        bookingTicketInfo.maLichChieu = movieId.id;
-        bookingTicketInfo.danhSachVe = onBookingArr;
-        setIsModalVisible(false)
-        dispatch(getBookingTicketInfo(bookingTicketInfo))
-        message.success('Processing complete!')
-        setTimeout(() => {
-            history.push('/')
-        }, 500)
-    }
+    // const handleSendBookingTicket = () => {
+    //     if (!checked) return
+    //     const bookingTicketInfo = new BookingTicketInfo();
+    //     bookingTicketInfo.maLichChieu = movieId.id;
+    //     bookingTicketInfo.danhSachVe = onBookingArr;
+    //     bookingTicketInfo.taiKhoanNguoiDung = currentUser.taiKhoan;
+    //     setIsModalVisible(false)
+    //     dispatch(getBookingTicketInfo(bookingTicketInfo))
+    //     message.success('Processing complete!')
+    //     setTimeout(() => {
+    //         history.push('/')
+    //     }, 500)
+    // }
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -62,6 +63,7 @@ const Payment = ({
     };
 
     const { thongTinPhim, danhSachGhe } = bookingInfo
+    console.log(bookingInfo)
 
     const renderSeats = () => {
         return danhSachGhe.map((seat, index) => {
