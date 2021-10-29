@@ -5,7 +5,7 @@ import HomeMenuTabsMobileView from './HomeMenuTabsMobileView';
 
 
 const HomeMenuTabs = ({ arrTheater }) => {
-
+    // console.log('arrTheater', arrTheater)
     const [valueLstCumRap, setValueLstCumRap] = useState(0);
     const [valueDsPhim, setValueDsPhim] = useState(0);
 

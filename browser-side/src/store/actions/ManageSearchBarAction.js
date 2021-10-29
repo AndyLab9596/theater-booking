@@ -6,7 +6,7 @@ export const searchSingleMovie = (id) => {
     return async (dispatch) => {
         try {
             const res = await manageTheaterService.getSingleMovieWithSchedule(id);
-            dispatch(createAction(actionTypes.FETCH_MOVIE_SCHEDULE, res.data));
+            dispatch(createAction(actionTypes.FETCH_MOVIE_SCHEDULE, res.data.content));
 
         }
         catch (error) {

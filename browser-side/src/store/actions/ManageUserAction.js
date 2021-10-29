@@ -10,14 +10,14 @@ export const loginUser = (values, history, openNotification) => {
         try {
             const res = await manageUserService.loginUser(values);
             console.log(res)
-            dispatch(createAction(actionTypes.LOGIN_USER, res.data))
-            localStorage.setItem(TOKEN, res.data.accessToken)
-            localStorage.setItem(TAIKHOAN, res.data.taiKhoan)
+            dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
+            localStorage.setItem(TOKEN, res.data.content.accessToken)
+            localStorage.setItem(TAIKHOAN, res.data.content.taiKhoan)
             history()
         }
         catch (error) {
             console.log(error.response)
-            openNotification(error.response.data)
+            openNotification(error.response.data.content)
         }
     }
 }
@@ -28,7 +28,7 @@ export const fetchUser = (taiKhoan) => {
             dispatch(createAction(actionTypes.FETCH_USER_REQUEST))
             const res = await manageUserService.fetchUser(taiKhoan);
             console.log(res)
-            await dispatch(createAction(actionTypes.LOGIN_USER, res.data))
+            await dispatch(createAction(actionTypes.LOGIN_USER, res.data.content))
             dispatch(createAction(actionTypes.HIDE_USER_REQUEST))
 
         }
@@ -46,7 +46,7 @@ export const registerUser = (values, history, openNotification) => {
             history()
         }
         catch (error) {
-            openNotification(error.response.data)
+            openNotification(error.response.data.content)
         }
     }
 }

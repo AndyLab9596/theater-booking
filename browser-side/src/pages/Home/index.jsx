@@ -26,7 +26,6 @@ const HomePage = () => {
     const arrMoviesOnShowing = useSelector(state => state.MovieReducer.arrMovies.slice(-40))
     const arrMoviesUpComing = useSelector(state => state.MovieReducer.arrMovies.slice(40))
     const arrTheater = useSelector(state => state.TheaterReducer.arrTheater);
-
     // Pagination
     const { items, totalCount } = arrMoviesPagination || {}
     const pageParam = useParams();

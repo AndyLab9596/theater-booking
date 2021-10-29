@@ -96,7 +96,7 @@ const DetailMenuTabsMobileViews = ({ singleMovieWithSchedule }) => {
         }, [])
     // {giaVe: , logo: , maLichChieu: , maRap: , ngayChieuGioChieu: , tenCumRap: , tenHeThongRap: , tenRap: , thoiLuong: , } = arrayAllLichChieuPhimAddProp
 
-    // console.log('arrayAllLichChieuPhimAddProp', arrayAllLichChieuPhimAddProp)
+    console.log('arrayAllLichChieuPhimAddProp', arrayAllLichChieuPhimAddProp)
 
     // Bước 2: Tạo mảng ngày
 
