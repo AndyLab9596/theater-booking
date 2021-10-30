@@ -14,7 +14,7 @@ const schema = yup.object().shape({
     // .test('Should has at least two words', 'Please enter at least two words', (value) => {
     //     return value.split(' ').length > 2
     // }),
-    matKhau: yup.string().required('password is required !').min(8, 'Please enter at least 8 characters')
+    matKhau: yup.string().required('password is required !').min(6, 'Please enter at least 6 characters')
 })
 
 const SignInPage = () => {

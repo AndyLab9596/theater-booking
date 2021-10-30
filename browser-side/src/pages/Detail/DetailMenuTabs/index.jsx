@@ -36,7 +36,7 @@ const DetailMenuTabs = ({ singleMovieWithSchedule }) => {
         <Fragment>
             <section className="bg-cover bg-no-repeat bg-center h-full backdrop-filter backdrop-blur-lg relative "
                 style={{ backgroundImage: `url(${hinhAnh}), url(${`https://picsum.photos/255/367/`})` }}>
-                <div className="fixed h-full w-full bg-bgColorDetail bg-opacity-80 filter blur-sm"></div>
+                <div className="fixed h-full w-full bg-opacity-80 filter blur-sm"></div>
 
                 <div className="detail__content container mx-auto w-full px-1 pt-40 z-50 relative sm:transform sm:-translate-y-3.5">
                     <div className="px-10 sm:flex sm:flex-nowrap ">
