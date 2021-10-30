@@ -10,5 +10,5 @@ Technologies:
 - Axios
 - Tailwindss, antd, headlessUI and SCSS.
 #### Live Demo: https://my-movie-booking-theater.netlify.app
-user: admintest
-password: 1234567
+- user: admintest
+- password: 1234567
