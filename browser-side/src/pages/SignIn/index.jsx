@@ -1,12 +1,11 @@
+import { notification } from 'antd';
 import { Form, Formik } from 'formik';
 import React, { useEffect } from 'react';
-import InputField from '../../components/InputField';
-import * as yup from 'yup';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import * as yup from 'yup';
+import InputField from '../../components/InputField';
 import { loginUser } from '../../store/actions/ManageUserAction';
-import { notification } from 'antd';
-import { useSelector } from 'react-redux';
 
 const schema = yup.object().shape({
     taiKhoan: yup.string()
